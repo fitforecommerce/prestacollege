@@ -17,4 +17,7 @@ PrestaCollege lets you:
   - [X] Import asset folders from zip file - TODO
 - [ ] fake orphaned carts
 
+(c) 2018 Martin Kolb 
+issued under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
+
 ![Co-funded by the Erasmus+ Programme of the European Union](https://fitforecommerce.github.io/img/co-funded-erasmus+.jpg)
