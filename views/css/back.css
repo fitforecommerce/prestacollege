@@ -1,0 +1,16 @@
+#prestacollege-panel h2 {
+  margin-top: 0.4rem;
+}
+#prestacollege-panel hr {
+  margin: 1.0rem 0rem;
+}
+#prestacollege-panel code {
+  width: 98%;
+  overflow-wrap: break-word;
+}
+#prestacollege-panel div.moduleconfig-content {
+  margin-top: 2.0rem;
+}
+input[type=submit] {
+  margin-top: 1.0rem;
+}

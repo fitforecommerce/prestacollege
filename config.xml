@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>PrestaCollege</name>
+	<displayName><![CDATA[PrestaCollege]]></displayName>
+	<version><![CDATA[0.1.0]]></version>
+	<description><![CDATA[A module for classroom use of Prestashop]]></description>
+	<author><![CDATA[Martin Kolb]]></author>
+	<tab><![CDATA[others]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>
