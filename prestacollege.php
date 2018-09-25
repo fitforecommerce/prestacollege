@@ -25,6 +25,7 @@ require_once (dirname(__FILE__).'/classes/AddressFaker.php');
 require_once (dirname(__FILE__).'/classes/SnapshotDir.php');
 require_once (dirname(__FILE__).'/classes/FakerDatabaseBackup.php');
 require_once (dirname(__FILE__).'/classes/FakerDatabaseBackupLoader.php');
+require_once (dirname(__FILE__).'/classes/FakerDatabaseCurler.php');
 require_once (dirname(__FILE__).'/classes/FakerFileBackup.php');
 require_once (dirname(__FILE__).'/classes/FakerFileBackupLoader.php');
 
@@ -119,6 +120,14 @@ class PrestaCollege extends Module
       $output .= '</div>';
       return $output;
     }
+    public function curldbsnapshot()
+    {
+      $output  = '<div class="panel">';
+      $output .= '<h2>Downloading a database snapshot</h2>';
+      $output .= '<div>Status: '.$this->db_curler()->run().'</div>';
+      $output .= '</div>';
+      return $output;
+    }
     public function getContent()
     {
         $output  = '';
@@ -157,6 +166,10 @@ class PrestaCollege extends Module
               $output = $this->importfilesnapshot(). $output;
               $action_done = true;
               break;
+            case 'curldbsnapshot':
+              $output = $this->curldbsnapshot(). $output;
+              $action_done = true;
+              break;
 
           }
           if (Tools::getValue('PRESTACOLLEGE_ACTION', '') != '' && !$action_done) {
@@ -176,6 +189,12 @@ class PrestaCollege extends Module
       if(isset($this->db_backup_loader)) return $this->db_backup_loader;
       $this->db_backup_loader = new FakerDatabaseBackupLoader();
       return $this->db_backup_loader;
+    }
+    private function db_curler()
+    {
+      if(isset($this->db_curler)) return $this->db_curler;
+      $this->db_curler = new FakerDatabaseCurler();
+      return $this->db_curler;
     }
     private function admin_link()
     {
