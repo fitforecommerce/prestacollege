@@ -124,5 +124,4 @@ upload/
 
 bin/deploy
 .php_cs.cache
-prestafaker/snapshots_db/*
-prestafaker/snapshots_files/*
+Guardfile
