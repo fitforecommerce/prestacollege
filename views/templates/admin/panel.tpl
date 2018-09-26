@@ -4,8 +4,8 @@
 			<img src="{$module_dir|escape:'html':'UTF-8'}views/img/prestacollege_icon@0,5x.png" style="width: 10.0em;"/>
 		</div>
 		<div class="col-xs-7 text-left">
-			<h2>{l s='PrestaCollege' mod='PrestaCollege'}</h2>
-			<h4>{l s='A module for classroom use of Prestashop - Created by Martin Kolb' mod='PrestaCollege'}</h4>
+			<h2>{l s='PrestaCollege' mod='prestacollege'}</h2>
+			<h4>{l s='A module for classroom use of Prestashop - Created by Martin Kolb' mod='prestacollege'}</h4>
 		</div>
 	</div>
 
