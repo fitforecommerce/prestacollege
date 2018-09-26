@@ -73,17 +73,15 @@ class PrestaCollege extends Module
     public function uninstall()
     {
         Configuration::deleteByName('PRESTACOLLEGE_LIVE_MODE');
-
         return parent::uninstall();
     }
-
     public function fake_customers()
     {
       $conf = array('fake_customers_number' => Tools::getValue('fake_customers_number', ''));
       $faker = new CustomerFaker($conf);
       $output  = '<div class="panel">';
-      $output .= "<h2>Now fake some customers</h2>";
-      $output .= "<p>CustomerFaker says: '".$faker->fake_customers()."'</p>";
+      $output .= "<h2>".$this->l('Fake Customers')."</h2>";
+      $output .= "<div>".$this->l('Creating the following fake customers').$faker->fake_customers()."</div>";
       $output .= '</div>';
       return $output;
     }
