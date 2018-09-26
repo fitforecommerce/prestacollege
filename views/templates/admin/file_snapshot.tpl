@@ -34,3 +34,21 @@
     <input type="submit" value="Export file snapshot" class="btn btn-default pull-right">
   </form>
 </div>
+
+  <div class="row">
+    <h2>{l s='Download File-Snapshot' mod='PrestaCollege'}</h2>
+    <p>{l s='This will download a snapshot file from a custom URL'}</p>
+  </div>
+  <div class="row">
+    <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
+      <input type="hidden" name="submitPrestaCollegeModule" value="1">
+      <input type="hidden" name="PRESTACOLLEGE_ACTION" value="curlfilesnapshot">
+      <div class="row">
+        <label for="filesnapshotcurlurl" class="control-label col-lg-4">{l s='Enter download url'}</label>
+        <div class="col-lg-6">
+          <input type="text" name="filesnapshotcurlurl" >
+        </div>
+      </div>
+      <input type="submit" value="Download file snapshot" class="btn btn-default pull-right">
+    </form>
+  </div>  

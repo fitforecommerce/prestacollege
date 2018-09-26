@@ -25,7 +25,9 @@ require_once (dirname(__FILE__).'/classes/AddressFaker.php');
 require_once (dirname(__FILE__).'/classes/SnapshotDir.php');
 require_once (dirname(__FILE__).'/classes/FakerDatabaseBackup.php');
 require_once (dirname(__FILE__).'/classes/FakerDatabaseBackupLoader.php');
+require_once (dirname(__FILE__).'/classes/FakerCurler.php');
 require_once (dirname(__FILE__).'/classes/FakerDatabaseCurler.php');
+require_once (dirname(__FILE__).'/classes/FakerFileCurler.php');
 require_once (dirname(__FILE__).'/classes/FakerFileBackup.php');
 require_once (dirname(__FILE__).'/classes/FakerFileBackupLoader.php');
 
@@ -128,6 +130,14 @@ class PrestaCollege extends Module
       $output .= '</div>';
       return $output;
     }
+    public function curlfilesnapshot()
+    {
+      $output  = '<div class="panel">';
+      $output .= '<h2>Downloading a file snapshot</h2>';
+      $output .= '<div>Status: '.$this->file_curler()->run().'</div>';
+      $output .= '</div>';
+      return $output;
+    }
     public function getContent()
     {
         $output  = '';
@@ -170,7 +180,10 @@ class PrestaCollege extends Module
               $output = $this->curldbsnapshot(). $output;
               $action_done = true;
               break;
-
+            case 'curlfilesnapshot':
+              $output = $this->curlfilesnapshot(). $output;
+              $action_done = true;
+              break;
           }
           if (Tools::getValue('PRESTACOLLEGE_ACTION', '') != '' && !$action_done) {
             $output = "<div class='panel'><div class='alert alert-warning'>Invalid action '".Tools::getValue('PRESTACOLLEGE_ACTION', '')."'</div></div>" . $output;
@@ -195,6 +208,12 @@ class PrestaCollege extends Module
       if(isset($this->db_curler)) return $this->db_curler;
       $this->db_curler = new FakerDatabaseCurler();
       return $this->db_curler;
+    }
+    private function file_curler()
+    {
+      if(isset($this->file_curler)) return $this->file_curler;
+      $this->file_curler = new FakerFileCurler();
+      return $this->file_curler;
     }
     private function admin_link()
     {
