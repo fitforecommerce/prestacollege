@@ -1,15 +1,15 @@
 <div class="moduleconfig-content">
   <hr>
   <div class="row">
-    <h2>{l s='Import File-Snapshot' mod='PrestaCollege'}</h2>
-    <p>{l s='This action imports a file snapshot created with PrestaCollege. Use with CAUTION as this will OVERWRITE YOUR DATA in some folders.' mod='PrestaCollege'}</p>
+    <h2>{l s='Import File-Snapshot' mod='prestacollege'}</h2>
+    <p>{l s='This action imports a file snapshot created with PrestaCollege. Use with CAUTION as this will OVERWRITE YOUR DATA in some folders.' mod='prestacollege'}</p>
   </div>
   <div class="row">
     <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
       <input type="hidden" name="submitPrestaCollegeModule" value="1">
       <input type="hidden" name="PRESTACOLLEGE_ACTION" value="importfilesnapshot">
       <div class="row">
-        <label for="filesnapshotname" class="control-label col-lg-4">{l s='Select files snapshot' mod='PrestaCollege'}</label>
+        <label for="filesnapshotname" class="control-label col-lg-4">{l s='Select files snapshot' mod='prestacollege'}</label>
         <div class="col-lg-6">
           <select name="filesnapshotname">
             {foreach $importfilesnapshots as $dbfp}
@@ -24,8 +24,8 @@
 </div>
 
 <div class="row">
-  <h2>{l s='Export File-Snapshot' mod='PrestaCollege'}</h2>
-  <p>{l s='This action exports a snapshot of the most important folders of your Prestashop installation.' mod='PrestaCollege'}</p>
+  <h2>{l s='Export File-Snapshot' mod='prestacollege'}</h2>
+  <p>{l s='This action exports a snapshot of the most important folders of your Prestashop installation.' mod='prestacollege'}</p>
 </div>
 <div class="row">
   <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
@@ -36,7 +36,7 @@
 </div>
 
   <div class="row">
-    <h2>{l s='Download File-Snapshot' mod='PrestaCollege'}</h2>
+    <h2>{l s='Download File-Snapshot' mod='prestacollege'}</h2>
     <p>{l s='This will download a snapshot file from a custom URL'}</p>
   </div>
   <div class="row">
