@@ -2,7 +2,7 @@
   <hr>
   <div class="row">
     <h2>{l s='Import Database-Snapshot' mod='prestacollege'}</h2>
-    <p>This action imports a snapshot created by PrestaCollege. This will <strong>OVERWRITE</strong> most of the data in the database!<br><strong>PLEASE USE WITH CAUTION!</strong></p>
+    <p>{l s='This action imports a snapshot created by PrestaCollege. This will OVERWRITE most of the data in the database!' mod='prestacollege'}<br><strong>{l s='PLEASE USE WITH CAUTION!' mod='prestacollege'}</strong></p>
   </div>
   <div class="row">
     <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
@@ -18,7 +18,7 @@
           </select>
         </div>
       </div>
-      <input type="submit" value="Import database snapshot" class="btn btn-default pull-right">
+      <input type="submit" value="{l s='Import database snapshot' mod='prestacollege'}" class="btn btn-default pull-right">
     </form>
   </div>
 
@@ -36,7 +36,7 @@
 
   <div class="row">
     <h2>{l s='Download Database-Snapshot' mod='prestacollege'}</h2>
-    <p>{l s='This will download a snapshot file from a custom URL'}</p>
+    <p>{l s='This will download a snapshot file from a custom URL' mod='prestacollege'}</p>
   </div>
   <div class="row">
     <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
