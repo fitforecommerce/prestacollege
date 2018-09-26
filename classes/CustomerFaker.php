@@ -37,7 +37,7 @@ class CustomerFaker extends AbstractFaker
     $g_str = $this->gender_string($fc->id_gender);
     $fc->lastname = $this->faker()->lastname;
     $fc->firstname = $this->faker()->firstname($g_str);
-    $fc->email = strtolower($fc->firstname.$fc->lastname."@vtlearn.de");
+    $fc->email = strtolower($fc->firstname.$fc->lastname."@fitforecommerce.eu");
     $fc->newsletter = false;
     $fc->optin = false;
     $fc->setWsPasswd($fc->firstname);
