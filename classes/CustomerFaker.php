@@ -8,14 +8,14 @@ class CustomerFaker extends AbstractFaker
 
   public function fake_customers()
   {
-    $output  = '<p>The faker says:</p><ul>';
+    $output  = '<ul>';
     for ($i=0; $i < $this->conf['fake_customers_number']; $i++) { 
       $fc = $this->fake_customer();
       $fa = $this->address_faker()->fake_customer_address($fc);
       $output .= '<li>'.$fc->firstname.' '.$fc->lastname.' - '.$fc->email;
-      $output .= '<p>'.$fa->address1.'</p>';
-      $output .= '<p>'.$fa->postcode.' '.$fa->city.'</p>';
-      $output .= '<p>'.$fa->country.'</p>';
+      # $output .= '<p>'.$fa->address1.'</p>';
+      # $output .= '<p>'.$fa->postcode.' '.$fa->city.'</p>';
+      # $output .= '<p>'.$fa->country.'</p>';
       $output .= '</li>';
     }
     $output .= '</ul>';
