@@ -5,6 +5,10 @@
  */
 class FakerCurler
 {
+  function __construct() {
+    @set_time_limit(0);
+    @ini_set('max_execution_time', '0');
+  }
   public function run()
   {
     try {
@@ -16,16 +20,19 @@ class FakerCurler
   }
   protected function curl_file()
   {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $this->snapshot_user_url());
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSLVERSION,3);
-    $fdata = curl_exec($ch);
-    curl_close($ch);
-
     $destination = $this->snapshotdir()->dir_path."/".$this->filename();
     $file = fopen($destination, "w+");
-    fputs($file, $fdata);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $this->snapshot_user_url());
+    # curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_SSLVERSION,3);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+    curl_setopt($ch, CURLOPT_FILE, $file); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_exec($ch);
+    curl_close($ch);
+
     fclose($file);
   }
   protected function snapshotdir()
