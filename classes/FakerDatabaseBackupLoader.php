@@ -8,7 +8,7 @@ class FakerDatabaseBackupLoader
   public function run()
   {
     $qstring = $this->load_snapshot();
-    if(!$qstring) return "ERROR: Unable to load snapshot!";
+    if(!$qstring) return "ERROR in FakerDatabaseBackupLoader: Unable to load snapshot! No querystring";
     try {
       $result = DB::getInstance()->query($qstring);
     } catch (PrestaShopDatabaseException $e) {
