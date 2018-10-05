@@ -44,15 +44,15 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     );
 
     protected static $tollFreeInternationalNumber = array(
-        '800 ### ####'
+        '800 ### ####',
     );
 
     protected static $tollFreeLineNumber = array(
-        '1800 ### ####'
+        '1800 ### ####',
     );
 
     protected static $premiumPhoneNumber = array(
-        '1900 ### ####'
+        '1900 ### ####',
     );
 
     public function tollFreeInternationalNumber()

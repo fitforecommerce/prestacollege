@@ -13,7 +13,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://www.ons.gov.uk/ons/rel/vsob1/baby-names--england-and-wales/2013/index.html
+     * @see http://www.ons.gov.uk/ons/rel/vsob1/baby-names--england-and-wales/2013/index.html
      */
     protected static $firstNameMale = array(
         'Aaron', 'Adam', 'Adrian', 'Aiden', 'Alan', 'Alex', 'Alexander', 'Alfie', 'Andrew', 'Andy', 'Anthony', 'Archie', 'Arthur',
@@ -37,7 +37,7 @@ class Person extends \Faker\Provider\Person
         'Samuel', 'Scott', 'Sean', 'Sebastian', 'Stefan', 'Stephen', 'Steve',
         'Theo', 'Thomas', 'Tim', 'Toby', 'Tom', 'Tony', 'Tyler',
         'Wayne', 'Will', 'William',
-        'Zachary', 'Zach'
+        'Zachary', 'Zach',
     );
 
     protected static $firstNameFemale = array(
@@ -58,7 +58,7 @@ class Person extends \Faker\Provider\Person
         'Olivia',
         'Patricia', 'Paula', 'Pauline', 'Phoebe', 'Poppy',
         'Rachel', 'Rebecca', 'Rosie', 'Rowena', 'Roxanne', 'Ruby', 'Ruth',
-        'Sabrina', 'Sally', 'Samantha', 'Sarah', 'Sasha', 'Scarlett', 'Selina', 'Shannon', 'Sienna', 'Sofia', 'Sonia', 'Sophia', 'Sophie', 'Stacey', 'Stephanie','Suzanne', 'Summer',
+        'Sabrina', 'Sally', 'Samantha', 'Sarah', 'Sasha', 'Scarlett', 'Selina', 'Shannon', 'Sienna', 'Sofia', 'Sonia', 'Sophia', 'Sophie', 'Stacey', 'Stephanie', 'Suzanne', 'Summer',
         'Tanya', 'Tara', 'Teagan', 'Theresa', 'Tiffany', 'Tina', 'Tracy',
         'Vanessa', 'Vicky', 'Victoria',
         'Wendy',
@@ -67,7 +67,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://surname.sofeminine.co.uk/w/surnames/most-common-surnames-in-great-britain.html
+     * @see http://surname.sofeminine.co.uk/w/surnames/most-common-surnames-in-great-britain.html
      */
     protected static $lastName = array(
         'Adams', 'Allen', 'Anderson',

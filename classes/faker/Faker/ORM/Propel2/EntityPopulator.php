@@ -2,8 +2,8 @@
 
 namespace Faker\ORM\Propel2;
 
-use \Faker\Provider\Base;
-use \Propel\Runtime\Map\ColumnMap;
+use Faker\Provider\Base;
+use Propel\Runtime\Map\ColumnMap;
 
 /**
  * Service class for populating a table through a Propel ActiveRecord class.
@@ -52,6 +52,7 @@ class EntityPopulator
 
     /**
      * @param \Faker\Generator $generator
+     *
      * @return array
      */
     public function guessColumnFormatters(\Faker\Generator $generator)
@@ -70,7 +71,8 @@ class EntityPopulator
             if ($columnMap->isForeignKey()) {
                 $relatedClass = $columnMap->getRelation()->getForeignTable()->getClassname();
                 $formatters[$columnMap->getPhpName()] = function ($inserted) use ($relatedClass) {
-                    $relatedClass = trim($relatedClass, "\\");
+                    $relatedClass = trim($relatedClass, '\\');
+
                     return isset($inserted[$relatedClass]) ? $inserted[$relatedClass][mt_rand(0, count($inserted[$relatedClass]) - 1)] : null;
                 };
                 continue;
@@ -93,6 +95,7 @@ class EntityPopulator
 
     /**
      * @param ColumnMap $columnMap
+     *
      * @return bool
      */
     protected function isColumnBehavior(ColumnMap $columnMap)
@@ -138,6 +141,7 @@ class EntityPopulator
 
     /**
      * @param \Faker\Generator $generator
+     *
      * @return array
      */
     public function guessModifiers(\Faker\Generator $generator)
@@ -151,7 +155,7 @@ class EntityPopulator
                 case 'nested_set':
                     $modifiers['nested_set'] = function ($obj, $inserted) use ($class, $generator) {
                         if (isset($inserted[$class])) {
-                            $queryClass = $class . 'Query';
+                            $queryClass = $class.'Query';
                             $parent = $queryClass::create()->findPk($generator->randomElement($inserted[$class]));
                             $obj->insertAsLastChildOf($parent);
                         } else {

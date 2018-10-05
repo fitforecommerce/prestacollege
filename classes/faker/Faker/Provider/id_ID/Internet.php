@@ -12,10 +12,10 @@ class Internet extends \Faker\Provider\Internet
     );
 
     /**
-     * General tld and local tld
+     * General tld and local tld.
      *
-     * @link http://idwebhost.com/
-     * @link http://domain.id/
+     * @see http://idwebhost.com/
+     * @see http://domain.id/
      */
     protected static $tld = array(
         'com', 'net', 'org', 'asia', 'tv', 'biz', 'info', 'in', 'name', 'co',

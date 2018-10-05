@@ -1,4 +1,6 @@
-<?php namespace Faker\Provider\el_GR;
+<?php
+
+namespace Faker\Provider\el_GR;
 
 class Company extends \Faker\Provider\Company
 {
@@ -6,16 +8,15 @@ class Company extends \Faker\Provider\Company
         'Ο.Ε',
         'Ε.Ε',
         'Α.Ε',
-        'Ε.Π.Ε'
+        'Ε.Π.Ε',
     );
 
     protected static $companyFormats = array(
         '{{lastName}} {{firstName}} {{companySuffix}}',
-        '{{lastName}}-{{firstName}}'
+        '{{lastName}}-{{firstName}}',
     );
 
     protected static $grafm = array('#########');
-
 
     protected static $doy = array(
         'Α\' Αθήνας',
@@ -38,9 +39,8 @@ class Company extends \Faker\Provider\Company
         'Αμοργού',
         'Πατρών',
         'ΔΟΥ ΠΛΟΙΩΝ',
-        'ΦΑΕΕ ΑΘΗΝΩΝ'
+        'ΦΑΕΕ ΑΘΗΝΩΝ',
     );
-
 
     protected static $object = array(
         'Προγραμματιστής',
@@ -73,7 +73,7 @@ class Company extends \Faker\Provider\Company
     }
 
     /**
-     * Return The profession of a company
+     * Return The profession of a company.
      *
      * @example 'Δημοσιογράφος'
      */

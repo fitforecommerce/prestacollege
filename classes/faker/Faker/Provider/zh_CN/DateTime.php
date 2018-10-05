@@ -6,7 +6,7 @@ class DateTime extends \Faker\Provider\DateTime
 {
     public static function amPm($max = 'now')
     {
-        return static::dateTime($max)->format('a') === 'am' ? '上午' : '下午';
+        return 'am' === static::dateTime($max)->format('a') ? '上午' : '下午';
     }
 
     public static function dayOfWeek($max = 'now')
@@ -21,6 +21,7 @@ class DateTime extends \Faker\Provider\DateTime
             'Saturday' => '星期六',
         );
         $week = static::dateTime($max)->format('l');
+
         return isset($map[$week]) ? $map[$week] : $week;
     }
 
@@ -41,6 +42,7 @@ class DateTime extends \Faker\Provider\DateTime
             'December' => '十二月',
         );
         $month = static::dateTime($max)->format('F');
+
         return isset($map[$month]) ? $map[$month] : $month;
     }
 }

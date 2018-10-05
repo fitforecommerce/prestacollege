@@ -35,7 +35,7 @@ class Company extends \Faker\Provider\Company
     );
 
     /**
-     * Source - http://www.careerplanner.com/ListOfJobs.cfm
+     * Source - http://www.careerplanner.com/ListOfJobs.cfm.
      */
     protected static $jobTitleFormat = array(
         'Able Seamen', 'Account Manager', 'Accountant', 'Actor', 'Actuary', 'Adjustment Clerk', 'Admin', 'Administrative Law Judge', 'Administrative Services Manager', 'Administrative Support Supervisors', 'Advertising Manager OR Promotions Manager', 'Advertising Sales Agent', 'Aerospace Engineer', 'Agricultural Crop Farm Manager', 'Agricultural Crop Worker', 'Agricultural Engineer', 'Agricultural Equipment Operator', 'Agricultural Inspector', 'Agricultural Manager', 'Agricultural Product Grader Sorter', 'Agricultural Sales Representative', 'Agricultural Science Technician', 'Agricultural Sciences Teacher', 'Agricultural Technician', 'Agricultural Worker', 'Air Crew Member', 'Air Crew Officer', 'Air Traffic Controller', 'Aircraft Assembler', 'Aircraft Body Repairer', 'Aircraft Cargo Handling Supervisor', 'Aircraft Engine Specialist', 'Aircraft Launch and Recovery Officer', 'Aircraft Launch Specialist', 'Aircraft Mechanics OR Aircraft Service Technician', 'Aircraft Rigging Assembler', 'Aircraft Structure Assemblers', 'Airfield Operations Specialist', 'Airframe Mechanic', 'Airline Pilot OR Copilot OR Flight Engineer', 'Algorithm Developer', 'Alteration Tailor', 'Ambulance Driver', 'Amusement Attendant', 'Anesthesiologist', 'Animal Breeder', 'Animal Care Workers', 'Animal Control Worker', 'Animal Husbandry Worker', 'Animal Scientist', 'Animal Trainer', 'Annealing Machine Operator', 'Announcer', 'Answering Service', 'Anthropologist', 'Anthropologist OR Archeologist', 'Anthropology Teacher', 'Appliance Repairer', 'Arbitrator', 'Archeologist', 'Architect', 'Architectural Drafter', 'Architectural Drafter OR Civil Drafter', 'Architecture Teacher', 'Archivist', 'Armored Assault Vehicle Crew Member', 'Armored Assault Vehicle Officer', 'Art Director', 'Art Teacher', 'Artillery Officer', 'Artillery Crew Member', 'Artist', 'Assembler', 'Assessor', 'Astronomer', 'Athletes and Sports Competitor', 'Athletic Trainer', 'Atmospheric and Space Scientist', 'Audio and Video Equipment Technician', 'Audiologist', 'Audio-Visual Collections Specialist', 'Auditor', 'Auditor', 'Automatic Teller Machine Servicer', 'Automotive Body Repairer', 'Automotive Glass Installers', 'Automotive Master Mechanic', 'Automotive Mechanic', 'Automotive Specialty Technician', 'Automotive Technician', 'Auxiliary Equipment Operator', 'Aviation Inspector', 'Avionics Technician',
@@ -66,12 +66,12 @@ class Company extends \Faker\Provider\Company
     protected static $companySuffix = array('Inc', 'and Sons', 'LLC', 'Group', 'PLC', 'Ltd');
 
     /**
-     * @link https://www.irs.gov/businesses/small-businesses-self-employed/how-eins-are-assigned-and-valid-ein-prefixes
+     * @see https://www.irs.gov/businesses/small-businesses-self-employed/how-eins-are-assigned-and-valid-ein-prefixes
      */
     protected static $einPrefixes = array(
         01, 02, 03, 04, 05, 06, 10, 11, 12, 13, 14, 15, 16, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36,
         37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65,
-        66, 67, 68, 71, 72, 73, 74, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 98, 99
+        66, 67, 68, 71, 72, 73, 74, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 98, 99,
     );
 
     /**
@@ -101,9 +101,10 @@ class Company extends \Faker\Provider\Company
     }
 
     /**
-     * Employer Identification Number (EIN)
+     * Employer Identification Number (EIN).
      *
-     * @link https://en.wikipedia.org/wiki/Employer_Identification_Number
+     * @see https://en.wikipedia.org/wiki/Employer_Identification_Number
+     *
      * @example '12-3456789'
      */
     public static function ein()
@@ -111,6 +112,6 @@ class Company extends \Faker\Provider\Company
         $prefix = static::randomElement(static::$einPrefixes);
         $suffix = static::numberBetween(0, 9999999);
 
-        return sprintf("%02d-%07d", $prefix, $suffix);
+        return sprintf('%02d-%07d', $prefix, $suffix);
     }
 }

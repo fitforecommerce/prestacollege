@@ -8,7 +8,7 @@ class Address extends \Faker\Provider\fr_FR\Address
 
     /**
      * The suffixes come from this list of communities in Québec
-     * http://fr.wikipedia.org/wiki/Liste_des_municipalités_locales_du_Québec
+     * http://fr.wikipedia.org/wiki/Liste_des_municipalités_locales_du_Québec.
      */
     protected static $citySuffix = array(
         // Bas-Saint-Laurent
@@ -37,7 +37,7 @@ class Address extends \Faker\Provider\fr_FR\Address
         '-de-Forsyth', '-de-Panet', '-de-la-Rivière-du-Sud', '-de-Dorset', '-de-Shenley', '-de-Leeds', '-de-Wolfestown',
         '-de-Joly', '-de-Brébeuf', '-de-Coleraine', '-des-Érables', '-Bretenières', '-de-Lauzon', '-de-Standon',
         '-de-Gonzague', '-de-Beaurivage', '-de-Dorchester', '-de-Cranbourne', '-de-Broughton', '-de-la-Rivière-du-Sud',
-        '-des-Aulnaies', '-les-Mines', '-de-Lotbinière', '-de-Patton', '-sur-Rivière-du-Sud', '-de-Beauregard', '-de-Watford'
+        '-des-Aulnaies', '-les-Mines', '-de-Lotbinière', '-de-Patton', '-sur-Rivière-du-Sud', '-de-Beauregard', '-de-Watford',
     );
 
     /**
@@ -51,7 +51,7 @@ class Address extends \Faker\Provider\fr_FR\Address
     protected static $buildingNumber = array('#####', '####', '###', '##', '#');
 
     protected static $streetSuffix = array(
-        'Autoroute', 'Avenue', 'Boulevard', 'Chemin', 'Route', 'Rue', 'Pont'
+        'Autoroute', 'Avenue', 'Boulevard', 'Chemin', 'Route', 'Rue', 'Pont',
     );
 
     protected static $postcode = array('?#? #?#', '?#?#?#');
@@ -61,7 +61,7 @@ class Address extends \Faker\Provider\fr_FR\Address
      */
     protected static $streetNameFormats = array(
         '{{streetSuffix}} {{firstName}}',
-        '{{streetSuffix}} {{lastName}}'
+        '{{streetSuffix}} {{lastName}}',
     );
 
     protected static $streetAddressFormats = array(
@@ -70,17 +70,17 @@ class Address extends \Faker\Provider\fr_FR\Address
     );
 
     protected static $addressFormats = array(
-        "{{streetAddress}}, {{city}}, {{stateAbbr}} {{postcode}}",
+        '{{streetAddress}}, {{city}}, {{stateAbbr}} {{postcode}}',
     );
 
     protected static $secondaryAddressFormats = array('Apt. ###', 'Suite ###', 'Bureau ###');
 
     protected static $state = array(
-        'Alberta', 'Colombie-Britannique', 'Manitoba', 'Nouveau-Brunswick', 'Terre-Neuve-et-Labrador', 'Nouvelle-Écosse', 'Ontario', 'Île-du-Prince-Édouard', 'Québec', 'Saskatchewan'
+        'Alberta', 'Colombie-Britannique', 'Manitoba', 'Nouveau-Brunswick', 'Terre-Neuve-et-Labrador', 'Nouvelle-Écosse', 'Ontario', 'Île-du-Prince-Édouard', 'Québec', 'Saskatchewan',
     );
 
     protected static $stateAbbr = array(
-        'AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'ON', 'PE', 'QC', 'SK'
+        'AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'ON', 'PE', 'QC', 'SK',
     );
 
     /**

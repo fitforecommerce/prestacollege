@@ -11,7 +11,7 @@ class Address extends \Faker\Provider\it_IT\Address
     protected static $postcode = array('####');
 
     /**
-     * @link https://it.wikipedia.org/wiki/Citt%C3%A0_svizzere
+     * @see https://it.wikipedia.org/wiki/Citt%C3%A0_svizzere
      */
     protected static $cityNames = array(
         'Aarau', 'Adliswil', 'Aesch', 'Affoltern am Albis', 'Allschwil', 'Altstätten', 'Amriswil', 'Arbon', 'Arth',
@@ -36,11 +36,11 @@ class Address extends \Faker\Provider\it_IT\Address
         'Val-de-Travers', 'Vernier', 'Versoix', 'Vevey', 'Veyrier', 'Villars-sur-Glâne', 'Volketswil',
         'Wallisellen', 'Weinfelden', 'Wettingen', 'Wetzikon', 'Wil', 'Winterthur', 'Wohlen', 'Worb', 'Wädenswil',
         'Yverdon-les-Bains',
-        'Zofingen', 'Zollikon', 'Zugo', 'Zurigo'
+        'Zofingen', 'Zollikon', 'Zugo', 'Zurigo',
     );
 
     /**
-     * @link https://it.wikipedia.org/wiki/Cantoni_della_Svizzera
+     * @see https://it.wikipedia.org/wiki/Cantoni_della_Svizzera
      */
     protected static $canton = array(
         array('AG' => 'Argovia'),
@@ -68,7 +68,7 @@ class Address extends \Faker\Provider\it_IT\Address
         array('VD' => 'Vaud'),
         array('VS' => 'Vallese'),
         array('ZG' => 'Zugo'),
-        array('ZH' => 'Zurigo')
+        array('ZH' => 'Zurigo'),
     );
 
     protected static $cityFormats = array(
@@ -77,7 +77,7 @@ class Address extends \Faker\Provider\it_IT\Address
 
     protected static $streetNameFormats = array(
         '{{streetSuffix}} {{firstName}}',
-        '{{streetSuffix}} {{lastName}}'
+        '{{streetSuffix}} {{lastName}}',
     );
 
     protected static $streetAddressFormats = array(
@@ -88,8 +88,10 @@ class Address extends \Faker\Provider\it_IT\Address
     );
 
     /**
-     * Returns a random street prefix
+     * Returns a random street prefix.
+     *
      * @example Via
+     *
      * @return string
      */
     public static function streetPrefix()
@@ -99,7 +101,9 @@ class Address extends \Faker\Provider\it_IT\Address
 
     /**
      * Returns a random city name.
+     *
      * @example Luzern
+     *
      * @return string
      */
     public function cityName()
@@ -108,8 +112,10 @@ class Address extends \Faker\Provider\it_IT\Address
     }
 
     /**
-     * Returns a canton
+     * Returns a canton.
+     *
      * @example array('BE' => 'Bern')
+     *
      * @return array
      */
     public static function canton()
@@ -119,21 +125,25 @@ class Address extends \Faker\Provider\it_IT\Address
 
     /**
      * Returns the abbreviation of a canton.
+     *
      * @return string
      */
     public static function cantonShort()
     {
         $canton = static::canton();
+
         return key($canton);
     }
 
     /**
      * Returns the name of canton.
+     *
      * @return string
      */
     public static function cantonName()
     {
         $canton = static::canton();
+
         return current($canton);
     }
 }

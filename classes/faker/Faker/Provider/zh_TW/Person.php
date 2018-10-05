@@ -29,7 +29,7 @@ class Person extends \Faker\Provider\Person
         'V' => 29,
         'W' => 32,
         'X' => 30,
-        'Z' => 33
+        'Z' => 33,
     );
 
     /**
@@ -49,7 +49,7 @@ class Person extends \Faker\Provider\Person
     protected static $titleFemale = array('小姐', '太太', '博士', '教授');
 
     /**
-     * @link http://zh.wikipedia.org/wiki/%E7%99%BE%E5%AE%B6%E5%A7%93
+     * @see http://zh.wikipedia.org/wiki/%E7%99%BE%E5%AE%B6%E5%A7%93
      */
     protected static $lastName = array(
         '趙', '錢', '孫', '李', '周', '吳', '鄭', '王', '馮',
@@ -120,7 +120,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://technology.chtsai.org/namefreq/
+     * @see http://technology.chtsai.org/namefreq/
      */
     protected static $characterMale = array(
         '佳', '俊', '信', '偉', '傑', '冠', '君', '哲',
@@ -145,6 +145,7 @@ class Person extends \Faker\Provider\Person
         for ($i = 0; $i < $n; ++$i) {
             $name .= static::randomElement($pool);
         }
+
         return $name;
     }
 
@@ -168,20 +169,20 @@ class Person extends \Faker\Provider\Person
      *
      * @see https://en.wikipedia.org/wiki/National_Identification_Card_(Republic_of_China)
      *
-     * @return string Length 10 alphanumeric characters, begins with 1 latin character (birthplace),
-     * 1 number (gender) and then 8 numbers (the last one is check digit).
+     * @return string length 10 alphanumeric characters, begins with 1 latin character (birthplace),
+     *                1 number (gender) and then 8 numbers (the last one is check digit)
      */
     public function personalIdentityNumber($gender = null)
     {
         $birthPlace = self::randomKey(self::$idBirthplaceCode);
         $birthPlaceCode = self::$idBirthplaceCode[$birthPlace];
 
-        $gender = ($gender != null) ? $gender : self::randomElement(array(self::GENDER_FEMALE, self::GENDER_MALE));
-        $genderCode = ($gender === self::GENDER_MALE) ? 1 : 2;
+        $gender = (null != $gender) ? $gender : self::randomElement(array(self::GENDER_FEMALE, self::GENDER_MALE));
+        $genderCode = (self::GENDER_MALE === $gender) ? 1 : 2;
 
         $randomNumberCode = self::randomNumber(7, true);
 
-        $codes = str_split($birthPlaceCode . $genderCode . $randomNumberCode);
+        $codes = str_split($birthPlaceCode.$genderCode.$randomNumberCode);
         $total = 0;
 
         foreach ($codes as $key => $code) {
@@ -190,11 +191,11 @@ class Person extends \Faker\Provider\Person
 
         $checkSumDigit = 10 - ($total % 10);
 
-        if ($checkSumDigit == 10) {
+        if (10 == $checkSumDigit) {
             $checkSumDigit = 0;
         }
 
-        $id = $birthPlace . $genderCode . $randomNumberCode . $checkSumDigit;
+        $id = $birthPlace.$genderCode.$randomNumberCode.$checkSumDigit;
 
         return $id;
     }

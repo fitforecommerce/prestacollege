@@ -51,7 +51,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
 
     // Mobile phone numbers start by 06 and 07
     // 06 is the most common prefix
-    protected static $mobileFormats  = array(
+    protected static $mobileFormats = array(
         '+33 (0)6 ## ## ## ##',
         '+33 6 ## ## ## ##',
         '+33 (0)7 {{phoneNumber07WithSeparator}}',
@@ -73,11 +73,12 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     {
         $phoneNumber = $this->phoneNumber07WithSeparator();
         $phoneNumber = str_replace(' ', '', $phoneNumber);
+
         return $phoneNumber;
     }
 
     /**
-     * Only 073 to 079 are acceptable prefixes with 07
+     * Only 073 to 079 are acceptable prefixes with 07.
      *
      * @see http://www.arcep.fr/index.php?id=8146
      */
@@ -85,6 +86,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     {
         $phoneNumber = $this->generator->numberBetween(3, 9);
         $phoneNumber .= $this->numerify('# ## ## ##');
+
         return $phoneNumber;
     }
 
@@ -92,11 +94,12 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     {
         $phoneNumber = $this->phoneNumber08WithSeparator();
         $phoneNumber = str_replace(' ', '', $phoneNumber);
+
         return $phoneNumber;
     }
 
     /**
-     *  Valid formats for 08:
+     *  Valid formats for 08:.
      *
      *  0# ## ## ##
      *  1# ## ## ##
@@ -117,6 +120,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     public function phoneNumber08WithSeparator()
     {
         $regex = '([012]{1}\d{1}|(9[1-357-9])( \d{2}){3}';
+
         return $this->regexify($regex);
     }
 
@@ -129,6 +133,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
 
         return static::numerify($this->generator->parse($format));
     }
+
     /**
      * @example '0891951357'
      */

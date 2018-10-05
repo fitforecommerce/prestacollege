@@ -8,16 +8,17 @@ class TCNo
 {
     /**
      * Generates Turkish Identity Number Checksum
-     * Gets first 9 digit as prefix and calcuates checksums
+     * Gets first 9 digit as prefix and calcuates checksums.
      *
      * https://en.wikipedia.org/wiki/Turkish_Identification_Number
      *
      * @param string $identityPrefix
+     *
      * @return string Checksum (two digit)
      */
     public static function checksum($identityPrefix)
     {
-        if (strlen((string)$identityPrefix) !== 9) {
+        if (9 !== strlen((string) $identityPrefix)) {
             throw new InvalidArgumentException('Argument should be an integer and should be 9 digits.');
         }
 
@@ -26,7 +27,7 @@ class TCNo
 
         $identityArray = array_map('intval', str_split($identityPrefix)); // Creates array from int
         foreach ($identityArray as $index => $digit) {
-            if ($index % 2 == 0) {
+            if (0 == $index % 2) {
                 $evenSum += $digit;
             } else {
                 $oddSum += $digit;
@@ -36,14 +37,15 @@ class TCNo
         $tenthDigit = (7 * $evenSum - $oddSum) % 10;
         $eleventhDigit = ($evenSum + $oddSum + $tenthDigit) % 10;
 
-        return $tenthDigit . $eleventhDigit;
+        return $tenthDigit.$eleventhDigit;
     }
 
     /**
-     * Checks whether an TCNo has a valid checksum
+     * Checks whether an TCNo has a valid checksum.
      *
      * @param string $tcNo
-     * @return boolean
+     *
+     * @return bool
      */
     public static function isValid($tcNo)
     {

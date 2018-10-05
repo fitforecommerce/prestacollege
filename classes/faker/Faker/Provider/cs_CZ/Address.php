@@ -27,7 +27,7 @@ class Address extends \Faker\Provider\Address
     protected static $postcode = array('#####', '### ##');
 
     /**
-     * Source: https://cs.wikipedia.org/wiki/Seznam_m%C4%9Bst_v_%C4%8Cesku_podle_po%C4%8Dtu_obyvatel
+     * Source: https://cs.wikipedia.org/wiki/Seznam_m%C4%9Bst_v_%C4%8Cesku_podle_po%C4%8Dtu_obyvatel.
      */
     protected static $city = array(
         'Brno', 'Břeclav', 'Cheb', 'Chomutov', 'Chrudim', 'Černošice', 'Česká Lípa', 'České Budějovice',
@@ -40,7 +40,7 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * Source: https://cs.wikipedia.org/wiki/Seznam_st%C3%A1t%C5%AF_sv%C4%9Bta
+     * Source: https://cs.wikipedia.org/wiki/Seznam_st%C3%A1t%C5%AF_sv%C4%9Bta.
      */
     protected static $country = array(
         'Afghánistán', 'Albánie', 'Alžírsko', 'Andorra', 'Angola', 'Antigua a Barbuda', 'Argentina',
@@ -70,7 +70,7 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * Source: https://cs.wikipedia.org/wiki/Kraje_v_%C4%8Cesku#Ekonomika
+     * Source: https://cs.wikipedia.org/wiki/Kraje_v_%C4%8Cesku#Ekonomika.
      */
     private static $regions = array(
         'Hlavní město Praha', 'Jihomoravský kraj', 'Jihočeský kraj', 'Karlovarský kraj', 'Královéhradecký kraj',
@@ -79,7 +79,7 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * Source: http://aplikace.mvcr.cz/adresy/
+     * Source: http://aplikace.mvcr.cz/adresy/.
      */
     protected static $street = array(
         'Alžírská', 'Angelovova', 'Antonínská', 'Arménská', 'Čelkovická', 'Červenkova', 'Československého exilu',

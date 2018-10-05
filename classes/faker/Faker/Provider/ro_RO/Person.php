@@ -1,4 +1,5 @@
 <?php
+
 namespace Faker\Provider\ro_RO;
 
 class Person extends \Faker\Provider\Person
@@ -15,7 +16,7 @@ class Person extends \Faker\Provider\Person
         '{{firstNameFemale}} {{lastName}}',
         '{{firstNameFemale}} {{lastName}}',
         '{{firstNameFemale}} {{lastName}}',
-        '{{titleFemale}} {{firstNameFemale}} {{lastName}}'
+        '{{titleFemale}} {{firstNameFemale}} {{lastName}}',
     );
 
     //http://ro.wikipedia.org/wiki/List%C4%83_de_prenume_rom%C3%A2ne%C8%99ti#Feminine
@@ -40,7 +41,7 @@ class Person extends \Faker\Provider\Person
         'Roxelana', 'Ruxanda', 'Ruxandra', 'Sabina', 'Sabrina', 'Safta', 'Salomea', 'Sanda', 'Saveta', 'Savina', 'Sânziana', 'Semenica', 'Severina', 'Sidonia', 'Silvia', 'Silvana', 'Silviana',
         'Simina', 'Simona', 'Smaranda', 'Sofia', 'Sonia', 'Sorana', 'Sorina', 'Speranța', 'Stana', 'Stanca', 'Stela', 'Steliana', 'Steluța', 'Suzana', 'Svetlana', 'Ștefana', 'Ștefania', 'Tamara', 'Tania',
         'Tatiana', 'Teea', 'Teodora', 'Teodosia', 'Teona', 'Tiberia', 'Timea', 'Tinca', 'Tincuța', 'Tudora', 'Tudorița', 'Tudosia', 'Valentina', 'Valeria', 'Vanesa', 'Varvara', 'Vasilica', 'Venera', 'Vera',
-        'Veronica', 'Veta', 'Vicenția', 'Victoria', 'Violeta', 'Viorela', 'Viorica', 'Virginia', 'Viviana', 'Voichița', 'Xenia', 'Zaharia', 'Zamfira', 'Zaraza', 'Zenobia', 'Zenovia', 'Zina', 'Zoe'
+        'Veronica', 'Veta', 'Vicenția', 'Victoria', 'Violeta', 'Viorela', 'Viorica', 'Virginia', 'Viviana', 'Voichița', 'Xenia', 'Zaharia', 'Zamfira', 'Zaraza', 'Zenobia', 'Zenovia', 'Zina', 'Zoe',
     );
 
     //http://ro.wikipedia.org/wiki/List%C4%83_de_prenume_rom%C3%A2ne%C8%99ti#Feminine
@@ -59,7 +60,7 @@ class Person extends \Faker\Provider\Person
         'Norman', 'Octav', 'Octavian', 'Octaviu', 'Olimpian', 'Olimpiu', 'Oliviu', 'Ovidiu', 'Pamfil', 'Panait', 'Panagachie', 'Paul', 'Pavel', 'Pătru', 'Petre', 'Petrică', 'Petrișor', 'Petru', 'Petruț',
         'Pompiliu', 'Radu', 'Rafael', 'Rareș', 'Raul', 'Răducu', 'Răzvan', 'Relu', 'Remus', 'Robert', 'Romeo', 'Romulus', 'Sabin', 'Sandu', 'Sava', 'Sebastian', 'Sergiu', 'Sever', 'Severin', 'Silvian',
         'Silviu', 'Simi', 'Simion', 'Sinică', 'Sorin', 'Stan', 'Stancu', 'Stelian', 'Sandu', 'Șerban', 'Ștefan', 'Teodor', 'Teofil', 'Teohari', 'Theodor', 'Tiberiu', 'Timotei', 'Titus', 'Todor', 'Toma',
-        'Traian', 'Tudor', 'Valentin', 'Valeriu', 'Valter', 'Vasile', 'Vasilică', 'Veniamin', 'Vicențiu', 'Victor', 'Vincențiu', 'Viorel', 'Visarion', 'Vlad', 'Vladimir', 'Vlaicu', 'Voicu', 'Zamfir', 'Zeno'
+        'Traian', 'Tudor', 'Valentin', 'Valeriu', 'Valter', 'Vasile', 'Vasilică', 'Veniamin', 'Vicențiu', 'Victor', 'Vincențiu', 'Viorel', 'Visarion', 'Vlad', 'Vladimir', 'Vlaicu', 'Voicu', 'Zamfir', 'Zeno',
     );
 
     //courtesy of Florin LIPAN, at nume.ottomotor.ro
@@ -82,14 +83,14 @@ class Person extends \Faker\Provider\Person
         'Rotaru', 'Rus', 'Rusu', 'Sabau', 'Sandor', 'Sandu', 'Sarbu', 'Sava', 'Savu', 'Serban', 'Sima', 'Simion', 'Simionescu', 'Simon', 'Sirbu', 'Soare', 'Solomon', 'Staicu', 'Stan',
         'Stanciu', 'Stancu', 'Stanescu', 'Stefan', 'Stefanescu', 'Stoian', 'Stoica', 'Stroe', 'Suciu', 'Szabo', 'Szasz', 'Szekely', 'Tamas', 'Tanase', 'Tataru', 'Teodorescu', 'Toader',
         'Toma', 'Tomescu', 'Toth', 'Trandafir', 'Trif', 'Trifan', 'Tudor', 'Tudorache', 'Tudose', 'Turcu', 'Ungureanu', 'Ursu', 'Vaduva', 'Varga', 'Vasile', 'Vasilescu', 'Vasiliu', 'Veres',
-        'Vintila', 'Visan', 'Vlad', 'Voicu', 'Voinea', 'Zaharia', 'Zamfir'
+        'Vintila', 'Visan', 'Vlad', 'Voicu', 'Voinea', 'Zaharia', 'Zamfir',
     );
 
     protected static $titleMale = array('dl.', 'ing.', 'dr.');
     protected static $titleFemale = array('d-na.', 'd-șoara', 'ing.', 'dr.');
 
     protected static $cnpCountyCodes = array(
-        'AB' => '01', 'AR' => '02', 'AG' => '03', 'B'  => '40', 'BC' => '04', 'BH' => '05',
+        'AB' => '01', 'AR' => '02', 'AG' => '03', 'B' => '40', 'BC' => '04', 'BH' => '05',
         'BN' => '06', 'BT' => '07', 'BV' => '08', 'BR' => '09', 'BZ' => '10', 'CS' => '11',
         'CL' => '51', 'CJ' => '12', 'CT' => '13', 'CV' => '14', 'DB' => '15', 'DJ' => '16',
         'GL' => '17', 'GR' => '52', 'GJ' => '18', 'HR' => '19', 'HD' => '20', 'IL' => '21',
@@ -97,19 +98,21 @@ class Person extends \Faker\Provider\Person
         'OT' => '28', 'PH' => '29', 'SM' => '30', 'SJ' => '31', 'SB' => '32', 'SV' => '33',
         'TR' => '34', 'TM' => '35', 'TL' => '36', 'VS' => '37', 'VL' => '38', 'VN' => '39',
 
-        'B1' => '41', 'B2' => '42', 'B3' => '43', 'B4' => '44', 'B5' => '45', 'B6' => '46'
+        'B1' => '41', 'B2' => '42', 'B3' => '43', 'B4' => '44', 'B5' => '45', 'B6' => '46',
     );
 
     /**
-     * Personal Numerical Code (CNP)
+     * Personal Numerical Code (CNP).
      *
-     * @link http://ro.wikipedia.org/wiki/Cod_numeric_personal
+     * @see http://ro.wikipedia.org/wiki/Cod_numeric_personal
+     *
      * @example 1111111111118
      *
-     * @param null|string $gender Person::GENDER_MALE or Person::GENDER_FEMALE
+     * @param null|string $gender      Person::GENDER_MALE or Person::GENDER_FEMALE
      * @param null|string $dateOfBirth (1800-2099) 'Y-m-d', 'Y-m', 'Y'  I.E. '1981-06-16', '2085-03', '1900'
-     * @param null|string $county county code where the CNP was issued
-     * @param null|bool $isResident flag if the person resides in Romania
+     * @param null|string $county      county code where the CNP was issued
+     * @param null|bool   $isResident  flag if the person resides in Romania
+     *
      * @return string 13 digits CNP code
      */
     public function cnp($gender = null, $dateOfBirth = null, $county = null, $isResident = true)
@@ -131,10 +134,10 @@ class Person extends \Faker\Provider\Person
             $countyCode = static::$cnpCountyCodes[$county];
         }
 
-        $cnp = (string)$this->getGenderDigit($date, $gender, $isResident)
-            . $date->format('ymd')
-            . $countyCode
-            . static::numerify('##%')
+        $cnp = (string) $this->getGenderDigit($date, $gender, $isResident)
+            .$date->format('ymd')
+            .$countyCode
+            .static::numerify('##%')
         ;
 
         $checksum = $this->getChecksumDigit($cnp);
@@ -144,6 +147,7 @@ class Person extends \Faker\Provider\Person
 
     /**
      * @param $dateOfBirth
+     *
      * @return \DateTime
      */
     protected function getDateOfBirth($dateOfBirth)
@@ -159,9 +163,11 @@ class Person extends \Faker\Provider\Person
             case 1:
                 $dateOfBirthParts[] = $baseDate->format('m');
             //don't break, we need the day also
+            // no break
             case 2:
                 $dateOfBirthParts[] = $baseDate->format('d');
             //don't break, next line will
+            // no break
             case 3:
                 break;
             default:
@@ -183,12 +189,12 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     *
-     * https://ro.wikipedia.org/wiki/Cod_numeric_personal#S
+     * https://ro.wikipedia.org/wiki/Cod_numeric_personal#S.
      *
      * @param \DateTime $dateOfBirth
-     * @param bool $isResident
-     * @param string $gender
+     * @param bool      $isResident
+     * @param string    $gender
+     *
      * @return int
      */
     protected static function getGenderDigit(\DateTime $dateOfBirth, $gender, $isResident)
@@ -198,22 +204,25 @@ class Person extends \Faker\Provider\Person
         }
 
         if ($dateOfBirth->format('Y') < 1900) {
-            if ($gender == Person::GENDER_MALE) {
+            if (Person::GENDER_MALE == $gender) {
                 return 3;
             }
+
             return 4;
         }
 
         if ($dateOfBirth->format('Y') < 2000) {
-            if ($gender == Person::GENDER_MALE) {
+            if (Person::GENDER_MALE == $gender) {
                 return 1;
             }
+
             return 2;
         }
 
-        if ($gender == Person::GENDER_MALE) {
+        if (Person::GENDER_MALE == $gender) {
             return 5;
         }
+
         return 6;
     }
 
@@ -221,6 +230,7 @@ class Person extends \Faker\Provider\Person
      * Calculates a checksum for the Personal Numerical Code (CNP).
      *
      * @param string $value 12 digit CNP
+     *
      * @return int checksum digit
      */
     protected function getChecksumDigit($value)
@@ -229,10 +239,10 @@ class Person extends \Faker\Provider\Person
 
         $checksum = 0;
         foreach (range(0, 11) as $digit) {
-            $checksum += (int)substr($value, $digit, 1) * (int)substr($checkNumber, $digit, 1);
+            $checksum += (int) substr($value, $digit, 1) * (int) substr($checkNumber, $digit, 1);
         }
         $checksum = $checksum % 11;
 
-        return $checksum == 10 ? 1 : $checksum;
+        return 10 == $checksum ? 1 : $checksum;
     }
 }

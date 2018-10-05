@@ -2,7 +2,7 @@
 
 namespace Faker\Guesser;
 
-use \Faker\Provider\Base;
+use Faker\Provider\Base;
 
 class Name
 {
@@ -17,8 +17,9 @@ class Name
     }
 
     /**
-     * @param string $name
+     * @param string   $name
      * @param int|null $size Length of field, if known
+     *
      * @return callable
      */
     public function guessFormat($name, $size = null)
@@ -84,7 +85,7 @@ class Name
                     return $generator->state;
                 };
             case 'county':
-                if ($this->generator->locale == 'en_US') {
+                if ('en_US' == $this->generator->locale) {
                     return function () use ($generator) {
                         return sprintf('%s County', $generator->city);
                     };
@@ -135,7 +136,7 @@ class Name
                     return $generator->company;
                 };
             case 'title':
-                if ($size !== null && $size <= 10) {
+                if (null !== $size && $size <= 10) {
                     return function () use ($generator) {
                         return $generator->title;
                     };

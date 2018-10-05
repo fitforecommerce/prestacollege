@@ -12,12 +12,12 @@ class Company extends \Faker\Provider\Company
     );
 
     protected static $companyPrefixes = array(
-      'ООО', 'ЗАО', 'ООО Компания', 'ОАО', 'ОАО', 'ПАО', 'МКК', 'МФО'
+      'ООО', 'ЗАО', 'ООО Компания', 'ОАО', 'ОАО', 'ПАО', 'МКК', 'МФО',
     );
 
     protected static $companyNameSuffixes = array(
       'Маш', 'Наладка', 'Экспедиция', 'Пром', 'Комплекс', 'Машина', 'Снос', '-М', 'Лизинг', 'Траст', 'Снаб',
-      '-H', 'Трест', 'Банк', 'Опт', 'Проф', 'Сбыт', 'Центр'
+      '-H', 'Трест', 'Банк', 'Опт', 'Проф', 'Сбыт', 'Центр',
     );
     /**
      * @note Words and parts of words that usually used in company names
@@ -27,11 +27,11 @@ class Company extends \Faker\Provider\Company
         'Мотор', 'Рос', 'Тяж', 'Тех', 'Сантех', 'Урал', 'Башкир', 'Тверь', 'Казань', 'Обл', 'Бух', 'Хоз', 'Электро',
         'Текстиль', 'Восток', 'Орион', 'Юпитер', 'Финанс', 'Микро', 'Радио', 'Мобайл', 'Дизайн', 'Метал', 'Нефть',
         'Телеком', 'Инфо', 'Сервис', 'Софт', 'IT', 'Рыб', 'Глав', 'Вектор', 'Рем', 'Гор', 'Газ', 'Монтаж', 'Мор',
-        'Реч', 'Флот', 'Cиб', 'Каз', 'Инж', 'Вод', 'Пив', 'Хмель', 'Мяс', 'Томск', 'Омск', 'Север', 'Лен'
+        'Реч', 'Флот', 'Cиб', 'Каз', 'Инж', 'Вод', 'Пив', 'Хмель', 'Мяс', 'Томск', 'Омск', 'Север', 'Лен',
     );
 
     /**
-     * @link https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%9F%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%B8
+     * @see https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%9F%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%B8
      * @note Randomly took from this list - some jobs titles for each letter
      */
     protected static $jobTitleFormat = array(
@@ -43,7 +43,7 @@ class Company extends \Faker\Provider\Company
       'Печник', 'Пианист', 'Писатель', 'Продюсер', 'Промоутер', 'Психолог', 'Радист', 'Редактор', 'Садовник',
       'Системный аналитик', 'Стилист', 'Столяр', 'Сторож', 'Телефонистка', 'Телохранитель', 'Технический писатель',
       'Учёный', 'Физик', 'Финансовый советник', 'Фотограф', 'Фрезеровщик', 'Художник', 'Чабан', 'Штурман',
-      'Экономист', 'Электромонтёр'
+      'Экономист', 'Электромонтёр',
     );
 
     /**
@@ -71,24 +71,26 @@ class Company extends \Faker\Provider\Company
         return static::randomElement(static::$companyNameSuffixes);
     }
 
-    public static function inn($area_code = "")
+    public static function inn($area_code = '')
     {
-        if ($area_code === "" || intval($area_code) == 0) {
+        if ('' === $area_code || 0 == intval($area_code)) {
             //Simple generation code for areas in Russian without check for valid
             $area_code = static::numberBetween(1, 91);
         } else {
             $area_code = intval($area_code);
         }
         $area_code = str_pad($area_code, 2, '0', STR_PAD_LEFT);
-        $inn_base =  $area_code . static::numerify('#######');
-        return $inn_base . \Faker\Calculator\Inn::checksum($inn_base);
+        $inn_base = $area_code.static::numerify('#######');
+
+        return $inn_base.\Faker\Calculator\Inn::checksum($inn_base);
     }
 
-    public static function kpp($inn = "")
+    public static function kpp($inn = '')
     {
-        if ($inn == "" || strlen($inn) < 4) {
+        if ('' == $inn || strlen($inn) < 4) {
             $inn = static::inn();
         }
-        return substr($inn, 0, 4) . "01001";
+
+        return substr($inn, 0, 4).'01001';
     }
 }

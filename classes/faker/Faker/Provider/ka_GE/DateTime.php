@@ -4,7 +4,6 @@ namespace Faker\Provider\ka_GE;
 
 class DateTime extends \Faker\Provider\DateTime
 {
-
     public static function dayOfWeek($max = 'now')
     {
         $map = array(
@@ -17,6 +16,7 @@ class DateTime extends \Faker\Provider\DateTime
             'Saturday' => 'შაბათი',
         );
         $week = static::dateTime($max)->format('l');
+
         return isset($map[$week]) ? $map[$week] : $week;
     }
 
@@ -37,6 +37,7 @@ class DateTime extends \Faker\Provider\DateTime
             'December' => 'დეკემბერი',
         );
         $month = static::dateTime($max)->format('F');
+
         return isset($map[$month]) ? $map[$month] : $month;
     }
 }

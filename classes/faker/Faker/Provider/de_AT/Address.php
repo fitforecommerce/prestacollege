@@ -41,7 +41,7 @@ class Address extends \Faker\Provider\Address
     );
 
     protected static $state = array(
-        'Burgenland', 'Kärnten', 'Niederösterreich', 'Oberösterreich', 'Salzburg', 'Steiermark', 'Tirol', 'Vorarlberg', 'Wien'
+        'Burgenland', 'Kärnten', 'Niederösterreich', 'Oberösterreich', 'Salzburg', 'Steiermark', 'Tirol', 'Vorarlberg', 'Wien',
     );
 
     protected static $country = array(
@@ -76,7 +76,7 @@ class Address extends \Faker\Provider\Address
 
     protected static $streetNameFormats = array(
         '{{lastName}}{{streetSuffixShort}}',
-        '{{firstName}}-{{lastName}}-{{streetSuffixLong}}'
+        '{{firstName}}-{{lastName}}-{{streetSuffixLong}}',
     );
 
     protected static $streetAddressFormats = array(

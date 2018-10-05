@@ -88,6 +88,7 @@ class EntityPopulator
 
     /**
      * @param \Faker\Generator $generator
+     *
      * @return array
      */
     public function guessColumnFormatters(\Faker\Generator $generator)
@@ -123,7 +124,7 @@ class EntityPopulator
                 $mappings = $this->class->getAssociationMappings();
                 foreach ($mappings as $mapping) {
                     if ($mapping['targetEntity'] == $relatedClass) {
-                        if ($mapping['type'] == \Doctrine\ORM\Mapping\ClassMetadata::ONE_TO_ONE) {
+                        if (\Doctrine\ORM\Mapping\ClassMetadata::ONE_TO_ONE == $mapping['type']) {
                             $unique = true;
                             $optional = isset($mapping['joinColumns'][0]['nullable']) ? $mapping['joinColumns'][0]['nullable'] : false;
                             break;
@@ -134,7 +135,7 @@ class EntityPopulator
                 $mappings = $this->class->associationMappings;
                 foreach ($mappings as $mapping) {
                     if ($mapping['targetDocument'] == $relatedClass) {
-                        if ($mapping['type'] == \Doctrine\ODM\MongoDB\Mapping\ClassMetadata::ONE && $mapping['association'] == \Doctrine\ODM\MongoDB\Mapping\ClassMetadata::REFERENCE_ONE) {
+                        if (\Doctrine\ODM\MongoDB\Mapping\ClassMetadata::ONE == $mapping['type'] && \Doctrine\ODM\MongoDB\Mapping\ClassMetadata::REFERENCE_ONE == $mapping['association']) {
                             $unique = true;
                             $optional = isset($mapping['nullable']) ? $mapping['nullable'] : false;
                             break;
@@ -145,7 +146,6 @@ class EntityPopulator
 
             $index = 0;
             $formatters[$assocName] = function ($inserted) use ($relatedClass, &$index, $unique, $optional) {
-
                 if (isset($inserted[$relatedClass])) {
                     if ($unique) {
                         $related = null;
@@ -153,7 +153,7 @@ class EntityPopulator
                             $related = $inserted[$relatedClass][$index];
                         }
 
-                        $index++;
+                        ++$index;
 
                         return $related;
                     }
@@ -170,8 +170,10 @@ class EntityPopulator
 
     /**
      * Insert one new record using the Entity class.
+     *
      * @param ObjectManager $manager
-     * @param bool $generateId
+     * @param bool          $generateId
+     *
      * @return EntityPopulator
      */
     public function execute(ObjectManager $manager, $insertedEntities, $generateId = false)
@@ -203,14 +205,14 @@ class EntityPopulator
                     $value = is_callable($format) ? $format($insertedEntities, $obj) : $format;
                 } catch (\InvalidArgumentException $ex) {
                     throw new \InvalidArgumentException(sprintf(
-                        "Failed to generate a value for %s::%s: %s",
+                        'Failed to generate a value for %s::%s: %s',
                         get_class($obj),
                         $field,
                         $ex->getMessage()
                     ));
                 }
                 // Try a standard setter if it's available, otherwise fall back on reflection
-                $setter = sprintf("set%s", ucfirst($field));
+                $setter = sprintf('set%s', ucfirst($field));
                 if (is_callable(array($obj, $setter))) {
                     $obj->$setter($value);
                 } else {
@@ -229,6 +231,7 @@ class EntityPopulator
 
     /**
      * @param ObjectManager $manager
+     *
      * @return int|null
      */
     private function generateId($obj, $column, ObjectManager $manager)

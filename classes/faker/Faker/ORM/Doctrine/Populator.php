@@ -17,7 +17,7 @@ class Populator
     protected $generateId = array();
 
     /**
-     * @param \Faker\Generator $generator
+     * @param \Faker\Generator   $generator
      * @param ObjectManager|null $manager
      */
     public function __construct(\Faker\Generator $generator, ObjectManager $manager = null)
@@ -36,7 +36,7 @@ class Populator
     {
         if (!$entity instanceof \Faker\ORM\Doctrine\EntityPopulator) {
             if (null === $this->manager) {
-                throw new \InvalidArgumentException("No entity manager passed to Doctrine Populator.");
+                throw new \InvalidArgumentException('No entity manager passed to Doctrine Populator.');
             }
             $entity = new \Faker\ORM\Doctrine\EntityPopulator($this->manager->getClassMetadata($entity));
         }
@@ -65,14 +65,14 @@ class Populator
             $entityManager = $this->manager;
         }
         if (null === $entityManager) {
-            throw new \InvalidArgumentException("No entity manager passed to Doctrine Populator.");
+            throw new \InvalidArgumentException('No entity manager passed to Doctrine Populator.');
         }
 
         $insertedEntities = array();
         foreach ($this->quantities as $class => $number) {
             $generateId = $this->generateId[$class];
-            for ($i=0; $i < $number; $i++) {
-                $insertedEntities[$class][]= $this->entities[$class]->execute($entityManager, $insertedEntities, $generateId);
+            for ($i = 0; $i < $number; ++$i) {
+                $insertedEntities[$class][] = $this->entities[$class]->execute($entityManager, $insertedEntities, $generateId);
             }
             $entityManager->flush();
         }

@@ -133,7 +133,7 @@ class Person extends \Faker\Provider\Person
     protected static $licenceCodes = array('A', 'A1', 'B', 'C', 'C1', 'C2', 'EB', 'EC', 'EC1', 'I', 'L', 'L1');
 
     /**
-     * @link https://en.wikipedia.org/wiki/National_identification_number#South_Africa
+     * @see https://en.wikipedia.org/wiki/National_identification_number#South_Africa
      *
      * @param \DateTime $birthdate
      * @param bool      $citizen
@@ -158,12 +158,12 @@ class Person extends \Faker\Provider\Person
                 $genderDigit = self::numberBetween(0, 9);
         }
         $sequenceDigits = str_pad(self::randomNumber(3), 3, 0, STR_PAD_BOTH);
-        $citizenDigit = ($citizen === true) ? '0' : '1';
+        $citizenDigit = (true === $citizen) ? '0' : '1';
         $raceDigit = self::numberBetween(8, 9);
 
-        $partialIdNumber = $birthDateString . $genderDigit . $sequenceDigits . $citizenDigit . $raceDigit;
+        $partialIdNumber = $birthDateString.$genderDigit.$sequenceDigits.$citizenDigit.$raceDigit;
 
-        return $partialIdNumber . Luhn::computeCheckDigit($partialIdNumber);
+        return $partialIdNumber.Luhn::computeCheckDigit($partialIdNumber);
     }
 
     /**

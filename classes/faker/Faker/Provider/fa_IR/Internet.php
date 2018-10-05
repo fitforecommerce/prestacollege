@@ -16,14 +16,14 @@ class Internet extends \Faker\Provider\Internet
     );
 
     /**
-     * @link https://en.wikipedia.org/wiki/.ir
+     * @see https://en.wikipedia.org/wiki/.ir
      */
     protected static $tld = array(
         'biz', 'com', 'info', 'ac.ir', 'sch.ir', 'co.ir', 'ir', 'net', 'org',
     );
 
     /**
-     * @link http://en.wikipedia.org/wiki/Category:Iranian-language_surnames
+     * @see http://en.wikipedia.org/wiki/Category:Iranian-language_surnames
      */
     protected static $lastNameAscii = array(
         'abdullahi', 'abbasi', 'abedini', 'ahadi', 'ahmadi', 'akbari', 'alizadeh', 'asadi',
@@ -97,6 +97,6 @@ class Internet extends \Faker\Provider\Internet
      */
     public function domainName()
     {
-        return static::randomElement(static::$lastNameAscii) . '.' . $this->tld();
+        return static::randomElement(static::$lastNameAscii).'.'.$this->tld();
     }
 }

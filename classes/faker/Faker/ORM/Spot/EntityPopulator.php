@@ -45,7 +45,7 @@ class EntityPopulator
     /**
      * Class constructor.
      *
-     * @param Mapper $mapper
+     * @param Mapper  $mapper
      * @param Locator $locator
      * @param $useExistingData
      */
@@ -114,6 +114,7 @@ class EntityPopulator
 
     /**
      * @param Generator $generator
+     *
      * @return array
      */
     public function guessColumnFormatters(Generator $generator)
@@ -123,7 +124,7 @@ class EntityPopulator
         $columnTypeGuesser = new ColumnTypeGuesser($generator);
         $fields = $this->mapper->fields();
         foreach ($fields as $fieldName => $field) {
-            if ($field['primary'] === true) {
+            if (true === $field['primary']) {
                 continue;
             }
             if ($formatter = $nameGuesser->guessFormat($fieldName)) {
@@ -141,7 +142,6 @@ class EntityPopulator
         foreach ($relations as $relation) {
             // We don't need any other relation here.
             if ($relation instanceof BelongsTo) {
-
                 $fieldName = $relation->localKey();
                 $entityName = $relation->entityName();
                 $field = $fields[$fieldName];
@@ -168,7 +168,6 @@ class EntityPopulator
 
                     return null;
                 };
-
             }
         }
 
@@ -179,6 +178,7 @@ class EntityPopulator
      * Insert one new record using the Entity class.
      *
      * @param $insertedEntities
+     *
      * @return string
      */
     public function execute($insertedEntities)
@@ -189,7 +189,6 @@ class EntityPopulator
         $this->callMethods($obj, $insertedEntities);
 
         $this->mapper->insert($obj);
-
 
         return $obj;
     }

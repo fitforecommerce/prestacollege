@@ -8,20 +8,21 @@ class Person extends \Faker\Provider\Person
 {
     protected static $maleNameFormats = array(
         '{{firstNameMale}} {{lastName}}',
-        '{{firstNameMale}} {{firstNameMale}} {{lastName}}'
+        '{{firstNameMale}} {{firstNameMale}} {{lastName}}',
     );
 
     protected static $femaleNameFormats = array(
         '{{firstNameFemale}} {{lastName}}',
-        '{{firstNameFemale}} {{firstNameFemale}} {{lastName}}'
+        '{{firstNameFemale}} {{firstNameFemale}} {{lastName}}',
     );
 
     /**
      * An array of typical Nigerian male firstnames.
-     * @link https://andela-celisha-wigwe.github.io/names.html
+     *
+     * @see https://andela-celisha-wigwe.github.io/names.html
      */
     protected static $firstNameMale = array(
-        'Abimbola','Abisola','Abisoye','Adeboye','Adedayo','Adegoke', 'Akande', 'Akanni', 'Alade', 'Ayinde', 'Azubuike',
+        'Abimbola', 'Abisola', 'Abisoye', 'Adeboye', 'Adedayo', 'Adegoke', 'Akande', 'Akanni', 'Alade', 'Ayinde', 'Azubuike',
         'Banji', 'Bankole', 'Buchi', 'Bukola',
         'Chinedu', 'Chisom', 'Chukwu',
         'Damilare', 'Damilola', 'Danjuma',
@@ -45,7 +46,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link https://andela-celisha-wigwe.github.io/names.html
+     * @see https://andela-celisha-wigwe.github.io/names.html
      */
     protected static $firstNameFemale = array(
         'Adaugo', 'Akunna', 'Aminat', 'Aminu', 'Augustina', 'Ayebatari',
@@ -59,11 +60,11 @@ class Person extends \Faker\Provider\Person
         'Rasheedah',
         'Sekinat', 'Simisola', 'Sumayyah',
         'Titi', 'Titilayo', 'Toluwani',
-        'Zainab'
+        'Zainab',
     );
 
     /**
-     * @link https://andela-celisha-wigwe.github.io/names.html
+     * @see https://andela-celisha-wigwe.github.io/names.html
      */
     protected static $lastName = array(
         'Abiodun', 'Abiola', 'Abodunrin', 'Abosede', 'Adaobi', 'Adebayo', 'Adegboye', 'Adegoke', 'Ademayowa', 'Ademola', 'Adeniyan', 'Adeoluwa', 'Aderinsola', 'Aderonke', 'Adesina', 'Adewale', 'Adewale', 'Adewale', 'Adewunmi', 'Adewura', 'Adeyemo', 'Afolabi', 'Afunku', 'Agboola', 'Agboola', 'Agnes', 'Aigbiniode', 'Ajakaiye', 'Ajose-adeogun', 'Akeem-omosanya', 'Akerele', 'Akintade', 'Aligbe', 'Amaechi', 'Aminat', 'Aremu', 'Atanda', 'Ayisat', 'Ayobami', 'Ayomide', 'Ayomide',
@@ -86,6 +87,6 @@ class Person extends \Faker\Provider\Person
         'Taiwo', 'Tamunoemi', 'Tella', 'Temitope', 'Tolulope',
         'Uchechi',
         'Wasiu', 'Wilcox', 'Wuraola',
-        'Yaqub', 'Yussuf'
+        'Yaqub', 'Yussuf',
     );
 }

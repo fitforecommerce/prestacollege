@@ -7,16 +7,16 @@ class Address extends \Faker\Provider\Address
     protected static $buildingNumber = array('###', '##', '#', '##[abc]', '#[abc]');
 
     protected static $streetSuffixLong = array(
-        'Gasse', 'Platz', 'Ring', 'Strasse', 'Weg', 'Allee'
+        'Gasse', 'Platz', 'Ring', 'Strasse', 'Weg', 'Allee',
     );
     protected static $streetSuffixShort = array(
-        'gasse', 'platz', 'ring', 'strasse', 'str.', 'weg', 'allee'
+        'gasse', 'platz', 'ring', 'strasse', 'str.', 'weg', 'allee',
     );
 
     protected static $postcode = array('####');
 
     /**
-     * @link https://de.wikipedia.org/wiki/Liste_der_St%C3%A4dte_in_der_Schweiz
+     * @see https://de.wikipedia.org/wiki/Liste_der_St%C3%A4dte_in_der_Schweiz
      */
     protected static $cityNames = array(
         'Aarau', 'Aarberg', 'Aarburg', 'Adliswil', 'Aesch', 'Affoltern am Albis', 'Agno', 'Aigle', 'Allschwil', 'Altdorf', 'Altstätten', 'Amriswil', 'Appenzell', 'Arbon', 'Arth', 'Ascona', 'Aubonne', 'Avenches',
@@ -40,11 +40,11 @@ class Address extends \Faker\Provider\Address
         'Val-de-Travers NE', 'Valangin', 'Vernier', 'Versoix', 'Vevey', 'Veyrier GE', 'Villars-sur-Glâne', 'Villeneuve', 'Visp', 'Volketswil',
         'Waldenburg', 'Walenstadt', 'Wallisellen', 'Wangen an der Aare', 'Weinfelden', 'Werdenberg', 'Wettingen', 'Wetzikon', 'Wiedlisbach', 'Willisau', 'Wil', 'Winterthur', 'Wohlen', 'Worb', 'Wädenswil',
         'Yverdon-les-Bains',
-        'Zofingen', 'Zollikon', 'Zug', 'Zürich'
+        'Zofingen', 'Zollikon', 'Zug', 'Zürich',
     );
 
     /**
-     * @link https://de.wikipedia.org/wiki/Kanton_(Schweiz)
+     * @see https://de.wikipedia.org/wiki/Kanton_(Schweiz)
      */
     protected static $canton = array(
         array('AG' => 'Aargau'),
@@ -57,7 +57,7 @@ class Address extends \Faker\Provider\Address
         array('GE' => 'Genf'),
         array('GL' => 'Glarus'),
         array('GR' => 'Graubünden'),
-        array('JU' => 'Jura',),
+        array('JU' => 'Jura'),
         array('LU' => 'Luzern'),
         array('NE' => 'Neuenburg'),
         array('NW' => 'Nidwalden'),
@@ -72,7 +72,7 @@ class Address extends \Faker\Provider\Address
         array('VD' => 'Waadt'),
         array('VS' => 'Wallis'),
         array('ZG' => 'Zug'),
-        array('ZH' => 'Zürich')
+        array('ZH' => 'Zürich'),
     );
 
     protected static $country = array(
@@ -108,7 +108,7 @@ class Address extends \Faker\Provider\Address
     protected static $streetNameFormats = array(
         '{{lastName}}{{streetSuffixShort}}',
         '{{cityName}}{{streetSuffixShort}}',
-        '{{firstName}}-{{lastName}}-{{streetSuffixLong}}'
+        '{{firstName}}-{{lastName}}-{{streetSuffixLong}}',
     );
 
     protected static $streetAddressFormats = array(
@@ -120,7 +120,9 @@ class Address extends \Faker\Provider\Address
 
     /**
      * Returns a random city name.
+     *
      * @example Luzern
+     *
      * @return string
      */
     public function cityName()
@@ -130,7 +132,9 @@ class Address extends \Faker\Provider\Address
 
     /**
      * Returns a random street suffix.
+     *
      * @example str.
+     *
      * @return string
      */
     public function streetSuffixShort()
@@ -140,7 +144,9 @@ class Address extends \Faker\Provider\Address
 
     /**
      * Returns a random street suffix.
+     *
      * @example Strasse
+     *
      * @return string
      */
     public function streetSuffixLong()
@@ -149,8 +155,10 @@ class Address extends \Faker\Provider\Address
     }
 
     /**
-     * Returns a canton
+     * Returns a canton.
+     *
      * @example array('BE' => 'Bern')
+     *
      * @return array
      */
     public static function canton()
@@ -160,21 +168,25 @@ class Address extends \Faker\Provider\Address
 
     /**
      * Returns the abbreviation of a canton.
+     *
      * @return string
      */
     public static function cantonShort()
     {
         $canton = static::canton();
+
         return key($canton);
     }
 
     /**
      * Returns the name of canton.
+     *
      * @return string
      */
     public static function cantonName()
     {
         $canton = static::canton();
+
         return current($canton);
     }
 

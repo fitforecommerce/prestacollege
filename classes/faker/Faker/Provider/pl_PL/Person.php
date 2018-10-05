@@ -3,8 +3,9 @@
 namespace Faker\Provider\pl_PL;
 
 /**
- * Most popular first and last names published by Ministry of the Interior:
- * @link https://msw.gov.pl/pl/sprawy-obywatelskie/ewidencja-ludnosci-dowo/statystyki-imion-i-nazw
+ * Most popular first and last names published by Ministry of the Interior:.
+ *
+ * @see https://msw.gov.pl/pl/sprawy-obywatelskie/ewidencja-ludnosci-dowo/statystyki-imion-i-nazw
  */
 class Person extends \Faker\Provider\Person
 {
@@ -80,15 +81,15 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     *
-     * Unisex academic degree
+     * Unisex academic degree.
      *
      * @var string
      */
-    protected static $title = array('mgr','inż.', 'dr', 'doc.');
+    protected static $title = array('mgr', 'inż.', 'dr', 'doc.');
 
     /**
      * @param string|null $gender 'male', 'female' or null for any
+     *
      * @example 'Adamczyk'
      */
     public function lastName($gender = null)
@@ -118,7 +119,7 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * replaced by specific unisex Polish title
+     * replaced by specific unisex Polish title.
      */
     public static function titleMale()
     {
@@ -126,7 +127,7 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * replaced by specific unisex Polish title
+     * replaced by specific unisex Polish title.
      */
     public static function titleFemale()
     {
@@ -134,15 +135,18 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * PESEL - Universal Electronic System for Registration of the Population
-     * @link http://en.wikipedia.org/wiki/PESEL
-     * @param  DateTime $birthdate
-     * @param  string   $sex       M for male or F for female
-     * @return string   11 digit number, like 44051401358
+     * PESEL - Universal Electronic System for Registration of the Population.
+     *
+     * @see http://en.wikipedia.org/wiki/PESEL
+     *
+     * @param DateTime $birthdate
+     * @param string   $sex       M for male or F for female
+     *
+     * @return string 11 digit number, like 44051401358
      */
     public static function pesel($birthdate = null, $sex = null)
     {
-        if ($birthdate === null) {
+        if (null === $birthdate) {
             $birthdate = \Faker\Provider\DateTime::dateTimeThisCentury();
         }
 
@@ -151,22 +155,22 @@ class Person extends \Faker\Provider\Person
 
         $fullYear = (int) $birthdate->format('Y');
         $year = (int) $birthdate->format('y');
-        $month = $birthdate->format('m') + (((int) ($fullYear/100) - 14) % 5) * 20;
+        $month = $birthdate->format('m') + (((int) ($fullYear / 100) - 14) % 5) * 20;
         $day = $birthdate->format('d');
 
         $result = array((int) ($year / 10), $year % 10, (int) ($month / 10), $month % 10, (int) ($day / 10), $day % 10);
 
-        for ($i = 6; $i < $length; $i++) {
+        for ($i = 6; $i < $length; ++$i) {
             $result[$i] = static::randomDigit();
         }
 
         $result[$length - 1] |= 1;
-        if ($sex == "F") {
-            $result[$length - 1] -= 1;
+        if ('F' == $sex) {
+            --$result[$length - 1];
         }
 
         $checksum = 0;
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; ++$i) {
             $checksum += $weights[$i] * $result[$i];
         }
         $checksum = (10 - ($checksum % 10)) % 10;
@@ -176,22 +180,24 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * National Identity Card number
-     * @link http://en.wikipedia.org/wiki/Polish_National_Identity_Card
+     * National Identity Card number.
+     *
+     * @see http://en.wikipedia.org/wiki/Polish_National_Identity_Card
+     *
      * @return string 3 letters and 6 digits, like ABA300000
      */
     public static function personalIdentityNumber()
     {
-        $range = str_split("ABCDEFGHIJKLMNPRSTUVWXYZ");
-        $low = array("A", static::randomElement($range), static::randomElement($range));
+        $range = str_split('ABCDEFGHIJKLMNPRSTUVWXYZ');
+        $low = array('A', static::randomElement($range), static::randomElement($range));
         $high = array(static::randomDigit(), static::randomDigit(), static::randomDigit(), static::randomDigit(), static::randomDigit());
         $weights = array(7, 3, 1, 7, 3, 1, 7, 3);
         $checksum = 0;
-        for ($i = 0, $size = count($low); $i < $size; $i++) {
+        for ($i = 0, $size = count($low); $i < $size; ++$i) {
             $checksum += $weights[$i] * (ord($low[$i]) - 55);
         }
-        for ($i = 0, $size = count($high); $i < $size; $i++) {
-            $checksum += $weights[$i+3] * $high[$i];
+        for ($i = 0, $size = count($high); $i < $size; ++$i) {
+            $checksum += $weights[$i + 3] * $high[$i];
         }
         $checksum %= 10;
 
@@ -199,9 +205,11 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * Taxpayer Identification Number (NIP in Polish)
-     * @link http://en.wikipedia.org/wiki/PESEL#Other_identifiers
-     * @link http://pl.wikipedia.org/wiki/NIP
+     * Taxpayer Identification Number (NIP in Polish).
+     *
+     * @see http://en.wikipedia.org/wiki/PESEL#Other_identifiers
+     * @see http://pl.wikipedia.org/wiki/NIP
+     *
      * @return string 10 digit number
      */
     public static function taxpayerIdentificationNumber()
@@ -215,11 +223,11 @@ class Person extends \Faker\Provider\Person
                 static::randomDigit(), static::randomDigit(), static::randomDigit(),
             );
             $checksum = 0;
-            for ($i = 0, $size = count($result); $i < $size; $i++) {
+            for ($i = 0, $size = count($result); $i < $size; ++$i) {
                 $checksum += $weights[$i] * $result[$i];
             }
             $checksum %= 11;
-        } while ($checksum == 10);
+        } while (10 == $checksum);
         $result[] = $checksum;
 
         return implode('', $result);

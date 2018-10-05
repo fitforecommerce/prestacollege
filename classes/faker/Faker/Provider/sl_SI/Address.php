@@ -4,9 +4,8 @@ namespace Faker\Provider\sl_SI;
 
 class Address extends \Faker\Provider\Address
 {
-
     /**
-     * @link http://www.rtvslo.si/strani/abecedni-seznam-obcin/3103
+     * @see http://www.rtvslo.si/strani/abecedni-seznam-obcin/3103
      **/
     protected static $city = array(
         'Ajdovščina', 'Apače', 'Beltinci', 'Benedikt', 'Bistrica ob Sotli', 'Bled', 'Bloke', 'Bohinj', 'Borovnica', 'Bovec',
@@ -32,7 +31,7 @@ class Address extends \Faker\Provider\Address
         'Vojnik', 'Vransko', 'Vrhnika', 'Vuzenica', 'Zagorje ob Savi', 'Zavrč', 'Zreče', 'Črenšovci', 'Črna na Koroškem', 'Črnomelj',
         'Šalovci', 'Šempeter - Vrtojba', 'Šentilj', 'Šentjernej', 'Šentjur', 'Šentrupert', 'Šenčur', 'Škocjan', 'Škofja Loka',
         'Škofljica', 'Šmarje pri Jelšah', 'Šmarješke Toplice', 'Šmartno ob Paki', 'Šmartno pri Litiji', 'Šoštanj', 'Štore', 'Žalec',
-        'Železniki', 'Žetale', 'Žiri', 'Žirovnica', 'Žužemberk'
+        'Železniki', 'Žetale', 'Žiri', 'Žirovnica', 'Žužemberk',
     );
 
     protected static $buildingNumber = array('1##', '##', '##', '##', '##', '#');
@@ -40,10 +39,10 @@ class Address extends \Faker\Provider\Address
     protected static $postcode = array('###0');
 
     /**
-     * Most common street names in Slovenia
+     * Most common street names in Slovenia.
      *
-     * @link http://www.stat.si/krajevnaimena/pregledi_ulice_najpogostejse.asp
-     * @link http://www.stat.si/KrajevnaImena/pregledi_naselja_najpogostejsa.asp
+     * @see http://www.stat.si/krajevnaimena/pregledi_ulice_najpogostejse.asp
+     * @see http://www.stat.si/KrajevnaImena/pregledi_naselja_najpogostejsa.asp
      */
     protected static $street = array(
         'Šolska ulica', 'Prešernova ulica', 'Cankarjeva ulica', 'Vrtna ulica', 'Gregorčičeva ulica', 'Kajuhova ulica', 'Prečna ulica',
@@ -55,11 +54,11 @@ class Address extends \Faker\Provider\Address
 
         'Gradišče', 'Pristava', 'Brezje', 'Dolenja vas', 'Potok', 'Ravne',
         'Brdo', 'Dobrava', 'Draga', 'Javorje', 'Kal', 'Laze', 'Log', 'Planina', 'Podkraj', 'Selce', 'Trnovec', 'Bistrica', 'Gorenja vas',
-        'Gorica', 'Lipa', 'Nova vas', 'Podgora', 'Podgorje', 'Podgrad', 'Ponikve', 'Sela', 'Selo', 'Škocjan', 'Vrh'
+        'Gorica', 'Lipa', 'Nova vas', 'Podgora', 'Podgorje', 'Podgrad', 'Ponikve', 'Sela', 'Selo', 'Škocjan', 'Vrh',
     );
 
     /**
-     * @link http://sl.wikipedia.org/wiki/Seznam_suverenih_držav
+     * @see http://sl.wikipedia.org/wiki/Seznam_suverenih_držav
      */
     protected static $country = array(
         'Afganistan', 'Albanija', 'Alžirija', 'Andora', 'Angola', 'Antigva in Barbuda', 'Argentina', 'Armenija', 'Avstralija', 'Avstrija',
@@ -80,15 +79,15 @@ class Address extends \Faker\Provider\Address
         'Svazi', 'Španija', 'Šrilanka', 'Švedska', 'Švica', 'Tadžikistan', 'Tajska', 'Tajvan', 'Tanzanija', 'Togo', 'Tonga', 'Trinidad in Tobago',
         'Tunizija', 'Turčija', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukrajina', 'Urugvaj', 'Uzbekistan', 'Vanuatu', 'Vatikan', 'Velika Britanija',
         'Venezuela', 'Vietnam', 'Vzhodni Timor', 'Zahodna Samoa', 'Zambija', 'Združene države Amerike', 'Združeni arabski emirati',
-        'Zelenortski otoki', 'Zimbabve'
+        'Zelenortski otoki', 'Zimbabve',
     );
 
     protected static $cityFormats = array(
-        '{{cityName}}'
+        '{{cityName}}',
     );
 
     protected static $streetAddressFormats = array(
-        '{{streetName}} {{buildingNumber}}'
+        '{{streetName}} {{buildingNumber}}',
     );
 
     protected static $addressFormats = array(
