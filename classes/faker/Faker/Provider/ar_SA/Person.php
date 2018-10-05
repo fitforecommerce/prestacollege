@@ -26,10 +26,9 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://muslim-names.us/
+     * @see http://muslim-names.us/
      */
     protected static $firstNameMale = array(
-
         'آدم', 'أبراهيم', 'أحمد', 'أدهم', 'أسامة', 'أسعد', 'أشرف', 'أكثم', 'أكرم', 'أمجد', 'أمين', 'أنس', 'أنور', 'أواس', 'أوس', 'أيمن', 'أيهم', 'أيوب', 'إبراهيم', 'إسلام', 'إسماعيل', 'إلياس', 'إياد', 'إيهاب', 'ابان', 'ابراهيم', 'اثير', 'احسان', 'احمد', 'ادريس', 'ادم', 'ادهم', 'اديب', 'اسامة',
         'اسحاق', 'اسحق', 'اسعد', 'اسلام', 'اسماعيل', 'اسيد', 'اشراف', 'اشرف', 'اصلان', 'اكثم', 'اكرم', 'البراء', 'البشر', 'الحارث', 'الحسين', 'الطفيل', 'العزم', 'الليث', 'المثنى', 'المنصور', 'الياس', 'اليمان', 'امجد', 'امير', 'امين', 'أنس', 'انور', 'انيس', 'اوس', 'اوسم', 'اويس', 'اياد', 'اياس',
         'ايسر', 'ايمن', 'ايهم', 'ايوب', 'باسل', 'باسم', 'باهر', 'بدر', 'بدوان', 'براء', 'برهان', 'بسام', 'بشار', 'بشر', 'بشير', 'بكر', 'بلال', 'بليغ', 'بندر', 'بهاء', 'تركي', 'توفيق', 'ثامر', 'جابر', 'جاسر', 'جاسم', 'جبر', 'جبير', 'جراح', 'جريس', 'جعفر', 'جلال', 'جمال', 'جمزه', 'جميل', 'جهاد',
@@ -49,7 +48,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://muslim-names.us/
+     * @see http://muslim-names.us/
      */
     protected static $firstNameFemale = array(
         'آثار', 'آلاء', 'آناء', 'آية', 'أبرار', 'أحلام', 'أروى', 'أريج', 'أسماء', 'أسيل', 'أصاله', 'أفنان', 'ألاء', 'أماني', 'أمل', 'أميرة', 'أنسام', 'أنوار', 'إباء', 'إخلاص', 'إسراء', 'إسلام', 'إكرام', 'إنعام', 'إيمان', 'إيناس', 'ابتهاج', 'ابتهال', 'أبرار', 'إخلاص', 'ارجوان', 'أروى', 'أريج',
@@ -93,8 +92,9 @@ class Person extends \Faker\Provider\Person
     public static function idNumber()
     {
         $partialValue = static::numerify(
-            static::randomElement(array(1, 2)) . str_repeat('#', 8)
+            static::randomElement(array(1, 2)).str_repeat('#', 8)
         );
+
         return Luhn::generateLuhnNumber($partialValue);
     }
 
@@ -103,7 +103,8 @@ class Person extends \Faker\Provider\Person
      */
     public static function nationalIdNumber()
     {
-        $partialValue = static::numerify(1 . str_repeat('#', 8));
+        $partialValue = static::numerify(1 .str_repeat('#', 8));
+
         return Luhn::generateLuhnNumber($partialValue);
     }
 
@@ -112,7 +113,8 @@ class Person extends \Faker\Provider\Person
      */
     public static function foreignerIdNumber()
     {
-        $partialValue = static::numerify(2 . str_repeat('#', 8));
+        $partialValue = static::numerify(2 .str_repeat('#', 8));
+
         return Luhn::generateLuhnNumber($partialValue);
     }
 }

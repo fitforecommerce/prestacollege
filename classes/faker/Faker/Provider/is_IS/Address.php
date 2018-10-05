@@ -42,11 +42,11 @@ class Address extends \Faker\Provider\Address
         'Svartfjallaland', 'Svasíland', 'Sviss', 'Svíþjóð', 'Sýrland', 'Tadsjikistan', 'Taíland', 'Taívan', 'Tansanía',
         'Tékkland', 'Tonga', 'Tógó', 'Tókelá', 'Trínidad og Tóbagó', 'Tsjad', 'Tsjetsjenía', 'Turks- og Caicos-eyjar',
         'Túnis', 'Túrkmenistan', 'Túvalú', 'Tyrkland', 'Ungverjaland', 'Úganda', 'Úkraína', 'Úrúgvæ', 'Úsbekistan',
-        'Vanúatú', 'Venesúela', 'Vestur-Kongó', 'Vestur-Sahara', 'Víetnam', 'Wales', 'Wallis- og Fútúnaeyjar', 'Þýskaland'
+        'Vanúatú', 'Venesúela', 'Vestur-Kongó', 'Vestur-Sahara', 'Víetnam', 'Wales', 'Wallis- og Fútúnaeyjar', 'Þýskaland',
     );
 
     /**
-     * @var array Icelandic cities.
+     * @var array icelandic cities
      */
     protected static $cityNames = array(
         'Reykjavík', 'Seltjarnarnes', 'Vogar', 'Kópavogur', 'Garðabær', 'Hafnarfjörður', 'Reykjanesbær', 'Grindavík',
@@ -60,77 +60,77 @@ class Address extends \Faker\Provider\Address
         'Mjóifjörður', 'Borgarfjörður', 'Reyðarfjörður', 'Eskifjörður', 'Neskaupstaður', 'Fáskrúðsfjörður',
         'Stöðvarfjörður', 'Breiðdalsvík', 'Djúpivogur', 'Höfn', 'Selfoss', 'Hveragerði', 'Þorlákshöfn', 'Ölfus',
         'Eyrarbakki', 'Stokkseyri', 'Laugarvatn', 'Flúðir', 'Hella', 'Hvolsvöllur', 'Vík', 'Kirkjubæjarklaustur',
-        'Vestmannaeyjar'
+        'Vestmannaeyjar',
     );
 
     /**
-     * @var array Street name suffix.
+     * @var array street name suffix
      */
     protected static $streetSuffix = array(
         'ás', 'bakki', 'braut', 'bær', 'brún', 'berg', 'fold', 'gata', 'gróf',
         'garðar', 'höfði', 'heimar', 'hamar', 'hólar', 'háls', 'kvísl', 'lækur',
         'leiti', 'land', 'múli', 'nes', 'rimi', 'stígur', 'stræti', 'stekkur',
         'slóð', 'skógar', 'sel', 'teigur', 'tún', 'vangur', 'vegur', 'vogur',
-        'vað'
+        'vað',
     );
 
     /**
-     * @var array Street name prefix.
+     * @var array street name prefix
      */
     protected static $streetPrefix = array(
         'Aðal', 'Austur', 'Bakka', 'Braga', 'Báru', 'Brunn', 'Fiski', 'Leifs',
         'Týs', 'Birki', 'Suður', 'Norður', 'Vestur', 'Austur', 'Sanda', 'Skógar',
         'Stór', 'Sunnu', 'Tungu', 'Tangar', 'Úlfarfells', 'Vagn', 'Vind', 'Ysti',
-        'Þing', 'Hamra', 'Hóla', 'Kríu', 'Iðu', 'Spóa', 'Starra', 'Uglu', 'Vals'
+        'Þing', 'Hamra', 'Hóla', 'Kríu', 'Iðu', 'Spóa', 'Starra', 'Uglu', 'Vals',
     );
 
     /**
-     * @var Icelandic zip code.
-    **/
+     * @var Icelandic zip code
+     **/
     protected static $postcode = array(
-        '%##'
+        '%##',
     );
 
     /**
-     * @var array Icelandic regions.
+     * @var array icelandic regions
      */
     protected static $regionNames = array(
-        'Höfuðborgarsvæðið', 'Norðurland', 'Suðurland', 'Vesturland', 'Vestfirðir', 'Austurland', 'Suðurnes'
+        'Höfuðborgarsvæðið', 'Norðurland', 'Suðurland', 'Vesturland', 'Vestfirðir', 'Austurland', 'Suðurnes',
     );
 
     /**
-     * @var array Icelandic building numbers.
+     * @var array icelandic building numbers
      */
     protected static $buildingNumber = array(
         '%##', '%#', '%#', '%', '%', '%', '%?', '% ?',
     );
 
     /**
-     * @var array Icelandic city format.
+     * @var array icelandic city format
      */
     protected static $cityFormats = array(
         '{{cityName}}',
     );
 
     /**
-     * @var array Icelandic street's name formats.
+     * @var array icelandic street's name formats
      */
     protected static $streetNameFormats = array(
         '{{streetPrefix}}{{streetSuffix}}',
         '{{streetPrefix}}{{streetSuffix}}',
         '{{firstNameMale}}{{streetSuffix}}',
-        '{{firstNameFemale}}{{streetSuffix}}'
+        '{{firstNameFemale}}{{streetSuffix}}',
     );
 
     /**
-     * @var array Icelandic street's address formats.
+     * @var array icelandic street's address formats
      */
     protected static $streetAddressFormats = array(
-        '{{streetName}} {{buildingNumber}}'
+        '{{streetName}} {{buildingNumber}}',
     );
 
     /**
-     * @var array Icelandic address format.
+     * @var array icelandic address format
      */
     protected static $addressFormats = array(
         "{{streetAddress}}\n{{postcode}} {{city}}",

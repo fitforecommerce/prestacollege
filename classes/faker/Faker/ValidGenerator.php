@@ -4,7 +4,7 @@ namespace Faker;
 
 /**
  * Proxy for other generators, to return only valid values. Works with
- * Faker\Generator\Base->valid()
+ * Faker\Generator\Base->valid().
  */
 class ValidGenerator
 {
@@ -13,9 +13,9 @@ class ValidGenerator
     protected $maxRetries;
 
     /**
-     * @param Generator $generator
+     * @param Generator     $generator
      * @param callable|null $validator
-     * @param integer $maxRetries
+     * @param int           $maxRetries
      */
     public function __construct(Generator $generator, $validator = null, $maxRetries = 10000)
     {
@@ -32,7 +32,8 @@ class ValidGenerator
     }
 
     /**
-     * Catch and proxy all generator calls but return only valid values
+     * Catch and proxy all generator calls but return only valid values.
+     *
      * @param string $attribute
      *
      * @return mixed
@@ -43,9 +44,10 @@ class ValidGenerator
     }
 
     /**
-     * Catch and proxy all generator calls with arguments but return only valid values
+     * Catch and proxy all generator calls with arguments but return only valid values.
+     *
      * @param string $name
-     * @param array $arguments
+     * @param array  $arguments
      *
      * @return mixed
      */
@@ -54,7 +56,7 @@ class ValidGenerator
         $i = 0;
         do {
             $res = call_user_func_array(array($this->generator, $name), $arguments);
-            $i++;
+            ++$i;
             if ($i > $this->maxRetries) {
                 throw new \OverflowException(sprintf('Maximum retries of %d reached without finding a valid value', $this->maxRetries));
             }

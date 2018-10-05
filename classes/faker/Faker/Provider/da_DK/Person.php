@@ -3,14 +3,14 @@
 namespace Faker\Provider\da_DK;
 
 /**
- * @link http://www.danskernesnavne.navneforskning.ku.dk/Personnavne.asp
+ * @see http://www.danskernesnavne.navneforskning.ku.dk/Personnavne.asp
  *
  * @author Antoine Corcy <contact@sbin.dk>
  */
 class Person extends \Faker\Provider\Person
 {
     /**
-     * @var array Danish person name formats.
+     * @var array danish person name formats
      */
     protected static $maleNameFormats = array(
         '{{firstNameMale}} {{lastName}}',
@@ -33,7 +33,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @var array Danish first names.
+     * @var array danish first names
      */
     protected static $firstNameMale = array(
         'Aage', 'Adam', 'Adolf', 'Ahmad', 'Ahmed', 'Aksel', 'Albert', 'Alex', 'Alexander', 'Alf', 'Alfred', 'Ali', 'Allan',
@@ -93,7 +93,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @var array Danish middle names.
+     * @var array danish middle names
      */
     protected static $middleName = array(
         'Møller', 'Lund', 'Holm', 'Jensen', 'Juul', 'Nielsen', 'Kjær', 'Hansen', 'Skov', 'Østergaard', 'Vestergaard',
@@ -123,7 +123,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @var array Danish last names.
+     * @var array danish last names
      */
     protected static $lastName = array(
         'Jensen', 'Nielsen', 'Hansen', 'Pedersen', 'Andersen', 'Christensen', 'Larsen', 'Sørensen', 'Rasmussen', 'Petersen',
@@ -181,14 +181,14 @@ class Person extends \Faker\Provider\Person
     /**
      * Randomly return a danish CPR number (Personnal identification number) format.
      *
-     * @link http://cpr.dk/cpr/site.aspx?p=16
-     * @link http://en.wikipedia.org/wiki/Personal_identification_number_%28Denmark%29
+     * @see http://cpr.dk/cpr/site.aspx?p=16
+     * @see http://en.wikipedia.org/wiki/Personal_identification_number_%28Denmark%29
      *
      * @return string
      */
     public static function cpr()
     {
-        $birthdate = new \DateTime('@' . mt_rand(0, time()));
+        $birthdate = new \DateTime('@'.mt_rand(0, time()));
 
         return sprintf('%s-%s', $birthdate->format('dmy'), static::numerify('%###'));
     }

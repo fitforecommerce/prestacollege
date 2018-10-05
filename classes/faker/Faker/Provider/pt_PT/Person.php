@@ -26,7 +26,7 @@ class Person extends \Faker\Provider\Person
         '{{firstNameFemale}} {{firstNameFemale}} {{lastName}} {{lastName}} {{lastName}}',
     );
 
-    /** @link http://goo.gl/v6bScG document with all pt abreviations **/
+    /** @see http://goo.gl/v6bScG document with all pt abreviations **/
     protected static $titleMale = array('Sr.', 'Dr.', 'Exmo.', 'Eng.', 'Eng.º', 'Ex.', 'Exº');
     protected static $titleFemale = array('Sra.', 'Dra.', 'Exma', 'Eng.ª', 'Exª');
 
@@ -42,16 +42,16 @@ class Person extends \Faker\Provider\Person
       '72######',
       '77######',
       '79######',
-      '8#######' ,
+      '8#######',
       '90######',
       '98######',
-      '99######'
+      '99######',
     );
 
     /**
-     * Taxpayer Identification Number (NIF in Portugal)
+     * Taxpayer Identification Number (NIF in Portugal).
      *
-     * @link http://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
+     * @see http://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
      *
      * @return string 9 digit number
      */
@@ -64,9 +64,9 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * Generate module
+     * Generate module.
      *
-     * @link http://pt.wikipedia.org/wiki/D%C3%ADgito_verificador
+     * @see http://pt.wikipedia.org/wiki/D%C3%ADgito_verificador
      *
      * @param string $number number
      *
@@ -78,18 +78,18 @@ class Person extends \Faker\Provider\Person
         $sum = 0;
         $factor = 2;
 
-        for ($i = strlen($number); $i > 0; $i--) {
+        for ($i = strlen($number); $i > 0; --$i) {
             $numbers[$i] = substr($number, $i - 1, 1);
             $partial[$i] = $numbers[$i] * $factor;
             $sum += $partial[$i];
             if ($factor == $base) {
                 $factor = 1;
             }
-            $factor++;
+            ++$factor;
         }
         $res = $sum % 11;
 
-        if ($res == 0 || $res == 1) {
+        if (0 == $res || 1 == $res) {
             $digit = 0;
         } else {
             $digit = 11 - $res;
@@ -99,10 +99,8 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     *
-     * @link http://nomesportugueses.blogspot.pt/2012/01/lista-dos-cem-nomes-mais-usados-em.html
+     * @see http://nomesportugueses.blogspot.pt/2012/01/lista-dos-cem-nomes-mais-usados-em.html
      */
-
     protected static $firstNameMale = array(
         'Rodrigo', 'João', 'Martim', 'Afonso', 'Tomás', 'Gonçalo', 'Francisco', 'Tiago',
         'Diogo', 'Guilherme', 'Pedro', 'Miguel', 'Rafael', 'Gabriel', 'Santiago', 'Dinis',
@@ -110,12 +108,12 @@ class Person extends \Faker\Provider\Person
         'Salvador', 'António', 'Vasco', 'Henrique', 'Lourenço', 'Manuel', 'Eduardo', 'Bernardo',
         'Leandro', 'Luís', 'Diego', 'Leonardo', 'Alexandre', 'Rúben', 'Mateus', 'Ricardo',
         'Vicente', 'Filipe', 'Bruno', 'Nuno', 'Carlos', 'Rui', 'Hugo', 'Samuel', 'Álvaro',
-        'Matias', 'Fábio', 'Ivo', 'Paulo', 'Jorge', 'Xavier', 'Marco', 'Isaac', 'Raúl','Benjamim',
+        'Matias', 'Fábio', 'Ivo', 'Paulo', 'Jorge', 'Xavier', 'Marco', 'Isaac', 'Raúl', 'Benjamim',
         'Renato', 'Artur', 'Mário', 'Frederico', 'Cristiano', 'Ivan', 'Sérgio', 'Micael',
         'Vítor', 'Edgar', 'Kevin', 'Joaquim', 'Igor', 'Ângelo', 'Enzo', 'Valentim', 'Flávio',
         'Joel', 'Fernando', 'Sebastião', 'Tomé', 'César', 'Cláudio', 'Nelson', 'Lisandro', 'Jaime',
         'Gil', 'Mauro', 'Sandro', 'Hélder', 'Matheus', 'William', 'Gaspar', 'Márcio',
-        'Martinho', 'Emanuel', 'Marcos', 'Telmo', 'Davi', 'Wilson'
+        'Martinho', 'Emanuel', 'Marcos', 'Telmo', 'Davi', 'Wilson',
     );
 
     protected static $firstNameFemale = array(

@@ -59,11 +59,11 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-    * Export of BAG (http://bag.vrom.nl/)
-    * last updated 2012/11/09
-    *
-    * @var array
-    */
+     * Export of BAG (http://bag.vrom.nl/)
+     * last updated 2012/11/09.
+     *
+     * @var array
+     */
     protected static $cityNames = array(
         "'s Gravenmoer", "'s-Graveland", "'s-Gravendeel", "'s-Gravenhage", "'s-Gravenpolder", "'s-Gravenzande", "'s-Heer Abtskerke", "'s-Heer Arendskerke", "'s-Heer Hendrikskinderen", "'s-Heerenberg", "'s-Heerenbroek", "'s-Heerenhoek", "'s-Hertogenbosch", "'t Goy", "'t Haantje", "'t Harde", "'t Loo Oldebroek", "'t Veld", "'t Waar", "'t Zand", "'t Zandt", '2e Valthermond',
         'Aadorp', 'Aagtekerke', 'Aalden', 'Aalsmeer', 'Aalsmeerderbrug', 'Aalst', 'Aalsum', 'Aalten', 'Aardenburg', 'Aarlanderveen', 'Aarle-Rixtel', 'Aartswoud', 'Abbega', 'Abbekerk', 'Abbenbroek', 'Abbenes', 'Abcoude', 'Achlum', 'Achterveld', 'Achterveld', 'Achthuizen', 'Achtmaal', 'Acquoy', 'Adorp', 'Aduard', 'Aerdenhout', 'Aerdt', 'Afferden L', 'Afferden', 'Agelo', 'Akersloot', 'Akkrum', 'Akmarijp', 'Albergen', 'Alblasserdam', 'Alde Leie', 'Aldeboarn', 'Aldtsjerk', 'Alem', 'Alkmaar', 'Allingawier', 'Almelo', 'Almen', 'Almere', 'Almkerk', 'Alphen aan den Rijn', 'Alphen', 'Alphen', 'Alteveer gem Hoogeveen', 'Alteveer', 'Alteveer', 'Alteveer', 'Altforst', 'Ambt Delden', 'Ameide', 'Amen', 'America', 'Amerongen', 'Amersfoort', 'Ammerstol', 'Ammerzoden', 'Amstelhoek', 'Amstelveen', 'Amstenrade', 'Amsterdam Zuidoost', 'Amsterdam', 'Andel', 'Andelst', 'Anderen', 'Andijk', 'Ane', 'Anerveen', 'Anevelde', 'Angeren', 'Angerlo', 'Anjum', 'Ankeveen', 'Anloo', 'Anna Paulowna', 'Annen', 'Annerveenschekanaal', 'Ansen', 'Ansen', 'Apeldoorn', 'Apeldoorn', 'Appelscha', 'Appeltern', 'Appingedam', 'Arcen', 'Arkel', 'Arnemuiden', 'Arnhem', 'Arum', 'Asch', 'Asperen', 'Assen', 'Assendelft', 'Asten', 'Augsbuurt', 'Augustinusga', 'Austerlitz', 'Avenhorn', 'Axel', 'Azewijn',
@@ -92,7 +92,7 @@ class Address extends \Faker\Provider\Address
     );
 
     protected static $state = array(
-        'Drenthe', 'Gelderland', 'Groningen', 'Flevoland', 'Friesland', 'Noord-Brabant', 'Noord-Holland', 'Overijssel', 'Limburg', 'Utrecht', 'Zeeland', 'Zuid-Holland'
+        'Drenthe', 'Gelderland', 'Groningen', 'Flevoland', 'Friesland', 'Noord-Brabant', 'Noord-Holland', 'Overijssel', 'Limburg', 'Utrecht', 'Zeeland', 'Zuid-Holland',
     );
 
     protected static $country = array(
@@ -119,12 +119,12 @@ class Address extends \Faker\Provider\Address
         'Uruguay',
         'Vanuatu', 'Venezuela', 'Verenigde Arabische Emiraten', 'Verenigd Koninkrijk', 'Verenigde Staten van Amerika', 'Vaticaanstad', 'Vietnam',
         'Wallis en Futuna', 'Westerlijke Shara', 'Wit-Rusland',
-        'Zambia', 'Zuid-Afrika', 'Zuid-Georgia en de Zuidelijke Sandwicheilanden', 'Zimbabwe'
+        'Zambia', 'Zuid-Afrika', 'Zuid-Georgia en de Zuidelijke Sandwicheilanden', 'Zimbabwe',
     );
 
     /**
-    * @see parent
-    */
+     * @see parent
+     */
     public static function buildingNumber()
     {
         return static::bothify(static::randomElement(static::$buildingNumber));
@@ -139,13 +139,13 @@ class Address extends \Faker\Provider\Address
     }
 
     /**
-    * @see parent
-    */
+     * @see parent
+     */
     public function cityName()
     {
         return static::randomElement(static::$cityNames);
     }
-    
+
     public static function postcode()
     {
         return static::randomElement(static::$postcodes);

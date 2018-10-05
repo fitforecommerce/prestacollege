@@ -7,61 +7,62 @@ use Faker\Calculator\Luhn;
 
 class Payment extends Base
 {
-    public static $expirationDateFormat = "m/y";
+    public static $expirationDateFormat = 'm/y';
 
     protected static $cardVendors = array(
         'Visa', 'Visa', 'Visa', 'Visa', 'Visa',
         'MasterCard', 'MasterCard', 'MasterCard', 'MasterCard', 'MasterCard',
-        'American Express', 'Discover Card', 'Visa Retired'
+        'American Express', 'Discover Card', 'Visa Retired',
     );
 
     /**
      * @var array List of card brand masks for generating valid credit card numbers
+     *
      * @see https://en.wikipedia.org/wiki/Payment_card_number Reference for existing prefixes
      * @see https://www.mastercard.us/en-us/issuers/get-support/2-series-bin-expansion.html MasterCard 2017 2-Series BIN Expansion
      */
     protected static $cardParams = array(
         'Visa' => array(
-            "4539###########",
-            "4556###########",
-            "4916###########",
-            "4532###########",
-            "4929###########",
-            "40240071#######",
-            "4485###########",
-            "4716###########",
-            "4##############"
+            '4539###########',
+            '4556###########',
+            '4916###########',
+            '4532###########',
+            '4929###########',
+            '40240071#######',
+            '4485###########',
+            '4716###########',
+            '4##############',
         ),
         'Visa Retired' => array(
-            "4539########",
-            "4556########",
-            "4916########",
-            "4532########",
-            "4929########",
-            "40240071####",
-            "4485########",
-            "4716########",
-            "4###########",
+            '4539########',
+            '4556########',
+            '4916########',
+            '4532########',
+            '4929########',
+            '40240071####',
+            '4485########',
+            '4716########',
+            '4###########',
         ),
         'MasterCard' => array(
-            "2221###########",
-            "23#############",
-            "24#############",
-            "25#############",
-            "26#############",
-            "2720###########",
-            "51#############",
-            "52#############",
-            "53#############",
-            "54#############",
-            "55#############"
+            '2221###########',
+            '23#############',
+            '24#############',
+            '25#############',
+            '26#############',
+            '2720###########',
+            '51#############',
+            '52#############',
+            '53#############',
+            '54#############',
+            '55#############',
         ),
         'American Express' => array(
-            "34############",
-            "37############"
+            '34############',
+            '37############',
         ),
         'Discover Card' => array(
-            "6011###########"
+            '6011###########',
         ),
     );
 
@@ -146,9 +147,10 @@ class Payment extends Base
     /**
      * Returns the String of a credit card number.
      *
-     * @param string  $type      Supporting any of 'Visa', 'MasterCard', 'American Express', and 'Discover'
-     * @param boolean $formatted Set to true if the output string should contain one separator every 4 digits
-     * @param string  $separator Separator string for formatting card number. Defaults to dash (-).
+     * @param string $type      Supporting any of 'Visa', 'MasterCard', 'American Express', and 'Discover'
+     * @param bool   $formatted Set to true if the output string should contain one separator every 4 digits
+     * @param string $separator Separator string for formatting card number. Defaults to dash (-).
+     *
      * @return string
      *
      * @example '4485480221084675'
@@ -168,15 +170,17 @@ class Payment extends Base
             $p2 = substr($number, 4, 4);
             $p3 = substr($number, 8, 4);
             $p4 = substr($number, 12);
-            $number = $p1 . $separator . $p2 . $separator . $p3 . $separator . $p4;
+            $number = $p1.$separator.$p2.$separator.$p3.$separator.$p4;
         }
 
         return $number;
     }
 
     /**
-     * @param boolean $valid True (by default) to get a valid expiration date, false to get a maybe valid date
+     * @param bool $valid True (by default) to get a valid expiration date, false to get a maybe valid date
+     *
      * @return \DateTime
+     *
      * @example 04/13
      */
     public function creditCardExpirationDate($valid = true)
@@ -189,9 +193,11 @@ class Payment extends Base
     }
 
     /**
-     * @param boolean $valid                True (by default) to get a valid expiration date, false to get a maybe valid date
-     * @param string  $expirationDateFormat
+     * @param bool   $valid                True (by default) to get a valid expiration date, false to get a maybe valid date
+     * @param string $expirationDateFormat
+     *
      * @return string
+     *
      * @example '04/13'
      */
     public function creditCardExpirationDateString($valid = true, $expirationDateFormat = null)
@@ -200,7 +206,8 @@ class Payment extends Base
     }
 
     /**
-     * @param  boolean $valid True (by default) to get a valid expiration date, false to get a maybe valid date
+     * @param bool $valid True (by default) to get a valid expiration date, false to get a maybe valid date
+     *
      * @return array
      */
     public function creditCardDetails($valid = true)
@@ -208,20 +215,22 @@ class Payment extends Base
         $type = static::creditCardType();
 
         return array(
-            'type'   => $type,
+            'type' => $type,
             'number' => static::creditCardNumber($type),
-            'name'   => $this->generator->name(),
-            'expirationDate' => $this->creditCardExpirationDateString($valid)
+            'name' => $this->generator->name(),
+            'expirationDate' => $this->creditCardExpirationDateString($valid),
         );
     }
 
     /**
-     * International Bank Account Number (IBAN)
+     * International Bank Account Number (IBAN).
      *
-     * @link http://en.wikipedia.org/wiki/International_Bank_Account_Number
-     * @param  string  $countryCode ISO 3166-1 alpha-2 country code
-     * @param  string  $prefix      for generating bank account number of a specific bank
-     * @param  integer $length      total length without country code and 2 check digits
+     * @see http://en.wikipedia.org/wiki/International_Bank_Account_Number
+     *
+     * @param string $countryCode ISO 3166-1 alpha-2 country code
+     * @param string $prefix      for generating bank account number of a specific bank
+     * @param int    $length      total length without country code and 2 check digits
+     *
      * @return string
      */
     public static function iban($countryCode = null, $prefix = '', $length = null)
@@ -229,8 +238,8 @@ class Payment extends Base
         $countryCode = is_null($countryCode) ? self::randomKey(self::$ibanFormats) : strtoupper($countryCode);
 
         $format = !isset(static::$ibanFormats[$countryCode]) ? null : static::$ibanFormats[$countryCode];
-        if ($length === null) {
-            if ($format === null) {
+        if (null === $length) {
+            if (null === $format) {
                 $length = 24;
             } else {
                 $length = 0;
@@ -240,14 +249,14 @@ class Payment extends Base
                 }
             }
         }
-        if ($format === null) {
+        if (null === $format) {
             $format = array(array('n', $length));
         }
 
         $expandedFormat = '';
         foreach ($format as $item) {
             list($class, $length) = $item;
-            $expandedFormat .=  str_repeat($class, $length);
+            $expandedFormat .= str_repeat($class, $length);
         }
 
         $result = $prefix;
@@ -267,20 +276,22 @@ class Payment extends Base
             }
         }
 
-        $checksum = Iban::checksum($countryCode . '00' . $result);
+        $checksum = Iban::checksum($countryCode.'00'.$result);
 
-        return $countryCode . $checksum . $result;
+        return $countryCode.$checksum.$result;
     }
 
     /**
-     * Return the String of a SWIFT/BIC number
+     * Return the String of a SWIFT/BIC number.
      *
      * @example 'RZTIAT22263'
-     * @link    http://en.wikipedia.org/wiki/ISO_9362
-     * @return  string Swift/Bic number
+     *
+     * @see    http://en.wikipedia.org/wiki/ISO_9362
+     *
+     * @return string Swift/Bic number
      */
     public static function swiftBicNumber()
     {
-        return self::regexify("^([A-Z]){4}([A-Z]){2}([0-9A-Z]){2}([0-9A-Z]{3})?$");
+        return self::regexify('^([A-Z]){4}([A-Z]){2}([0-9A-Z]){2}([0-9A-Z]{3})?$');
     }
 }

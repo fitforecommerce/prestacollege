@@ -25,7 +25,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
         '+63 (978) ###-####', '+63 (979) ###-####', '+63 (980) ###-####',
         '+63 (989) ###-####', '+63 (994) ###-####', '+63 (996) ###-####',
         '+63 (997) ###-####', '+63 (998) ###-####', '+63 (999) ###-####',
-        
+
         '(0813) ###-####', '(0817) ###-####', '(0900) ###-####',
         '(0905) ###-####', '(0906) ###-####', '(0907) ###-####',
         '(0908) ###-####', '(0909) ###-####', '(0910) ###-####',
@@ -48,7 +48,8 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     );
 
     /**
-     * Return a en_PH mobile phone number
+     * Return a en_PH mobile phone number.
+     *
      * @return string
      */
     public static function mobileNumber()

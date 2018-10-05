@@ -8,11 +8,11 @@ class Address extends \Faker\Provider\Address
     protected static $citySuffix = array('kylä', 'niemi', 'järvi', 'joki', 'lampi', 'mäki', 'vesi', 'niemi', 'harju', 'lahti', 'harju', 'salmi', 'koski', 'pudas', 'saari');
     protected static $buildingNumber = array('####', '###', '##', '#', '#');
     protected static $streetSuffix = array(
-        'tie', 'kuja', 'polku', 'kierros', 'kulma', 'katu', 'kaarre', 'kaari', 'rinne', 'kaarto', 'haka', 'silta', 'rinne', 'töyry'
+        'tie', 'kuja', 'polku', 'kierros', 'kulma', 'katu', 'kaarre', 'kaari', 'rinne', 'kaarto', 'haka', 'silta', 'rinne', 'töyry',
     );
     protected static $postcode = array('#####');
     protected static $state = array(
-        'Ahvenanmaa', 'Etelä-Karjala', 'Etelä-Pohjanmaa', 'Etelä-Savo', 'Kainuu', 'Kanta-Häme', 'Keski-Pohjanmaa', 'Keski-Suomi', 'Kymenlaakso', 'Lappi', 'Pirkanmaa', 'Pohjanmaa', 'Pohjois-Karjala', 'Pohjois-Pohjanmaa', 'Pohjois-Savo', 'Päijät-Häme', 'Satakunta', 'Uusimaa', 'Varsinais-Suomi'
+        'Ahvenanmaa', 'Etelä-Karjala', 'Etelä-Pohjanmaa', 'Etelä-Savo', 'Kainuu', 'Kanta-Häme', 'Keski-Pohjanmaa', 'Keski-Suomi', 'Kymenlaakso', 'Lappi', 'Pirkanmaa', 'Pohjanmaa', 'Pohjois-Karjala', 'Pohjois-Pohjanmaa', 'Pohjois-Savo', 'Päijät-Häme', 'Satakunta', 'Uusimaa', 'Varsinais-Suomi',
     );
     protected static $country = array(
         'Afganistan', 'Alankomaat', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua ja Barbuda', 'Argentiina', 'Armenia', 'Australia', 'Azerbaidẑan',
@@ -37,7 +37,7 @@ class Address extends \Faker\Provider\Address
         'Uganda', 'Ukraina', 'Unkari', 'Uruguay', 'Uusi-Seelanti', 'Uzbekistan',
         'Valko-Venäjä', 'Vanuatu', 'Vatikaanivaltio', 'Venzuela', 'Venäjä', 'Vietnam', 'Viro',
         'Yhdistyneet Arabiemiirikunnat', 'Yhdistynyt kuningaskunta', 'Yhdysvallat',
-        'Zimbabwe'
+        'Zimbabwe',
     );
     protected static $cityFormats = array(
         '{{cityPrefix}}-{{firstName}}{{citySuffix}}',
@@ -47,11 +47,11 @@ class Address extends \Faker\Provider\Address
     );
     protected static $streetNameFormats = array(
         '{{firstName}}{{streetSuffix}}',
-        '{{lastName}}{{streetSuffix}}'
+        '{{lastName}}{{streetSuffix}}',
     );
     protected static $streetAddressFormats = array(
         '{{streetName}} {{buildingNumber}}',
-        '{{streetName}} {{buildingNumber}} {{secondaryAddress}}'
+        '{{streetName}} {{buildingNumber}} {{secondaryAddress}}',
     );
     protected static $addressFormats = array(
         "{{streetAddress}}\n{{postcode}} {{city}}, {{state}}",

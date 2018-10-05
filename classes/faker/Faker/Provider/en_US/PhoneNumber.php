@@ -40,14 +40,14 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
         '{{areaCode}}-{{exchangeCode}}-#### x#####',
         '({{areaCode}}) {{exchangeCode}}-#### x#####',
         '1-{{areaCode}}-{{exchangeCode}}-#### x#####',
-        '{{areaCode}}.{{exchangeCode}}.#### x#####'
+        '{{areaCode}}.{{exchangeCode}}.#### x#####',
     );
 
     /**
      * @see https://en.wikipedia.org/wiki/Toll-free_telephone_number#United_States
      */
     protected static $tollFreeAreaCodes = array(
-        800, 844, 855, 866, 877, 888
+        800, 844, 855, 866, 877, 888,
     );
     protected static $tollFreeFormats = array(
         // Standard formats
@@ -70,7 +70,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     }
 
     /**
-     * NPA-format area code
+     * NPA-format area code.
      *
      * @see https://en.wikipedia.org/wiki/North_American_Numbering_Plan#Numbering_system
      *
@@ -86,7 +86,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     }
 
     /**
-     * NXX-format central office exchange code
+     * NXX-format central office exchange code.
      *
      * @see https://en.wikipedia.org/wiki/North_American_Numbering_Plan#Numbering_system
      *
@@ -97,7 +97,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
         $digits[] = self::numberBetween(2, 9);
         $digits[] = self::randomDigit();
 
-        if ($digits[1] === 1) {
+        if (1 === $digits[1]) {
             $digits[] = self::randomDigitNot(1);
         } else {
             $digits[] = self::randomDigit();

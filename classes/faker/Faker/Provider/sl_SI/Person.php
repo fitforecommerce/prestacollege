@@ -4,7 +4,6 @@ namespace Faker\Provider\sl_SI;
 
 class Person extends \Faker\Provider\Person
 {
-
     protected static $maleNameFormats = array(
         '{{firstNameMale}} {{lastName}}',
         '{{firstNameMale}} {{lastName}}',
@@ -22,8 +21,8 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://www.stat.si/imena_top_imena_spol.asp?r=True
-     * @link http://www.stat.si/doc/vsebina/05/imena/TOPIMENA_SI.xlsx
+     * @see http://www.stat.si/imena_top_imena_spol.asp?r=True
+     * @see http://www.stat.si/doc/vsebina/05/imena/TOPIMENA_SI.xlsx
      */
     protected static $firstNameMale = array(
         'Adam', 'Adolf', 'Albert', 'Albin', 'Aleks', 'Aleksandar', 'Aleksander', 'Aleksej', 'Alen',
@@ -50,12 +49,12 @@ class Person extends \Faker\Provider\Person
         'Tadej', 'Tai', 'Taj', 'Tarik', 'Teo', 'Tevž', 'Tian', 'Tilen', 'Tim', 'Timotej', 'Tine',
         'Tjaš', 'Tomaž', 'Tomislav', 'Tristan', 'Urban', 'Uroš', 'Val', 'Valentin', 'Valter',
         'Vid', 'Viktor', 'Viljem', 'Vincenc', 'Vinko', 'Vito', 'Vladimir', 'Vlado', 'Vojko',
-        'Zdenko', 'Zdravko', 'Zlatko', 'Zoran', 'Zvonko', 'Štefan', 'Žak', 'Žan', 'Željko', 'Žiga'
+        'Zdenko', 'Zdravko', 'Zlatko', 'Zoran', 'Zvonko', 'Štefan', 'Žak', 'Žan', 'Željko', 'Žiga',
     );
 
     /**
-     * @link http://www.stat.si/imena_top_imena_spol.asp?r=True
-     * @link http://www.stat.si/doc/vsebina/05/imena/TOPIMENA_SI.xlsx
+     * @see http://www.stat.si/imena_top_imena_spol.asp?r=True
+     * @see http://www.stat.si/doc/vsebina/05/imena/TOPIMENA_SI.xlsx
      */
     protected static $firstNameFemale = array(
         'Ajda', 'Ajla', 'Albina', 'Aleksandra', 'Alenka', 'Alina', 'Alja', 'Alojzija', 'Amalija',
@@ -84,11 +83,11 @@ class Person extends \Faker\Provider\Person
         'Tisa', 'Tjaša', 'Ula', 'Urša', 'Urška', 'Valentina', 'Valerija', 'Vanja', 'Vera',
         'Veronika', 'Vesna', 'Vida', 'Viktorija', 'Vita', 'Vlasta', 'Zala', 'Zara', 'Zarja',
         'Zdenka', 'Zlatka', 'Zofija', 'Zoja', 'Zora', 'Zvonka', 'Špela', 'Štefanija', 'Štefka',
-        'Žana', 'Živa'
+        'Žana', 'Živa',
     );
 
     /**
-     * @link http://www.stat.si/imena_top_priimki.asp?r=True
+     * @see http://www.stat.si/imena_top_priimki.asp?r=True
      */
     protected static $lastName = array(
         'Ambrožič', 'Babič', 'Bajc', 'Bergant', 'Bevc', 'Bezjak', 'Bizjak', 'Blatnik', 'Blažič',
@@ -113,15 +112,15 @@ class Person extends \Faker\Provider\Person
         'Turk', 'Uršič', 'Vidic', 'Vidmar', 'Vidovič', 'Vodopivec', 'Volk', 'Vovk', 'Zadravec',
         'Zajc', 'Zakrajšek', 'Zalar', 'Zalokar', 'Založnik', 'Zemljič', 'Zorko', 'Zorman', 'Zupan',
         'Zupanc', 'Zupančič', 'Zver', 'Čeh', 'Černe', 'Čuk', 'Šinkovec', 'Škof', 'Šmid',
-        'Štrukelj', 'Šuštar', 'Žagar', 'Železnik', 'Žibert', 'Žižek', 'Žnidaršič'
+        'Štrukelj', 'Šuštar', 'Žagar', 'Železnik', 'Žibert', 'Žižek', 'Žnidaršič',
     );
 
     protected static $title = array(
-        'dr.', 'mag.', 'inž.', 'univ. dipl.', 'dipl.', 'univ. dipl. inž.', 'dipl. inž.', 'prof.', 'akad.', 'dr. med.', 'spec.'
+        'dr.', 'mag.', 'inž.', 'univ. dipl.', 'dipl.', 'univ. dipl. inž.', 'dipl. inž.', 'prof.', 'akad.', 'dr. med.', 'spec.',
     );
 
     /**
-     * replaced by specific unisex slovenian title
+     * replaced by specific unisex slovenian title.
      */
     public function title($gender = null)
     {
@@ -130,6 +129,7 @@ class Person extends \Faker\Provider\Person
 
     /**
      * @param string|null $gender 'male', 'female' or null for any
+     *
      * @example 'Novak'
      */
     public function lastName($gender = null)

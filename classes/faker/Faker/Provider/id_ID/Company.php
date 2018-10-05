@@ -12,17 +12,17 @@ class Company extends \Faker\Provider\Company
     );
 
     /**
-     * @link http://id.wikipedia.org/wiki/Jenis_badan_usaha
+     * @see http://id.wikipedia.org/wiki/Jenis_badan_usaha
      */
     protected static $companyPrefix = array('PT', 'CV', 'UD', 'PD', 'Perum');
 
     /**
-     * @link http://id.wikipedia.org/wiki/Jenis_badan_usaha
+     * @see http://id.wikipedia.org/wiki/Jenis_badan_usaha
      */
     protected static $companySuffix = array('(Persero) Tbk', 'Tbk');
 
     /**
-     * Get company prefix
+     * Get company prefix.
      *
      * @return string company prefix
      */
@@ -32,7 +32,7 @@ class Company extends \Faker\Provider\Company
     }
 
     /**
-     * Get company suffix
+     * Get company suffix.
      *
      * @return string company suffix
      */

@@ -8,56 +8,56 @@ namespace Faker\Provider\da_DK;
 class Address extends \Faker\Provider\Address
 {
     /**
-     * @var array Danish city suffixes.
+     * @var array danish city suffixes
      */
     protected static $citySuffix = array(
         'sted', 'bjerg', 'borg', 'rød', 'lund', 'by',
     );
 
     /**
-     * @var array Danish street suffixes.
+     * @var array danish street suffixes
      */
     protected static $streetSuffix = array(
         'vej', 'gade', 'skov', 'shaven',
     );
 
     /**
-     * @var array Danish street word suffixes.
+     * @var array danish street word suffixes
      */
     protected static $streetSuffixWord = array(
         'Vej', 'Gade', 'Allé', 'Boulevard', 'Plads', 'Have',
     );
 
     /**
-     * @var array Danish building numbers.
+     * @var array danish building numbers
      */
     protected static $buildingNumber = array(
         '%##', '%#', '%#', '%', '%', '%', '%?', '% ?',
     );
 
     /**
-     * @var array Danish building level.
+     * @var array danish building level
      */
     protected static $buildingLevel = array(
         'st.', '%.', '%. sal.',
     );
 
     /**
-     * @var array Danish building sides.
+     * @var array danish building sides
      */
     protected static $buildingSide = array(
         'tv.', 'th.',
     );
 
     /**
-     * @var array Danish zip code.
+     * @var array danish zip code
      */
     protected static $postcode = array(
-        '%###'
+        '%###',
     );
 
     /**
-     * @var array Danish cities.
+     * @var array danish cities
      */
     protected static $cityNames = array(
         'Aabenraa', 'Aabybro', 'Aakirkeby', 'Aalborg', 'Aalestrup', 'Aars', 'Aarup', 'Agedrup', 'Agerbæk', 'Agerskov',
@@ -119,7 +119,7 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * @var array Danish municipalities, called 'kommuner' in danish.
+     * @var array danish municipalities, called 'kommuner' in danish
      */
     protected static $kommuneNames = array(
         'København', 'Frederiksberg', 'Ballerup', 'Brøndby', 'Dragør', 'Gentofte', 'Gladsaxe', 'Glostrup', 'Herlev',
@@ -136,16 +136,16 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * @var array Danish regions.
+     * @var array danish regions
      */
     protected static $regionNames = array(
         'Region Nordjylland', 'Region Midtjylland', 'Region Syddanmark', 'Region Hovedstaden', 'Region Sjælland',
     );
 
     /**
-     * @link https://github.com/umpirsky/country-list/blob/master/country/cldr/da_DK/country.php
+     * @see https://github.com/umpirsky/country-list/blob/master/country/cldr/da_DK/country.php
      *
-     * @var array Some countries in danish.
+     * @var array some countries in danish
      */
     protected static $country = array(
         'Andorra', 'Forenede Arabiske Emirater', 'Afghanistan', 'Antigua og Barbuda', 'Anguilla', 'Albanien', 'Armenien',
@@ -183,14 +183,14 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * @var array Danish city format.
+     * @var array danish city format
      */
     protected static $cityFormats = array(
         '{{cityName}}',
     );
 
     /**
-     * @var array Danish street's name formats.
+     * @var array danish street's name formats
      */
     protected static $streetNameFormats = array(
         '{{lastName}}{{streetSuffix}}',
@@ -200,7 +200,7 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * @var array Danish street's address formats.
+     * @var array danish street's address formats
      */
     protected static $streetAddressFormats = array(
         '{{streetName}} {{buildingNumber}}',
@@ -209,7 +209,7 @@ class Address extends \Faker\Provider\Address
     );
 
     /**
-     * @var array Danish address format.
+     * @var array danish address format
      */
     protected static $addressFormats = array(
         "{{streetAddress}}\n{{postcode}} {{city}}",

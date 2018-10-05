@@ -8,7 +8,7 @@ namespace Faker\Provider\is_IS;
 class Company extends \Faker\Provider\Company
 {
     /**
-     * @var array Danish company name formats.
+     * @var array danish company name formats
      */
     protected static $formats = array(
         '{{lastName}} {{companySuffix}}',
@@ -30,14 +30,14 @@ class Company extends \Faker\Provider\Company
     );
 
     /**
-     * @var array Company suffixes.
+     * @var array company suffixes
      */
     protected static $companySuffix = array('ehf.', 'hf.', 'sf.');
 
     /**
-     * @link http://www.rsk.is/atvinnurekstur/virdisaukaskattur/
+     * @see http://www.rsk.is/atvinnurekstur/virdisaukaskattur/
      *
-     * @var string VSK number format.
+     * @var string VSK number format
      */
     protected static $vskFormat = '%####';
 

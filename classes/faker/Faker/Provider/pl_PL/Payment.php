@@ -86,11 +86,14 @@ class Payment extends \Faker\Provider\Payment
     }
 
     /**
-     * International Bank Account Number (IBAN)
-     * @link http://en.wikipedia.org/wiki/International_Bank_Account_Number
-     * @param  string  $prefix      for generating bank account number of a specific bank
-     * @param  string  $countryCode ISO 3166-1 alpha-2 country code
-     * @param  integer $length      total length without country code and 2 check digits
+     * International Bank Account Number (IBAN).
+     *
+     * @see http://en.wikipedia.org/wiki/International_Bank_Account_Number
+     *
+     * @param string $prefix      for generating bank account number of a specific bank
+     * @param string $countryCode ISO 3166-1 alpha-2 country code
+     * @param int    $length      total length without country code and 2 check digits
+     *
      * @return string
      */
     public static function bankAccountNumber($prefix = '', $countryCode = 'PL', $length = null)
@@ -100,16 +103,16 @@ class Payment extends \Faker\Provider\Payment
 
     protected static function addBankCodeChecksum($iban, $countryCode = 'PL')
     {
-        if ($countryCode != 'PL' || strlen($iban) <= 8) {
+        if ('PL' != $countryCode || strlen($iban) <= 8) {
             return $iban;
         }
         $checksum = 0;
         $weights = array(7, 1, 3, 9, 7, 1, 3);
-        for ($i = 0; $i < 7; $i++) {
+        for ($i = 0; $i < 7; ++$i) {
             $checksum += $weights[$i] * (int) $iban[$i];
         }
         $checksum = $checksum % 10;
 
-        return substr($iban, 0, 7) . $checksum . substr($iban, 8);
+        return substr($iban, 0, 7).$checksum.substr($iban, 8);
     }
 }

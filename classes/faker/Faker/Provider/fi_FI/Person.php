@@ -32,7 +32,6 @@ class Person extends \Faker\Provider\Person
         'Aune', 'Beeda', 'Briitta', 'Eeli', 'Eelis', 'Eemeli', 'Ekku', 'Eljas', 'Erkko', 'Iiro', 'Ilmari', 'Isto',
         'Jirko', 'Joonatan', 'Jore', 'Junnu', 'Jusu', 'Kaste', 'Kauto', 'Luukas', 'Nuutti', 'Onni', 'Osmo', 'Pekko',
         'Sampo', 'Santtu', 'Sauli', 'Simo', 'Sisu', 'Teijo', 'Unto', 'Urho', 'Veeti', 'Veikko', 'Vilho', 'Werneri', 'Wiljami',
-
     );
 
     protected static $firstNameFemale = array(
@@ -79,18 +78,21 @@ class Person extends \Faker\Provider\Person
         'Wettenranta', 'Wiitanen', 'Wirtanen', 'Wiskari',
         'Ylijälä', 'Yliannala', 'Ylijoki', 'Ylikangas', 'Ylioja', 'Ylitalo', 'Ylppö', 'Yläjoki', 'Yrjänen', 'Yrjänä', 'Yrjölä', 'Yrttiaho', 'Yömaa',
         'Äijälä', 'Ämmälä', 'Änäkkälä', 'Äyräs', 'Äärynen',
-        'Översti', 'Öysti', 'Öörni'
+        'Översti', 'Öysti', 'Öörni',
     );
 
     protected static $titleMale = array('Hra.', 'Tri.');
 
     protected static $titleFemale = array('Rva.', 'Nti.', 'Tri.');
-    
-     /**
-     * National Personal Identity Number (Henkilötunnus)
-     * @link http://www.finlex.fi/fi/laki/ajantasa/2010/20100128
+
+    /**
+     * National Personal Identity Number (Henkilötunnus).
+     *
+     * @see http://www.finlex.fi/fi/laki/ajantasa/2010/20100128
+     *
      * @param \DateTime $birthdate
-     * @param string $gender Person::GENDER_MALE || Person::GENDER_FEMALE
+     * @param string    $gender    Person::GENDER_MALE || Person::GENDER_FEMALE
+     *
      * @return string on format DDMMYYCZZZQ, where DDMMYY is the date of birth, C the century sign, ZZZ the individual number and Q the control character (checksum)
      */
     public function personalIdentityNumber(\DateTime $birthdate = null, $gender = null)
@@ -102,7 +104,7 @@ class Person extends \Faker\Provider\Person
         }
         $datePart = $birthdate->format('dmy');
 
-        switch ((int)($birthdate->format('Y')/100)) {
+        switch ((int) ($birthdate->format('Y') / 100)) {
             case 18:
                 $centurySign = '+';
                 break;
@@ -118,28 +120,28 @@ class Person extends \Faker\Provider\Person
 
         $randomDigits = self::numberBetween(0, 89);
         if ($gender && $gender == static::GENDER_MALE) {
-            if ($randomDigits === 0) {
-                $randomDigits .= static::randomElement(array(3,5,7,9));
+            if (0 === $randomDigits) {
+                $randomDigits .= static::randomElement(array(3, 5, 7, 9));
             } else {
-                $randomDigits .= static::randomElement(array(1,3,5,7,9));
+                $randomDigits .= static::randomElement(array(1, 3, 5, 7, 9));
             }
         } elseif ($gender && $gender == static::GENDER_FEMALE) {
-            if ($randomDigits === 0) {
-                $randomDigits .= static::randomElement(array(2,4,6,8));
+            if (0 === $randomDigits) {
+                $randomDigits .= static::randomElement(array(2, 4, 6, 8));
             } else {
-                $randomDigits .= static::randomElement(array(0,2,4,6,8));
+                $randomDigits .= static::randomElement(array(0, 2, 4, 6, 8));
             }
         } else {
-            if ($randomDigits === 0) {
+            if (0 === $randomDigits) {
                 $randomDigits .= self::numberBetween(2, 9);
             } else {
-                $randomDigits .= (string)static::numerify('#');
+                $randomDigits .= (string) static::numerify('#');
             }
         }
         $randomDigits = str_pad($randomDigits, 3, '0', STR_PAD_LEFT);
 
-        $checksum = $checksumCharacters[(int)($datePart . $randomDigits) % strlen($checksumCharacters)];
+        $checksum = $checksumCharacters[(int) ($datePart.$randomDigits) % strlen($checksumCharacters)];
 
-        return $datePart . $centurySign . $randomDigits . $checksum;
+        return $datePart.$centurySign.$randomDigits.$checksum;
     }
 }

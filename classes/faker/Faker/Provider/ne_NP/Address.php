@@ -6,13 +6,13 @@ class Address extends \Faker\Provider\Address
 {
     protected static $wardNumber = array('##', '#');
     protected static $streetSuffix = array(
-        'bagh', 'bazaar', 'besi', 'chowk', 'gaun', 'kot', 'mandir', 'marg', 'nagar', 'sahar', 'sthan', 'tar'
+        'bagh', 'bazaar', 'besi', 'chowk', 'gaun', 'kot', 'mandir', 'marg', 'nagar', 'sahar', 'sthan', 'tar',
     );
 
     protected static $postcode = array('#####');
 
     /**
-     * @link http://en.wikipedia.org/wiki/List_of_districts_of_Nepal
+     * @see http://en.wikipedia.org/wiki/List_of_districts_of_Nepal
      */
     protected static $district = array(
         'Achham', 'Arghakhanchi',
@@ -32,11 +32,11 @@ class Address extends \Faker\Provider\Address
         'Ramechhap', 'Rasuwa', 'Rautahat', 'Rolpa', 'Rukum', 'Rupandehi',
         'Salyan', 'Sankhuwasabha', 'Saptari', 'Sarlahi', 'Sindhuli', 'Sindhupalchok', 'Siraha', 'Solukhumbu', 'Sunsari', 'Surkhet', 'Syangja',
         'Tanahu', 'Taplejung', 'Terhathum',
-        'Udayapur'
+        'Udayapur',
     );
 
     /**
-     * @link http://www.fallingrain.com/world/NP/
+     * @see http://www.fallingrain.com/world/NP/
      */
     protected static $cityName = array(
         'Achham', 'Aiselukharka', 'Amardaha', 'Amariya', 'Amlekhganj', 'Amraia', 'Andia', 'Andruli', 'Angbung',  'Arghkot', 'Arughatbazaar', 'Asaina', 'Ataria', 'Atrauli', 'Aulgurta',
@@ -87,20 +87,20 @@ class Address extends \Faker\Provider\Address
         'Vanuatu', 'Venezuela', 'Vietnam',
         'Wallis and Futuna', 'Western Sahara',
         'Yemen',
-        'Zambia', 'Zimbabwe'
+        'Zambia', 'Zimbabwe',
     );
     protected static $cityFormats = array(
-        '{{cityName}}'
+        '{{cityName}}',
     );
     protected static $streetNameFormats = array(
         '{{firstName}}{{streetSuffix}}',
-        '{{lastName}}{{streetSuffix}}'
+        '{{lastName}}{{streetSuffix}}',
     );
     protected static $streetAddressFormats = array(
         '{{streetName}}',
     );
     protected static $addressFormats = array(
-        "{{city}}-{{wardNumber}}, {{streetAddress}}, {{district}} {{postcode}}",
+        '{{city}}-{{wardNumber}}, {{streetAddress}}, {{district}} {{postcode}}',
     );
 
     /**

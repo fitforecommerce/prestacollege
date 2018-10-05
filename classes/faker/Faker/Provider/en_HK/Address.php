@@ -132,7 +132,6 @@ class Address extends \Faker\Provider\Address
         '{{town}} {{estateSuffix}}',
     );
 
-
     protected static $villageSuffixes = array('Village', 'Tsuen', 'San Tsuen', 'New Village', 'Wai');
 
     protected static $estateSuffixes = array('Estate', 'Court');
@@ -154,8 +153,8 @@ class Address extends \Faker\Provider\Address
     );
 
     protected static $englishStreetNames = array(
-        "King's", "Queen's", "Nathan", "Robinson", "Kingston", "Irving", "Bonham", "Salisbury",
-        "Tonkin", "Nanking", "Peking", "Canton", "Amoy", "Shanghai"
+        "King's", "Queen's", 'Nathan', 'Robinson', 'Kingston', 'Irving', 'Bonham', 'Salisbury',
+        'Tonkin', 'Nanking', 'Peking', 'Canton', 'Amoy', 'Shanghai',
     );
 
     protected static $streetSuffix = array(

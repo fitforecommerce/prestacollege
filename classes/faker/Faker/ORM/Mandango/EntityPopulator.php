@@ -51,7 +51,8 @@ class EntityPopulator
 
     /**
      * @param \Faker\Generator $generator
-     * @param Mandango $mandango
+     * @param Mandango         $mandango
+     *
      * @return array
      */
     public function guessColumnFormatters(\Faker\Generator $generator, Mandango $mandango)
@@ -93,6 +94,7 @@ class EntityPopulator
 
     /**
      * Insert one new record using the Entity class.
+     *
      * @param Mandango $mandango
      */
     public function execute(Mandango $mandango, $insertedEntities)
@@ -102,7 +104,7 @@ class EntityPopulator
         $obj = $mandango->create($this->class);
         foreach ($this->columnFormatters as $column => $format) {
             if (null !== $format) {
-                $value =  is_callable($format) ? $format($insertedEntities, $obj) : $format;
+                $value = is_callable($format) ? $format($insertedEntities, $obj) : $format;
 
                 if (isset($metadata['fields'][$column]) ||
                     isset($metadata['referencesOne'][$column])) {

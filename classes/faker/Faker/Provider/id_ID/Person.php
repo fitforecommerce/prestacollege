@@ -28,7 +28,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://www.nama.web.id/search.php?gender=male&origin=Indonesia+-+Jawa&letter=&submit=Search
+     * @see http://www.nama.web.id/search.php?gender=male&origin=Indonesia+-+Jawa&letter=&submit=Search
      */
     protected static $firstNameMale = array(
         'Abyasa', 'Ade', 'Adhiarja', 'Adiarja', 'Adika', 'Adikara', 'Adinata',
@@ -105,14 +105,14 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://namafb.com/2010/08/12/top-1000-nama-populer-indonesia/
+     * @see http://namafb.com/2010/08/12/top-1000-nama-populer-indonesia/
      */
     protected static $firstNameFemale = array(
         'Ade', 'Agnes', 'Ajeng', 'Amalia', 'Anita', 'Ayu', 'Aisyah', 'Ana',
         'Ami', 'Ani', 'Azalea', 'Aurora', 'Alika', 'Anastasia', 'Amelia',
         'Almira', 'Bella', 'Betania', 'Belinda', 'Citra', 'Cindy', 'Chelsea',
         'Clara', 'Cornelia', 'Cinta', 'Cinthia', 'Ciaobella', 'Cici', 'Carla',
-        'Calista', 'Devi', 'Dewi','Dian', 'Diah', 'Diana', 'Dina', 'Dinda',
+        'Calista', 'Devi', 'Dewi', 'Dian', 'Diah', 'Diana', 'Dina', 'Dinda',
         'Dalima', 'Eka', 'Eva', 'Endah', 'Elisa', 'Eli', 'Ella', 'Ellis',
         'Elma', 'Elvina', 'Fitria', 'Fitriani', 'Febi', 'Faizah', 'Farah',
         'Farhunnisa', 'Fathonah', 'Gabriella', 'Gasti', 'Gawati', 'Genta',
@@ -141,8 +141,8 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://namafb.com/2010/08/12/top-1000-nama-populer-indonesia/
-     * @link http://id.wikipedia.org/wiki/Daftar_marga_suku_Batak_di_Toba
+     * @see http://namafb.com/2010/08/12/top-1000-nama-populer-indonesia/
+     * @see http://id.wikipedia.org/wiki/Daftar_marga_suku_Batak_di_Toba
      */
     protected static $lastNameMale = array(
         'Adriansyah', 'Ardianto', 'Anggriawan', 'Budiman', 'Budiyanto',
@@ -166,7 +166,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://namafb.com/2010/08/12/top-1000-nama-populer-indonesia/
+     * @see http://namafb.com/2010/08/12/top-1000-nama-populer-indonesia/
      */
     protected static $lastNameFemale = array(
         'Agustina', 'Andriani', 'Anggraini', 'Aryani', 'Astuti',
@@ -184,25 +184,26 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @link http://id.wikipedia.org/wiki/Gelar_akademik
+     * @see http://id.wikipedia.org/wiki/Gelar_akademik
      */
     protected static $titleMale = array('dr.', 'drg.', 'Dr.', 'Drs.', 'Ir.', 'H.');
 
     /**
-     * @link http://id.wikipedia.org/wiki/Gelar_akademik
+     * @see http://id.wikipedia.org/wiki/Gelar_akademik
      */
     protected static $titleFemale = array('dr.', 'drg.', 'Dr.', 'Hj.');
 
     /**
-     * For academic title
-     * @link http://id.wikipedia.org/wiki/Gelar_akademik
+     * For academic title.
+     *
+     * @see http://id.wikipedia.org/wiki/Gelar_akademik
      */
     private static $suffix = array('S.Ked', 'S.Gz', 'S.Pt', 'S.IP', 'S.E.I',
         'S.E.', 'S.Kom', 'S.H.', 'S.T.', 'S.Pd', 'S.Psi', 'S.I.Kom',
         'S.Sos', 'S.Farm', 'M.M.', 'M.Kom.', 'M.TI.', 'M.Pd', 'M.Farm', 'M.Ak', );
 
     /**
-     * Return last name
+     * Return last name.
      *
      * @param string|null $gender male or female or null for any
      *
@@ -222,9 +223,8 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * Return last name for male
+     * Return last name for male.
      *
-     * @access public
      * @return string last name
      */
     public static function lastNameMale()
@@ -233,9 +233,8 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * Return last name for female
+     * Return last name for female.
      *
-     * @access public
      * @return string last name
      */
     public static function lastNameFemale()
@@ -244,9 +243,8 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * For academic title
+     * For academic title.
      *
-     * @access public
      * @return string suffix
      */
     public static function suffix()
@@ -255,17 +253,18 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * Generates Nomor Induk Kependudukan (NIK)
+     * Generates Nomor Induk Kependudukan (NIK).
      *
-     * @link https://en.wikipedia.org/wiki/National_identification_number#Indonesia
+     * @see https://en.wikipedia.org/wiki/National_identification_number#Indonesia
      *
-     * @param null|string $gender
+     * @param null|string    $gender
      * @param null|\DateTime $birthDate
+     *
      * @return string
      */
     public function nik($gender = null, $birthDate = null)
     {
-        # generate first numbers (region data)
+        // generate first numbers (region data)
         $nik = $this->generator->numerify('######');
 
         if (!$birthDate) {
@@ -276,8 +275,8 @@ class Person extends \Faker\Provider\Person
             $gender = $this->generator->randomElement(array(self::GENDER_MALE, self::GENDER_FEMALE));
         }
 
-        # if gender is female, add 40 to days
-        if ($gender == self::GENDER_FEMALE) {
+        // if gender is female, add 40 to days
+        if (self::GENDER_FEMALE == $gender) {
             $nik .= $birthDate->format('d') + 40;
         } else {
             $nik .= $birthDate->format('d');
@@ -285,8 +284,8 @@ class Person extends \Faker\Provider\Person
 
         $nik .= $birthDate->format('my');
 
-        # add last random digits
-        $nik.= $this->generator->numerify('####');
+        // add last random digits
+        $nik .= $this->generator->numerify('####');
 
         return $nik;
     }
