@@ -41,16 +41,17 @@ class CustomerFaker extends AbstractFaker
         $fc->lastname = $this->faker()->lastname;
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
-        $fc->newsletter = false;
-        $fc->optin = false;
+        $fc->newsletter = rand(20,100) > 50 ? true : false;
+        $fc->optin = rand(0,80) > 50 ? true : false;
         $fc->setWsPasswd($fc->firstname);
         try {
+            $fc->save();
+            $fc->date_add = $this->random_add_date();
             $fc->save();
         } catch (PrestaShopException $e) {
             error_log("invalid customer: ".$fc->email);
             throw $e;
         }
-
         return $fc;
     }
 
@@ -90,5 +91,12 @@ class CustomerFaker extends AbstractFaker
             $string = html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|tilde|uml);~i', '$1', $string), ENT_QUOTES, 'UTF-8');
         }
         return $string;
+    }
+    private function random_add_date($past_years = 5)
+    {
+        $now      = time();
+        $from     = time() - (60*60*24*7*52) * $past_years;
+        $rand_ts  = mt_rand($from, $now);
+        return date("Y-m-d H:i:s", $rand_ts);
     }
 }
