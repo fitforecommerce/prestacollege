@@ -9,16 +9,25 @@ PrestaCollege lets you:
 
 ## Todo
 - [ ] Add documentation
+
+### Create Snapshots
 - [ ] Implement Snapshot process
-  - [ ] Add a version check if the database scheme of an export matches the installed version- TODO
-  - [X] Export relevant database tables - DONE
-  - [X] Export relevant asset folders ('/img', '/modules') as zip - DONE
-  - [X] Import database tables from .sql file - TODO
-  - [X] Import asset folders from zip file - TODO
-  - [ ] Download snapshots from remote URL - Needs fix to download large files correctly
-- [ ] fake orphaned carts
+  - [ ] Add a version check if the database scheme of an export matches the installed version
+  - [X] Export relevant database tables
+  - [X] Export relevant asset folders ('/img', '/modules') as zip
+  - [X] Import database tables from .sql file
+  - [X] Import asset folders from zip file
+  - [X] Download snapshots from remote URL
 - [X] add German localization
 - [ ] add a popup/banner to avoid real customers from ordering
+
+### Fake stuff
+- [X] fake customers
+- [ ] fake customer visits (i.e. connections)
+- [ ] fake orders by customers
+- [ ] fake orphaned carts
+- [ ] fake a hacker attack
+
 
 (c) 2018 Martin Kolb 
 issued under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
