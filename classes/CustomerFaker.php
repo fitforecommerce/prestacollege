@@ -9,14 +9,14 @@ class CustomerFaker extends AbstractFaker
 
     public function fake_customers()
     {
+        @set_time_limit(0);
+        @ini_set('max_execution_time', '0');
+
         $output = '<ul>';
         for ($i = 0; $i < $this->conf['fake_customers_number']; ++$i) {
             $fc = $this->fake_customer();
             $fa = $this->address_faker()->fake_customer_address($fc);
             $output .= '<li>'.$fc->firstname.' '.$fc->lastname.' - '.$fc->email;
-            // $output .= '<p>'.$fa->address1.'</p>';
-            // $output .= '<p>'.$fa->postcode.' '.$fa->city.'</p>';
-            // $output .= '<p>'.$fa->country.'</p>';
             $output .= '</li>';
         }
         $output .= '</ul>';
@@ -27,8 +27,8 @@ class CustomerFaker extends AbstractFaker
     protected function default_conf()
     {
         $conf = array(
-      'fake_customers_number' => 10,
-    );
+            'fake_customers_number' => 10,
+        );
 
         return array_merge(parent::default_conf(), $conf);
     }
@@ -40,11 +40,16 @@ class CustomerFaker extends AbstractFaker
         $g_str = $this->gender_string($fc->id_gender);
         $fc->lastname = $this->faker()->lastname;
         $fc->firstname = $this->faker()->firstname($g_str);
-        $fc->email = strtolower($fc->firstname.$fc->lastname.'@fitforecommerce.eu');
+        $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
         $fc->newsletter = false;
         $fc->optin = false;
         $fc->setWsPasswd($fc->firstname);
-        $fc->save();
+        try {
+            $fc->save();
+        } catch (PrestaShopException $e) {
+            error_log("invalid customer: ".$fc->email);
+            throw $e;
+        }
 
         return $fc;
     }
@@ -69,7 +74,21 @@ class CustomerFaker extends AbstractFaker
         if (1 == $i) {
             return 'male';
         }
-
         return 'female';
+    }
+    private function create_email_string($fn, $ln)
+    {
+        $rv = $fn.'.'.$ln.'@fitforecommerce.eu';
+        $rv = preg_replace('/\s+/', '', $rv);
+        $rv = $this->unaccent($rv);
+        $rv = strtolower($rv);
+        return $rv;
+    }
+    private function unaccent($string)
+    {
+        if (strpos($string = htmlentities($string, ENT_QUOTES, 'UTF-8'), '&') !== false) {
+            $string = html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|tilde|uml);~i', '$1', $string), ENT_QUOTES, 'UTF-8');
+        }
+        return $string;
     }
 }
