@@ -15,7 +15,7 @@ PrestaCollege lets you:
   - [X] Export relevant asset folders ('/img', '/modules') as zip - DONE
   - [X] Import database tables from .sql file - TODO
   - [X] Import asset folders from zip file - TODO
-  - [ ] Download snapshots from remote URL - Needs fix to download large files correctly
+  - [X] Download snapshots from remote URL
 - [ ] fake orphaned carts
 - [X] add German localization
 - [ ] add a popup/banner to avoid real customers from ordering
