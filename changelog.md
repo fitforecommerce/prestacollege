@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.0 Fix remote downloads timeout
+released on 26 Feb 2019
+
+* Fix timeouts when downloading snapshots from remote servers
+* trim whitespace from snapshot filenames in order to avoid errors
+
 ## v0.3.0 Fix remote downloads
 released on 29 Sep 2018
 
