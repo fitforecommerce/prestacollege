@@ -10,6 +10,17 @@ class FakerFileBackupLoader
     public function run()
     {
         $zf = $this->zip_file();
+
+        if(!$zf instanceof ZipArchive) {
+          error_log("<div class='alert alert-danger'>Unable to create ZipArchive object in FakerFileBackupLoader</div>");
+          return "Unable to create ZipArchive object in FakerFileBackupLoader";
+        }
+        if($zf->numFiles==0) {
+          $msg = "<div class='alert alert-danger'>Empty ZipArchive object created in FakerFileBackupLoader</div>".$this->debug_zip_file($zf);
+          error_log($msg);
+          return $msg;
+        }
+
         $zf->extractTo(_PS_ROOT_DIR_);
 
         return "<div class='alert alert-success'>File snapshot successfully imported. Remember to clear caches afterwards.</div>";
