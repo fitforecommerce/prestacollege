@@ -13,7 +13,7 @@ class CartFaker extends AbstractFaker
         for ($i = 0; $i < $this->conf['fake_carts_number']; ++$i) {
             $fc = $this->fake_cart();
             # $fa = $this->address_faker()->fake_customer_address($fc);
-            $output .= '<li>'.print_r($fc, true);
+            $output .= '<li>'.$fc->getOrderTotal();
             $output .= '</li>';
         }
         $output .= '</ul>';
@@ -24,8 +24,10 @@ class CartFaker extends AbstractFaker
     public function fake_cart()
     {
         $cart = new Cart();
+        $cart->id_customer = $this->customer_id();
         $cart->id_currency = 1;
         $cart->id_lang = 1;
+        $cart->save();
 
         $cart->updateQty(
           $this->quantity(),      # quantity
@@ -41,7 +43,7 @@ class CartFaker extends AbstractFaker
         # $cart->id_customer = $customer->id;
         # $cart->lastname = $customer->lastname;
         # $cart->firstname = $customer->firstname;
-        $cart->save();
+        # $cart->save();
 
         return $cart;
     }
@@ -62,7 +64,10 @@ class CartFaker extends AbstractFaker
 
         return $addr;
     }
-
+    private function customer_id()
+    {
+      return 1;
+    }
     private function quantity()
     {
       return random_int(1, 20);
