@@ -24,10 +24,12 @@ class FakerCurler
     protected function curl_file()
     {
         $destination = $this->snapshotdir()->dir_path.'/'.$this->filename();
+        $destination = trim($destination);
+
         $file = fopen($destination, 'w+');
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->snapshot_user_url());
+        curl_setopt($ch, CURLOPT_URL, trim($this->snapshot_user_url()));
         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSLVERSION, 3);
         curl_setopt($ch, CURLOPT_TIMEOUT, 50);
