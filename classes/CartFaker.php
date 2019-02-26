@@ -40,29 +40,8 @@ class CartFaker extends AbstractFaker
           true,                   # auto_add_cart_rule
           false                   # skipAvailabilityCheckOutOfStock
         );
-        # $cart->id_customer = $customer->id;
-        # $cart->lastname = $customer->lastname;
-        # $cart->firstname = $customer->firstname;
-        # $cart->save();
 
         return $cart;
-    }
-
-    public function fake_address()
-    {
-        $addr = new Cart();
-        # $addr->lastname = $this->faker()->lastname;
-        # $addr->firstname = $this->faker()->firstname;
-        # $addr->alias = $addr->firstname.'_'.$addr->lastname;
-        # $addr->address1 = $this->faker()->streetAddress;
-        # $addr->postcode = $this->faker()->postcode;
-        # $addr->city = $this->faker()->city;
-        # // $addr->country = $this->faker()->country;
-        # $addr->country = 'Deutschland';
-        # $addr->id_country = $this->id_country();
-        $addr->save();
-
-        return $addr;
     }
     private function customer_id()
     {
