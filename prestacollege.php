@@ -19,6 +19,7 @@ if (!defined('_PS_VERSION_')) {
 
 require_once dirname(__FILE__).'/classes/AbstractFaker.php';
 require_once dirname(__FILE__).'/classes/CustomerFaker.php';
+require_once dirname(__FILE__).'/classes/CartFaker.php';
 require_once dirname(__FILE__).'/classes/AddressFaker.php';
 require_once dirname(__FILE__).'/classes/SnapshotDir.php';
 require_once dirname(__FILE__).'/classes/FakerDatabaseBackup.php';
@@ -38,7 +39,7 @@ class PrestaCollege extends Module
         $this->debug = false;
         $this->name = 'prestacollege';
         $this->tab = 'others';
-        $this->version = '0.1.0';
+        $this->version = '0.4.0';
         $this->author = 'Martin Kolb';
         $this->need_instance = 1;
 
@@ -74,6 +75,19 @@ class PrestaCollege extends Module
 
         return parent::uninstall();
     }
+
+    public function fake_carts()
+    {
+        $conf = array('fake_carts_number' => Tools::getValue('fake_carts_number', ''));
+        $faker = new CartFaker($conf);
+        $output = '<div class="panel">';
+        $output .= '<h2>'.$this->l('Fake Carts').'</h2>';
+        $output .= '<div>'.$this->l('Creating the following fake carts').$faker->fake_carts().'</div>';
+        $output .= '</div>';
+
+        return $output;
+    }
+
 
     public function fake_customers()
     {
@@ -170,6 +184,10 @@ class PrestaCollege extends Module
             switch (Tools::getValue('PRESTACOLLEGE_ACTION', '')) {
             case 'fakecustomers':
               $output = $this->fake_customers().$output;
+              $action_done = true;
+              break;
+            case 'fakecarts':
+              $output = $this->fake_carts().$output;
               $action_done = true;
               break;
             case 'createdbsnapshot':

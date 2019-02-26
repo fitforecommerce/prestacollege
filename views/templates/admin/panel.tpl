@@ -10,6 +10,7 @@
 	</div>
 
   {include file="$tpl_dir/fake_customers.tpl"}
+  {include file="$tpl_dir/fake_carts.tpl"}
   {include file="$tpl_dir/db_snapshot.tpl"}
   {include file="$tpl_dir/file_snapshot.tpl"}
 </div>
