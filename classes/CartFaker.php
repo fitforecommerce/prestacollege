@@ -26,32 +26,37 @@ class CartFaker extends AbstractFaker
     protected function default_conf()
     {
       return array(
-        'minimum_quantity' => 1, # minimum order quantity
-        'maximum_quantity' => 3, # maximum order quantity
+        'minimum_item_quantity' => 1, # minimum order quantity
+        'maximum_item_quantity' => 3, # maximum order quantity
+        'minimum_order_items'  => 1,
+        'maximum_order_items'  => 5,
         'id_currency' => 1,      # currency id
         'id_lang' => 1,          # language id
       );
     }
     private function fake_cart()
     {
-        $cart = new Cart();
         $cid = $this->customer_id();
+
+        $cart = new Cart();
         $cart->id_customer = $cid;
         $cart->id_currency = $this->conf['id_currency'];
         $cart->id_lang     = $this->conf['id_lang'];
         $cart->save();
 
-        $cart->updateQty(
-          $this->quantity(),      # quantity
-          $this->product_id(),    # $id_product
-          null,                   # id_product_attribute
-          false,                  # id_customization
-          'up',                   # operator
-          0,                      # $id_address_delivery
-          null,                   # shop
-          true,                   # auto_add_cart_rule
-          true                   # skipAvailabilityCheckOutOfStock
-        );
+        for ($i=0; $i < $this->order_items_quantity(); $i++) { 
+          $cart->updateQty(
+            $this->item_quantity(), # quantity
+            $this->product_id(),    # $id_product
+            null,                   # id_product_attribute
+            false,                  # id_customization
+            'up',                   # operator
+            0,                      # $id_address_delivery
+            null,                   # shop
+            true,                   # auto_add_cart_rule
+            true                    # skipAvailabilityCheckOutOfStock
+          );
+        }
 
         return $cart;
     }
@@ -67,10 +72,14 @@ class CartFaker extends AbstractFaker
       $cind = random_int(0, $this->max_customer_id);
       return $this->all_customer_ids[$cind]['id_customer'];
     }
-    private function quantity()
+    private function order_items_quantity()
     {
-      $q = random_int($this->conf['minimum_quantity'], $this->conf['maximum_quantity']);
-      error_log("CartFaker::quantity() $q");
+      $q = random_int($this->conf['minimum_order_items'], $this->conf['maximum_order_items']);
+      return $q;
+    }
+    private function item_quantity()
+    {
+      $q = random_int($this->conf['minimum_item_quantity'], $this->conf['maximum_item_quantity']);
       return $q;
     }
     private function set_product_ids()
