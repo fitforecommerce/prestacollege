@@ -1,7 +1,6 @@
-<div class="moduleconfig-content">
-  <hr>
+<div class="panel col-lg-12 moduleconfig-content">
   <div class="row">
-    <h2>{l s='Import Database-Snapshot' mod='prestacollege'}</h2>
+    <h3><i class="icon icon-arrow-circle-o-up"></i> {l s='Import Database-Snapshot' mod='prestacollege'}</h3>
     <p>{l s='This action imports a snapshot created by PrestaCollege. This will OVERWRITE most of the data in the database!' mod='prestacollege'}<br><strong>{l s='PLEASE USE WITH CAUTION!' mod='prestacollege'}</strong></p>
   </div>
   <div class="row">
@@ -23,7 +22,7 @@
   </div>
 
   <div class="row">
-    <h2>{l s='Export Database-Snapshot' mod='prestacollege'}</h2>
+    <h3><i class="icon icon-share-sign"></i> {l s='Export Database-Snapshot' mod='prestacollege'}</h3>
     <p>{l s='This creates a snapshot which can be easily imported into other instances of Prestashop' mod='prestacollege'}</p>
   </div>
   <div class="row">
@@ -35,8 +34,8 @@
   </div>  
 
   <div class="row">
-    <h2>{l s='Download Database-Snapshot' mod='prestacollege'}</h2>
-    <p>{l s='This will download a snapshot file from a custom URL' mod='prestacollege'}</p>
+    <h3><i class="icon icon-cloud-download"></i> {l s='Download Database-Snapshot' mod='prestacollege'}</h3>
+    <p><i class="ps-icon ps-icon-upload-to-cloud"></i>{l s='This will download a snapshot file from a custom URL' mod='prestacollege'}</p>
   </div>
   <div class="row">
     <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
@@ -51,3 +50,4 @@
       <input type="submit" value="{l s='Download database snapshot' mod='prestacollege'}" class="btn btn-default pull-right">
     </form>
   </div>  
+</div>

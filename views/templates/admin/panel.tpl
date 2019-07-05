@@ -8,8 +8,8 @@
 			<h4>{l s='A module for classroom use of Prestashop - Created by Martin Kolb' mod='prestacollege'}</h4>
 		</div>
 	</div>
-
+</div>
   {include file="$tpl_dir/fake_customers.tpl"}
   {include file="$tpl_dir/db_snapshot.tpl"}
   {include file="$tpl_dir/file_snapshot.tpl"}
-</div>
+
