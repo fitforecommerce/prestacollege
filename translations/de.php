@@ -14,10 +14,10 @@ $_MODULE['<{prestacollege}prestashop>db_snapshot_10b06b44ac0047da0821d3d4a9dd183
 $_MODULE['<{prestacollege}prestashop>db_snapshot_b56cd9fcc056798c175dfb96b80b0f64'] = 'Datenbank-Snapshot exportieren';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_091a2be112b71ac7b8c7a21e30486cbd'] = 'Diese Aktion erzeugt einen Snapshot der Datenbank, der leicht in andere Installationen von Prestashop importiert werden kann.';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_2ba53133bfab4b771223bc8118199c00'] = 'Erstelle einen Datenbank-Snapshot';
-$_MODULE['<{prestacollege}prestashop>db_snapshot_3c1c06c47a52a90ac328671c769f9426'] = 'Datenbank-Snapshot herunterladen';
+$_MODULE['<{prestacollege}prestashop>db_snapshot_3c1c06c47a52a90ac328671c769f9426'] = 'Datenbank-Snapshot von URL auf Server laden';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_b04fbc05034b760ce60ab519cc729c9c'] = 'Diese Aktion wird einen Datenbank-Snapshot von der eingegebenen URL laden';
-$_MODULE['<{prestacollege}prestashop>db_snapshot_963f9bee88bc4dd1f9c45b42ffc3d7ec'] = 'Geben Sie eine URL von der der Snapshot geladen werden soll';
-$_MODULE['<{prestacollege}prestashop>db_snapshot_e8fe528a0417b924b507cbc1df8b04c8'] = 'Datenbank-Snapshot herunterladen';
+$_MODULE['<{prestacollege}prestashop>db_snapshot_963f9bee88bc4dd1f9c45b42ffc3d7ec'] = 'Geben Sie eine URL ein, von der der Snapshot geladen werden soll';
+$_MODULE['<{prestacollege}prestashop>db_snapshot_e8fe528a0417b924b507cbc1df8b04c8'] = 'Datenbank-Snapshot von URL auf Server laden';
 $_MODULE['<{prestacollege}prestashop>fake_customers_79da8ae6de67d1b6efcad3ce7b33970c'] = 'Fake-Kunden generieren';
 $_MODULE['<{prestacollege}prestashop>fake_customers_7a1cc0cd216268e16060f2286198cf92'] = 'Anzahl der Kunden';
 $_MODULE['<{prestacollege}prestashop>fake_customers_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
@@ -27,7 +27,7 @@ $_MODULE['<{prestacollege}prestashop>file_snapshot_88dfaf4bfb181e817bc06ff9c3d7e
 $_MODULE['<{prestacollege}prestashop>file_snapshot_40ba5067f6e76802f6a9fe674b72fd0e'] = 'Datei-Snapshot exportieren';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_023120634e13082c15155014f78c3ae0'] = 'Diese Aktion exportiert einen Snapshot der wichtigsten Verzeichnisse Ihrer Prestashop-Installation.';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_b941aaae237343ae1f179a069e08f3d3'] = 'Datei-Snapshot von URL auf Server laden';
-$_MODULE['<{prestacollege}prestashop>file_snapshot_b04fbc05034b760ce60ab519cc729c9c'] = 'Diese Aktion wird einen Datei-Snapshot herunterladen';
+$_MODULE['<{prestacollege}prestashop>file_snapshot_b04fbc05034b760ce60ab519cc729c9c'] = 'Diese Aktion wird einen Datei-Snapshot von einer angegebenen URL auf den Server';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_963f9bee88bc4dd1f9c45b42ffc3d7ec'] = 'Geben Sie eine URL für die zu ladende Datei ein';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_983dcdca0038e93d3e72599ea1aa03cb'] = 'Datei-Snapshot herunterladen';
 $_MODULE['<{prestacollege}prestashop>panel_bd1e17b646581c9c6328158e069ff16f'] = 'PrestaCollege';
