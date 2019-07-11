@@ -29,6 +29,7 @@ require_once dirname(__FILE__).'/classes/FakerFileCurler.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackup.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupDownloader.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupLoader.php';
+require_once dirname(__FILE__).'/classes/SnapshotUploader.php';
 
 class PrestaCollege extends Module
 {
@@ -170,6 +171,31 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    public function uploaddbsnapshot()
+    {
+      # $o = "<p>uploaddbsnapshot()</p><blockquote>".print_r($_POST, true)."</blockquote><blockquote>".print_r($_FILES, true)."</blockquote>";
+      $o = '';
+      $su = new SnapshotUploader(array('action' => 'db'));
+      return $this->run_upload($su);
+    }
+    public function uploadfilesnapshot()
+    {
+      # $o = "<p>uploafilebsnapshot()</p><blockquote>".print_r($_POST, true)."</blockquote><blockquote>".print_r($_FILES, true)."</blockquote>";
+      $o = '';
+      $su = new SnapshotUploader(array('action' => 'file'));
+      return $this->run_upload($su);
+    }
+    private function run_upload($su)
+    {
+      $o = '';
+      try {
+        $su->run();
+        $o .= '<div class="alert alert-success">'.$this->l('Successfully uploaded the snapshot').'</div>';
+      } catch (Exception $e) {
+        $o .= '<div class="alert alert-warning">'.$this->l('There was an error uploading the file. Please check that your max_upload_size and post_max_size values in your php.ini and your Prestashop settings are set to allow bigger uploads!').'<p><code>'.$e->getMessage().'</code></p></div>';
+      }
+      return $o;
+    }
     public function uploaddbsnapshotselect()
     {
       return $this->upload_select('db');
@@ -181,6 +207,7 @@ class PrestaCollege extends Module
     private function upload_select($action='db')
     {
       $this->context->smarty->assign('curlaction', $action);
+      $this->context->smarty->assign('max_upload_size', ini_get('post_max_size'));
       $output = '<div class="panel">';
       $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/modal_upload.tpl');
       $output .= '</div>';
