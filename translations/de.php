@@ -4,7 +4,7 @@ global $_MODULE;
 $_MODULE = array();
 $_MODULE['<{prestacollege}prestashop>prestacollege_bd1e17b646581c9c6328158e069ff16f'] = 'PrestaCollege';
 $_MODULE['<{prestacollege}prestashop>prestacollege_584f13bff7e3a3da70e25e0590e38720'] = 'Ein Modul für den Einsatz von Prestashop im Klassenzimmer';
-$_MODULE['<{prestacollege}prestashop>prestacollege_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe';
+$_MODULE['<{prestacollege}prestashop>prestacollege_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe generieren';
 $_MODULE['<{prestacollege}prestashop>prestacollege_ccc3c50eeea3f46bd08e4a628cfe34c1'] = 'Erstelle die folgenden Fake-Warenkörbe';
 $_MODULE['<{prestacollege}prestashop>prestacollege_79da8ae6de67d1b6efcad3ce7b33970c'] = 'Fake-Kunden generieren';
 $_MODULE['<{prestacollege}prestashop>prestacollege_31c9e0d93b2aa1c32eeda4246889130b'] = 'Die folgenden Fake-Kunden wurden erstellt';
@@ -24,7 +24,7 @@ $_MODULE['<{prestacollege}prestashop>db_snapshot_2fe28f2a54c5b034e1339213e06f2f3
 $_MODULE['<{prestacollege}prestashop>db_snapshot_074be9f2d80631cbf5f32796a6d5803a'] = 'BITTE MIT VORSICHT VERWENDEN!';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_2ba53133bfab4b771223bc8118199c00'] = 'Datenbank-Snapshot erzeugen';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_5d9027678c085212103d462b5f2c0004'] = 'Datenbank-Snapshot hochladen';
-$_MODULE['<{prestacollege}prestashop>fake_carts_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe';
+$_MODULE['<{prestacollege}prestashop>fake_carts_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe generieren';
 $_MODULE['<{prestacollege}prestashop>fake_carts_e690c09bcea69f8912e7591f7458e9a7'] = 'Anzahl der Warenkörbe';
 $_MODULE['<{prestacollege}prestashop>fake_carts_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
 $_MODULE['<{prestacollege}prestashop>fake_customers_79da8ae6de67d1b6efcad3ce7b33970c'] = 'Fake-Kunden generieren';
