@@ -13,7 +13,7 @@ class SnapshotDir
     {
         $snf = $this->snapshot_file_paths();
         foreach ($snf as $i => $fp) {
-            $snf[$i] = basename($fp);
+            $snf[$i] = array(basename($fp), SnapshotDir::human_filesize(filesize($fp)));
         }
 
         return $snf;
@@ -74,5 +74,11 @@ class SnapshotDir
         error_log("SnapshotDir::read_gzfile $decompressed_file");
 
         return $decompressed_file;
+    }
+    public static function  human_filesize($bytes, $decimals = 2) {
+      $sz = 'BKMGTP';
+      $factor = floor((strlen($bytes) - 1) / 3);
+      $d = (empty($factor))?0:$decimals;
+      return sprintf("%.{$d}f", $bytes / pow(1024, $factor)) . " ". ((!empty($factor))?@$sz[(int)$factor]:"");
     }
 }
