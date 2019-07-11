@@ -3,13 +3,14 @@
 require_once(dirname(__FILE__).'/../classes/VersionChecker.php');
 
 use PHPUnit\Framework\TestCase;
+
 # use PrestaShop\Module\PrestaCollege\VersionChecker;
 
-final class VersionCheckerTest extends TestCase
+class VersionCheckerTest extends TestCase
 {
     private $version_checker;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
         $this->version_checker = new VersionChecker();
