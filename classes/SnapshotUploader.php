@@ -54,6 +54,7 @@ class SnapshotUploader
     } else {
       $this->snapshotdir = FakerFileBackup::snapshotdir();
     }
+    return $this->snapshotdir();
   }
 } // END class SnapshotUploader
 ?>
