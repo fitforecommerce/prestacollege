@@ -20,6 +20,7 @@ PrestaCollege lets you:
   - [X] Upload snapshots from remote URL to server
   - [X] Download existing snapshots from the server to your PC
   - [X] Upload snapshot files from your PC to the server
+  - [ ] Delete a snapshot from the server via the web interface
 - [X] add German localization
 - [ ] add a popup/banner to avoid real customers from ordering
 
