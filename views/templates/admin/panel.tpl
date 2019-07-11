@@ -9,8 +9,20 @@
 		</div>
 	</div>
 </div>
-  {include file="$tpl_dir/fake_customers.tpl"}
-  {include file="$tpl_dir/fake_carts.tpl"}
+<div class="panel col-lg-12 moduleconfig-content">
+	<div class="row">
+		<div class="col-xs-12">
+      <h2>{l s='Fake Carts' mod='prestacollege'}</h2>
+    </div>
+    <div class="panel col-lg-12 moduleconfig-content">
+      {include file="$tpl_dir/fake_customers.tpl"}
+      {include file="$tpl_dir/fake_carts.tpl"}
+    </div>
+  </div>
+</div>
+<div class="panel col-lg-12 moduleconfig-content">
   {include file="$tpl_dir/db_snapshot.tpl"}
+</div>
+<div class="panel col-lg-12 moduleconfig-content">
   {include file="$tpl_dir/file_snapshot.tpl"}
-
+</div>

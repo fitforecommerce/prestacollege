@@ -1,4 +1,4 @@
-<div class="panel col-lg-12 moduleconfig-content">
+
 	<div class="row">
       <h3><i class="icon-cogs"></i> {l s='Fake Customers' mod='prestacollege'}</h3>
 		<div class="col-xs-12">
@@ -15,4 +15,3 @@
       </form>
 		</div>
 	</div>
-</div>
