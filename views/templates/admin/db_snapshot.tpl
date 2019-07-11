@@ -1,53 +1,27 @@
-<div class="moduleconfig-content">
-  <hr>
+<div class="panel col-lg-12 moduleconfig-content">
   <div class="row">
-    <h2>{l s='Import Database-Snapshot' mod='prestacollege'}</h2>
+    <h3><i class="material-icons">backup</i> {l s='Administrate Database Snapshots' mod='prestacollege'}</h3>
     <p>{l s='This action imports a snapshot created by PrestaCollege. This will OVERWRITE most of the data in the database!' mod='prestacollege'}<br><strong>{l s='PLEASE USE WITH CAUTION!' mod='prestacollege'}</strong></p>
   </div>
   <div class="row">
-    <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
-      <input type="hidden" name="submitPrestaCollegeModule" value="1">
-      <input type="hidden" name="PRESTACOLLEGE_ACTION" value="importdbsnapshot">
       <div class="row">
-        <label for="dbsnapshotname" class="control-label col-lg-4">{l s='Select database snapshot' mod='prestacollege'}</label>
-        <div class="col-lg-6">
-          <select name="dbsnapshotname">
-            {foreach $importdbsnapshots as $dbfp}
-            <option value="{$dbfp}">{$dbfp}</option>
-            {/foreach}
-          </select>
+        <div>
+          {assign var="snapshottype" value="db"}
+          {assign var="snapshots" value=$importdbsnapshots}
+          {include file="$tpl_dir/snapshottable.tpl"}
         </div>
       </div>
-      <input type="submit" value="{l s='Import database snapshot' mod='prestacollege'}" class="btn btn-default pull-right">
     </form>
-  </div>
 
-  <div class="row">
-    <h2>{l s='Export Database-Snapshot' mod='prestacollege'}</h2>
-    <p>{l s='This creates a snapshot which can be easily imported into other instances of Prestashop' mod='prestacollege'}</p>
+    <div class="row text-right">
+      <a class="btn btn-primary" href="{$form_action_url}&PRESTACOLLEGE_ACTION=createdbsnapshot" title="">
+        <i class="material-icons">note_add</i>
+        {l s='Create database snapshot' mod='prestacollege'}
+      </a>
+      <a class="btn btn-primary" href="{$form_action_url}&PRESTACOLLEGE_ACTION=uploaddbsnapshotselect" title="">
+        <i class="material-icons">cloud_upload</i>
+        {l s='Upload database snapshot' mod='prestacollege'}
+      </a>
+    </div>
   </div>
-  <div class="row">
-    <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
-      <input type="hidden" name="submitPrestaCollegeModule" value="1">
-      <input type="hidden" name="PRESTACOLLEGE_ACTION" value="createdbsnapshot">
-      <input type="submit" value="{l s='Create database snapshot' mod='prestacollege'}" class="btn btn-default pull-right">
-    </form>
-  </div>  
-
-  <div class="row">
-    <h2>{l s='Download Database-Snapshot' mod='prestacollege'}</h2>
-    <p>{l s='This will download a snapshot file from a custom URL' mod='prestacollege'}</p>
-  </div>
-  <div class="row">
-    <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
-      <input type="hidden" name="submitPrestaCollegeModule" value="1">
-      <input type="hidden" name="PRESTACOLLEGE_ACTION" value="curldbsnapshot">
-      <div class="row">
-        <label for="dbsnapshotcurlurl" class="control-label col-lg-4">{l s='Enter download url' mod='prestacollege'}</label>
-        <div class="col-lg-6">
-          <input type="text" name="dbsnapshotcurlurl" >
-        </div>
-      </div>
-      <input type="submit" value="{l s='Download database snapshot' mod='prestacollege'}" class="btn btn-default pull-right">
-    </form>
-  </div>  
+</div>

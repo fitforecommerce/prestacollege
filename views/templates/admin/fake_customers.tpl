@@ -1,9 +1,7 @@
-<hr>
-
-<div class="moduleconfig-content">
+<div class="panel col-lg-12 moduleconfig-content">
 	<div class="row">
+      <h3><i class="icon-cogs"></i> {l s='Fake Customers' mod='prestacollege'}</h3>
 		<div class="col-xs-12">
-      <h2>{l s='Fake Customers' mod='prestacollege'}</h2>
       <form id="db_snapshot_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
         <input type="hidden" name="submitPrestaCollegeModule" value="1">
         <input type="hidden" name="PRESTACOLLEGE_ACTION" value="fakecustomers">

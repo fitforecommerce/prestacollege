@@ -12,12 +12,13 @@ class FakerFileBackupLoader
         $zf = $this->zip_file();
 
         if(!$zf instanceof ZipArchive) {
-          error_log("<div class='alert alert-danger'>Unable to create ZipArchive object in FakerFileBackupLoader</div>");
+          error_log("Unable to create ZipArchive object in FakerFileBackupLoader!!!");
           return "Unable to create ZipArchive object in FakerFileBackupLoader";
         }
         if($zf->numFiles==0) {
-          $msg = "<div class='alert alert-danger'>Empty ZipArchive object created in FakerFileBackupLoader</div>".$this->debug_zip_file($zf);
+          $msg = "Empty ZipArchive object created in FakerFileBackupLoader ".$this->debug_zip_file($zf);
           error_log($msg);
+          $msg = "<div class='alert alert-danger'>$msg</div>";
           return $msg;
         }
 
@@ -44,7 +45,7 @@ class FakerFileBackupLoader
 
     private function snapshot_user_choice()
     {
-        return $this->snapshotdir()->dir_path.Tools::getValue('filesnapshotname');
+        return $this->snapshotdir()->dir_path.Tools::getValue('snapshot');
     }
 
     private function debug_zip_file()

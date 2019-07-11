@@ -48,6 +48,15 @@ class FakerCurler
         return false;
     }
 
+    private function snapshot_user_url()
+    {
+        $url = Tools::getValue('snapshotcurlurl');
+        if(!isset($url) || $url=='') {
+          throw new Exception("No url provided for database snapshot!", 1);
+        }
+        return $url;
+    }
+
     private function filename()
     {
         $parts = parse_url($this->snapshot_user_url());

@@ -26,7 +26,7 @@ class FakerDatabaseBackupLoader
 
     private function snapshot_user_choice()
     {
-        return $this->snapshotdir()->dir_path.Tools::getValue('dbsnapshotname');
+        return $this->snapshotdir()->dir_path.Tools::getValue('snapshot');
     }
 
     private function load_snapshot()
