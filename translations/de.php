@@ -20,7 +20,7 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_dbf373dd3565accf2d2fd19700f6a
 $_MODULE['<{prestacollege}prestashop>db_snapshot_39829b743afb70ed8dd83d4f83e50702'] = 'Datenbank-Snapshots verwalten';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_2fe28f2a54c5b034e1339213e06f2f35'] = 'Diese Aktion importiert einen Datenbank-Snapshot, der mit PrestaCollege erstellt wurde. Dies wird die meisten Daten in der Datenbank ÜBERSCHREIBEN!';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_074be9f2d80631cbf5f32796a6d5803a'] = 'BITTE MIT VORSICHT VERWENDEN!';
-$_MODULE['<{prestacollege}prestashop>db_snapshot_2ba53133bfab4b771223bc8118199c00'] = 'Erstelle neuen Datenbank-Snapshot';
+$_MODULE['<{prestacollege}prestashop>db_snapshot_2ba53133bfab4b771223bc8118199c00'] = 'Datenbank-Snapshot erzeugen';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_5d9027678c085212103d462b5f2c0004'] = 'Datenbank-Snapshot hochladen';
 $_MODULE['<{prestacollege}prestashop>fake_carts_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe';
 $_MODULE['<{prestacollege}prestashop>fake_carts_e690c09bcea69f8912e7591f7458e9a7'] = 'Anzahl der Warenkörbe';
