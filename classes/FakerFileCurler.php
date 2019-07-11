@@ -4,11 +4,6 @@
  */
 class FakerFileCurler extends FakerCurler
 {
-    protected function snapshot_user_url()
-    {
-        return Tools::getValue('filesnapshotcurlurl');
-    }
-
     protected function snapshotdir()
     {
         if (isset($this->snapshotdir)) {
