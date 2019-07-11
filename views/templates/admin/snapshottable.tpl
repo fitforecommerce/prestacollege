@@ -5,16 +5,21 @@
       <th>{l s='Filesize' mod='prestacollege'}</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
   {foreach $snapshots as $s}
     <tr>
-      <td class="col-lg-9">
+      <td class="col-lg-8">
          {$s[0]}
       </td>
       <td class="col-lg-1">
         {$s[1]}
+      </td>
+      <td class="col-lg-1">
+        <a href="{$form_action_url}&snapshot={$s[0]}&PRESTACOLLEGE_ACTION=remove{$snapshottype}snapshot"><i class="icon icon-trash"></i></a> 
+        <a href="{$form_action_url}&snapshot={$s[0]}&PRESTACOLLEGE_ACTION=remove{$snapshottype}snapshot">{l s='Delete'}</a>
       </td>
       <td class="col-lg-1">
         <a href="{$form_action_url}&snapshot={$s[0]}&PRESTACOLLEGE_ACTION=download{$snapshottype}snapshot"><i class="icon icon-arrow-circle-o-down"></i></a> 

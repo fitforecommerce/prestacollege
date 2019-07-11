@@ -30,6 +30,7 @@ require_once dirname(__FILE__).'/classes/FakerFileBackup.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupDownloader.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupLoader.php';
 require_once dirname(__FILE__).'/classes/SnapshotUploader.php';
+require_once dirname(__FILE__).'/classes/SnapshotRemover.php';
 
 class PrestaCollege extends Module
 {
@@ -171,6 +172,27 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    public function removedbsnapshot()
+    {
+      $sr = new SnapshotRemover(array('action' => 'db'));
+      return $this->run_remove_snapshot($sr);
+    }
+    public function removefilesnapshot()
+    {
+      $sr = new SnapshotRemover(array('action' => 'file'));
+      return $this->run_remove_snapshot($sr);
+    }
+    private function run_remove_snapshot($sr)
+    {
+      $o = '';
+      try {
+        $sr->run();
+        $o .= '<div class="alert alert-success">'.$this->l('Successfully deleted the snapshot').'</div>';
+      } catch (Exception $e) {
+        $o .= '<div class="alert alert-warning">'.$this->l('There was an error deleting the file.').'<p><code>'.$e->getMessage().'</code></p></div>';
+      }
+      return $o;
+    }
     public function uploaddbsnapshot()
     {
       # $o = "<p>uploaddbsnapshot()</p><blockquote>".print_r($_POST, true)."</blockquote><blockquote>".print_r($_FILES, true)."</blockquote>";
@@ -252,8 +274,8 @@ class PrestaCollege extends Module
     private function fullscreen_functions()
     {
       return array('uploadfilesnapshotselect', 'uploaddbsnapshotselect', 'curlfilesnapshot', 'curldbsnapshot',
-      'createfilesnapshot', 'createdbsnapshot'
-    );
+        'createfilesnapshot', 'createdbsnapshot', 'removedbsnapshot', 'removefilesnapshot', 'uploafilebsnapshot', 'uploaddbsnapshot'
+      );
     }
 
     private function file_backup_downloader($sdir='snapshots_db')
