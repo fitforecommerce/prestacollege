@@ -1,6 +1,6 @@
   <div class="row">
-    <h3><i class="icon icon-cloud-download"></i> {l s='Download Database-Snapshot' mod='prestacollege'}</h3>
-    <p><i class="ps-icon ps-icon-upload-to-cloud"></i>{l s='This will download a snapshot file from a custom URL' mod='prestacollege'}</p>
+    <h3><i class="icon icon-cloud-download"></i> {l s='Upload snapshot from url' mod='prestacollege'}</h3>
+    <p><i class="ps-icon ps-icon-upload-to-cloud"></i>{l s='This will upload a snapshot file from a custom URL to your server' mod='prestacollege'}</p>
   </div>
   <div class="row">
     <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">

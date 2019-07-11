@@ -28,10 +28,10 @@ $_MODULE['<{prestacollege}prestashop>file_snapshot_5ffa5bed1782138fade664a4f4cf4
 $_MODULE['<{prestacollege}prestashop>file_snapshot_d09e203818c69dd24a0680a4c10d7487'] = 'Diese Aktion importiert einen Datei-Snapshot, der mit PrestaCollege erstellt wurde. Nutzen Sie diese Funktion VORSICHTIG, da sie Ihre DATEN IN DEN VERZEICHNISSEN ÜBERSCHREIBEN WIRD!';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_08a91a4ea7efc226815757a54d2a6bbf'] = 'Datei-Snapshot erzeugen';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_555c747032b8cf722148a12bb0c803d6'] = 'Datei-Snapshot hochladen';
-$_MODULE['<{prestacollege}prestashop>modal_upload_3c1c06c47a52a90ac328671c769f9426'] = 'Datenbank-Snapshot herunterladen';
-$_MODULE['<{prestacollege}prestashop>modal_upload_b04fbc05034b760ce60ab519cc729c9c'] = 'Diese Funktion wird einen Snapshot von einer benutzerdefinierten URL herunterladen';
+$_MODULE['<{prestacollege}prestashop>modal_upload_7ac700c1653f76f0deeabe520259db61'] = 'Einen Snapshot von einer URL auf den Server laden';
+$_MODULE['<{prestacollege}prestashop>modal_upload_28520527becc8b4f3abe6c98a7701662'] = 'Diese Aktion wird eine Snapshot-Datei von einer URL auf Ihren Server laden';
 $_MODULE['<{prestacollege}prestashop>modal_upload_963f9bee88bc4dd1f9c45b42ffc3d7ec'] = 'Geben Sie die URL ein';
-$_MODULE['<{prestacollege}prestashop>modal_upload_9e4e7f1baa9b71afc0d81ec54c8fcdef'] = 'Datenbank-Snapshot von URL herunterladen';
+$_MODULE['<{prestacollege}prestashop>modal_upload_9e4e7f1baa9b71afc0d81ec54c8fcdef'] = 'Snapshot von URL auf Server laden';
 $_MODULE['<{prestacollege}prestashop>panel_bd1e17b646581c9c6328158e069ff16f'] = 'PrestaCollege';
 $_MODULE['<{prestacollege}prestashop>panel_e0927d12896f7efe130b5e122cc7ef68'] = 'Ein Modul zum Einsatz im Klassenzimmer von Martin Kolb';
 $_MODULE['<{prestacollege}prestashop>snapshottable_d4e2713d1b1725a1592f9268589f990d'] = 'Snapshot';
