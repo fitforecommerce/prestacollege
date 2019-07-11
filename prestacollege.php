@@ -39,7 +39,7 @@ class PrestaCollege extends Module
         $this->debug = false;
         $this->name = 'prestacollege';
         $this->tab = 'others';
-        $this->version = '0.1.0';
+        $this->version = '0.5.0';
         $this->author = 'Martin Kolb';
         $this->need_instance = 1;
 
@@ -88,33 +88,34 @@ class PrestaCollege extends Module
         return $output;
     }
 
-    public function create_dbsnapshot()
+    public function createdbsnapshot()
     {
         $db_backup = new FakerDatabaseBackup();
         $file_backup = new FakerFileBackup();
         $output = '<div class="panel">';
-        $output .= '<h2>Creating a database snapshot</h2>';
-        $output .= '<div>FakerDatabaseBackup says: '.$db_backup->add().'</div>';
-        $output .= '<div>FakerFileBackup says: '.$file_backup->run().'</div>';
+        $output .= '<h2>'.$this->l('Creating a database snapshot').'</h2>';
+        $output .= '<div>FakerDatabaseBackup status: '.$db_backup->add().'</div>';
+        $output .= '<div>FakerFileBackup status: '.$file_backup->run().'</div>';
+        $output .= '</div>';
 
         return $output;
     }
 
-    public function import_dbsnapshot()
+    public function importdbsnapshot()
     {
         $output = '<div class="panel">';
-        $output .= '<h2>Importing a database snapshot</h2>';
+        $output .= '<h2>'.$this->l('Importing a database snapshot').'</h2>';
         $output .= '<div>'.$this->dbbackup_loader()->run().'</div>';
         $output .= '</div>';
 
         return $output;
     }
 
-    public function exportfilesnapshot()
+    public function createfilesnapshot()
     {
         $file_backup = new FakerFileBackup();
         $output = '<div class="panel">';
-        $output .= '<h2>Exporting a file snapshot</h2>';
+        $output .= '<h2>'.$this->l('Exporting a file snapshot').'</h2>';
         $output .= '<div>Status: '.$file_backup->run().'</div>';
         $output .= '</div>';
 
@@ -124,7 +125,7 @@ class PrestaCollege extends Module
     public function importfilesnapshot()
     {
         $output = '<div class="panel">';
-        $output .= '<h2>Importing a file snapshot</h2>';
+        $output .= '<h2>'.$this->l('Importing a file snapshot').'</h2>';
         $output .= '<div>Status: '.$this->file_backup_loader()->run().'</div>';
         $output .= '</div>';
 
@@ -134,7 +135,7 @@ class PrestaCollege extends Module
     public function downloaddbsnapshot()
     {
       $output = '<div class="panel">';
-      $output .= '<h2>Downloading a database snapshot</h2>';
+      $output .= '<h2>'.$this->l('Downloading a database snapshot').'</h2>';
       $output .= '<div>Status: '.$this->file_backup_downloader('snapshots_db')->run().'</div>';
       $output .= '</div>';
 
@@ -143,7 +144,7 @@ class PrestaCollege extends Module
     public function downloadfilesnapshot()
     {
       $output = '<div class="panel">';
-      $output .= '<h2>Downloading a file snapshot</h2>';
+      $output .= '<h2>'.$this->l('Downloading a file snapshot').'</h2>';
       $output .= '<div>Status: '.$this->file_backup_downloader('snapshots_files')->run().'</div>';
       $output .= '</div>';
 
@@ -152,7 +153,7 @@ class PrestaCollege extends Module
     public function curldbsnapshot()
     {
         $output = '<div class="panel">';
-        $output .= '<h2>Downloading a database snapshot</h2>';
+        $output .= '<h2>'.$this->l('Downloading a database snapshot').'</h2>';
         $output .= '<div>Status: '.$this->db_curler()->run().'</div>';
         $output .= '</div>';
 
@@ -162,74 +163,70 @@ class PrestaCollege extends Module
     public function curlfilesnapshot()
     {
         $output = '<div class="panel">';
-        $output .= '<h2>Downloading a file snapshot</h2>';
+        $output .= '<h2>'.$this->l('Downloading a file snapshot').'</h2>';
         $output .= '<div>Status: '.$this->file_curler()->run().'</div>';
         $output .= '</div>';
 
         return $output;
     }
 
+    public function uploaddbsnapshotselect()
+    {
+      return $this->upload_select('db');
+    }
+    public function uploadfilesnapshotselect()
+    {
+      return $this->upload_select('file');
+    }
+    private function upload_select($action='db')
+    {
+      $this->context->smarty->assign('curlaction', $action);
+      $output = '<div class="panel">';
+      $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/modal_upload.tpl');
+      $output .= '</div>';
+      return $output;
+    }
     public function getContent()
     {
         $output = '';
         $action_done = false;
+        $action = Tools::getValue('PRESTACOLLEGE_ACTION', '');
+
         $this->context->smarty->assign('module_dir', $this->_path);
         $this->context->smarty->assign('tpl_dir', $this->local_path.'views/templates/admin');
         $this->context->smarty->assign('form_action_url', $this->admin_link());
         $this->context->smarty->assign('importdbsnapshots', $this->dbbackup_loader()->snapshot_filenames());
         $this->context->smarty->assign('importfilesnapshots', $this->file_backup_loader()->snapshot_filenames());
 
-        $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/panel.tpl');
         if ($this->debug) {
             $output .= '<hr><code>'.print_r($_REQUEST, true).'</code>';
         }
 
+        if($action!='' && in_array($action, $this->fullscreen_functions())) {
+          $output .= "<a href='".$this->admin_link()."'><< Go back…</a>";                
+        } else {
+          $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/panel.tpl');
+        }
+
         // If values have been submitted in the form, process.
         if (Tools::getValue('PRESTACOLLEGE_ACTION')) {
-            switch (Tools::getValue('PRESTACOLLEGE_ACTION', '')) {
-            case 'fakecustomers':
-              $output = $this->fake_customers().$output;
-              $action_done = true;
-              break;
-            case 'createdbsnapshot':
-              $output = $this->create_dbsnapshot().$output;
-              $action_done = true;
-              break;
-            case 'importdbsnapshot':
-              $output = $this->import_dbsnapshot().$output;
-              $action_done = true;
-              break;
-            case 'exportfilesnapshot':
-              $output = $this->exportfilesnapshot().$output;
-              $action_done = true;
-              break;
-            case 'importfilesnapshot':
-              $output = $this->importfilesnapshot().$output;
-              $action_done = true;
-              break;
-            case 'downloaddbsnapshot':
-              $output = $this->downloaddbsnapshot().$output;
-              $action_done = true;
-              break;
-            case 'downloadfilesnapshot':
-              $output = $this->downloadfilesnapshot().$output;
-              $action_done = true;
-              break;
-            case 'curldbsnapshot':
-              $output = $this->curldbsnapshot().$output;
-              $action_done = true;
-              break;
-            case 'curlfilesnapshot':
-              $output = $this->curlfilesnapshot().$output;
-              $action_done = true;
-              break;
+          if (method_exists($this, $action)) {
+            $output = call_user_func(array($this, $action)) . $output;
+            $action_done = true;
+          } else {
+            $output  = "<div class='panel'><div class='alert alert-warning'>".$this->l('Invalid action');
+            $output .= " '".Tools::getValue('PRESTACOLLEGE_ACTION', '')."'</div></div>" . $output;
           }
-            if ('' != Tools::getValue('PRESTACOLLEGE_ACTION', '') && !$action_done) {
-                $output = "<div class='panel'><div class='alert alert-warning'>Invalid action '".Tools::getValue('PRESTACOLLEGE_ACTION', '')."'</div></div>".$output;
-            }
         }
 
         return $output;
+    }
+
+    private function fullscreen_functions()
+    {
+      return array('uploadfilesnapshotselect', 'uploaddbsnapshotselect', 'curlfilesnapshot', 'curldbsnapshot',
+      'createfilesnapshot', 'createdbsnapshot'
+    );
     }
 
     private function file_backup_downloader($sdir='snapshots_db')
