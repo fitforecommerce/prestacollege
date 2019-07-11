@@ -79,7 +79,7 @@ class PrestaCollege extends Module
         return parent::uninstall();
     }
 
-    public function fake_carts()
+    public function fakecarts()
     {
         $conf = array('fake_carts_number' => Tools::getValue('fake_carts_number', ''));
         $faker = new CartFaker($conf);
@@ -288,7 +288,8 @@ class PrestaCollege extends Module
     private function fullscreen_functions()
     {
       return array('uploadfilesnapshotselect', 'uploaddbsnapshotselect', 'curlfilesnapshot', 'curldbsnapshot',
-        'createfilesnapshot', 'createdbsnapshot', 'removedbsnapshot', 'removefilesnapshot', 'uploafilebsnapshot', 'uploaddbsnapshot'
+        'createfilesnapshot', 'createdbsnapshot', 'removedbsnapshot', 'removefilesnapshot', 'uploafilebsnapshot', 'uploaddbsnapshot',
+        'fakecarts'
       );
     }
 
