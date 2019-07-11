@@ -10,16 +10,16 @@ class VersionCheckerTest extends TestCase
 {
     private $version_checker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->version_checker = new VersionChecker();
     }
-    public function testVersionCheckerCreated()
+    public function testVersionCheckerCreated(): void
     {
       $this->assertInstanceOf(VersionChecker::class, $this->version_checker);
     }
-    public function testReleaseDataLoaded()
+    public function testReleaseDataLoaded(): void
     {
         $d = $this->version_checker->get_release_data();
         $this->assertTrue(strlen($d) > 20);
