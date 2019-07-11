@@ -12,6 +12,10 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_7b9e9a92ef0f161ac3a601bc57b45
 $_MODULE['<{prestacollege}prestashop>prestacollege_9ba8e0d04372900b4e085d154b8027bd'] = 'Importiere einen Datei-Snapshot';
 $_MODULE['<{prestacollege}prestashop>prestacollege_e21d5f8f09650dceaab3f211564c5173'] = 'Lade einen Datenbank-Snapshot herunter';
 $_MODULE['<{prestacollege}prestashop>prestacollege_22c758531ce9911229c30a5f51f81a71'] = 'Lade einen Datei-Snapshot herunter';
+$_MODULE['<{prestacollege}prestashop>prestacollege_9f21768597328d1aef0c9a9319de0bcf'] = 'Snapshot erfolgreich gelöscht';
+$_MODULE['<{prestacollege}prestashop>prestacollege_5b11c873c726e78c4a4679eda0a03f9b'] = 'Die Datei konnte nicht gelöscht werden.';
+$_MODULE['<{prestacollege}prestashop>prestacollege_5e1d90a30b4c4fa0de011cf178d7bfbe'] = 'Snapshot erfolgreich hochgeladen';
+$_MODULE['<{prestacollege}prestashop>prestacollege_e2bd1bfc183641d485c2cc622f269c23'] = 'Es gab einen Fehler beim Upload der Datei. Bitte stellen Sie sicher, dass die max_upload_size und post_max_size Parameter in Ihrer php.ini und in Ihren Prestashop-Einstellungen für größere Uploads eingestellt sind!';
 $_MODULE['<{prestacollege}prestashop>prestacollege_dbf373dd3565accf2d2fd19700f6a5ae'] = 'Ungültige Aktion';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_39829b743afb70ed8dd83d4f83e50702'] = 'Datenbank-Snapshots verwalten';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_2fe28f2a54c5b034e1339213e06f2f35'] = 'Diese Aktion importiert einen Datenbank-Snapshot, der mit PrestaCollege erstellt wurde. Dies wird die meisten Daten in der Datenbank ÜBERSCHREIBEN!';
@@ -32,8 +36,12 @@ $_MODULE['<{prestacollege}prestashop>modal_upload_7ac700c1653f76f0deeabe520259db
 $_MODULE['<{prestacollege}prestashop>modal_upload_28520527becc8b4f3abe6c98a7701662'] = 'Diese Aktion wird eine Snapshot-Datei von einer URL auf Ihren Server laden';
 $_MODULE['<{prestacollege}prestashop>modal_upload_963f9bee88bc4dd1f9c45b42ffc3d7ec'] = 'Geben Sie die URL ein';
 $_MODULE['<{prestacollege}prestashop>modal_upload_9e4e7f1baa9b71afc0d81ec54c8fcdef'] = 'Snapshot von URL auf Server laden';
+$_MODULE['<{prestacollege}prestashop>modal_upload_54cbcf2647c84fb41237e80820a2bd92'] = 'Snapshot-Datei hochladen';
+$_MODULE['<{prestacollege}prestashop>modal_upload_684e0f6e0f76d950a27ce42db9bd2d11'] = 'Diese Funktion lädt eine Snapshot-Datei von Ihrem Computer auf den Server';
+$_MODULE['<{prestacollege}prestashop>modal_upload_9caeffedb143d4857669823404956f7c'] = 'Snapshot-Datei auswählen';
 $_MODULE['<{prestacollege}prestashop>panel_bd1e17b646581c9c6328158e069ff16f'] = 'PrestaCollege';
 $_MODULE['<{prestacollege}prestashop>panel_e0927d12896f7efe130b5e122cc7ef68'] = 'Ein Modul zum Einsatz im Klassenzimmer von Martin Kolb';
 $_MODULE['<{prestacollege}prestashop>snapshottable_d4e2713d1b1725a1592f9268589f990d'] = 'Snapshot';
 $_MODULE['<{prestacollege}prestashop>snapshottable_b18c29b8470190a02813415a04a2191f'] = 'Dateigröße';
+$_MODULE['<{prestacollege}prestashop>snapshottable_21a118e185d1b27fab95f1d58ac0f5ca'] = 'Snapshot-Datei %s importieren?';
 $_MODULE['<{prestacollege}prestashop>snapshottable_72d6d7a1885885bb55a565fd1070581a'] = 'Importieren';
