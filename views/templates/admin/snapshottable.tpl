@@ -22,7 +22,7 @@
       </td>
       <td class="col-lg-1">
         <a href="{$form_action_url}&snapshot={$s[0]}&PRESTACOLLEGE_ACTION=import{$snapshottype}snapshot"><i class="icon icon-arrow-circle-o-up"></i></a> 
-        <a href="{$form_action_url}&snapshot={$s[0]}&PRESTACOLLEGE_ACTION=import{$snapshottype}snapshot">{l s='Import' mod='prestacollege'}</a>
+        <a href="{$form_action_url}&snapshot={$s[0]}&PRESTACOLLEGE_ACTION=import{$snapshottype}snapshot" onclick="if (confirm('{l s='Import snapshot %s?' sprintf=$s[0] mod='prestacollege'}')) { return true; } else { event.stopPropagation(); event.preventDefault(); } ;">{l s='Import' mod='prestacollege'}</a>
       </td>
     </tr>
   {/foreach}
