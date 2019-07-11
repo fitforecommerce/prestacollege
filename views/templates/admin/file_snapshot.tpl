@@ -4,19 +4,35 @@
     <p>{l s='This action imports a file snapshot created with PrestaCollege. Use with CAUTION as this will OVERWRITE YOUR DATA in some folders.' mod='prestacollege'}</p>
   </div>
   <div class="row">
-    <form id="module_form" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
-      <input type="hidden" name="submitPrestaCollegeModule" value="1">
-      <input type="hidden" name="PRESTACOLLEGE_ACTION" value="importfilesnapshot">
       <div class="row">
-        <label for="filesnapshotname" class="control-label col-lg-4">{l s='Select files snapshot' mod='prestacollege'}</label>
-        <div class="col-lg-6">
-          <select name="filesnapshotname">
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>{l s='Database Snapshot' mod='prestacollege'}</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
             {foreach $importfilesnapshots as $dbfp}
-            <option value="{$dbfp}">{$dbfp}</option>
+              <tr>
+                <td class="col-lg-10">
+                   {$dbfp}
+                </td>
+                <td class="col-lg-1">
+                  <a href="{$form_action_url}&snapshot={$dbfp}&PRESTACOLLEGE_ACTION=downloadfilesnapshot"><i class="icon icon-arrow-circle-o-down"></i></a> 
+                  <a href="{$form_action_url}&snapshot={$dbfp}&PRESTACOLLEGE_ACTION=downloadfilesnapshot">{l s='Download'}</a>
+                </td>
+                <td class="col-lg-1">
+                  <a href="#"><i class="icon icon-arrow-circle-o-up"></i></a> 
+                  <a href="#">{l s='Import' mod='prestacollege'}</a>
+                </td>
+              </tr>
             {/foreach}
-          </select>
+            </tbody>
+          </table>
         </div>
-      </div>
       <input type="submit" value="Import file snapshot" class="btn btn-default pull-right">
     </form>
   </div>

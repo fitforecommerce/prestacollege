@@ -27,6 +27,7 @@ require_once dirname(__FILE__).'/classes/FakerCurler.php';
 require_once dirname(__FILE__).'/classes/FakerDatabaseCurler.php';
 require_once dirname(__FILE__).'/classes/FakerFileCurler.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackup.php';
+require_once dirname(__FILE__).'/classes/FakerFileBackupDownloader.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupLoader.php';
 
 class PrestaCollege extends Module
@@ -130,6 +131,24 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    public function downloaddbsnapshot()
+    {
+      $output = '<div class="panel">';
+      $output .= '<h2>Downloading a database snapshot</h2>';
+      $output .= '<div>Status: '.$this->file_backup_downloader('snapshots_db')->run().'</div>';
+      $output .= '</div>';
+
+      return $output;
+    }
+    public function downloadfilesnapshot()
+    {
+      $output = '<div class="panel">';
+      $output .= '<h2>Downloading a file snapshot</h2>';
+      $output .= '<div>Status: '.$this->file_backup_downloader('snapshots_files')->run().'</div>';
+      $output .= '</div>';
+
+      return $output;
+    }
     public function curldbsnapshot()
     {
         $output = '<div class="panel">';
@@ -166,7 +185,7 @@ class PrestaCollege extends Module
         }
 
         // If values have been submitted in the form, process.
-        if (true == ((bool) Tools::isSubmit('submitPrestaCollegeModule'))) {
+        if (Tools::getValue('PRESTACOLLEGE_ACTION')) {
             switch (Tools::getValue('PRESTACOLLEGE_ACTION', '')) {
             case 'fakecustomers':
               $output = $this->fake_customers().$output;
@@ -188,6 +207,14 @@ class PrestaCollege extends Module
               $output = $this->importfilesnapshot().$output;
               $action_done = true;
               break;
+            case 'downloaddbsnapshot':
+              $output = $this->downloaddbsnapshot().$output;
+              $action_done = true;
+              break;
+            case 'downloadfilesnapshot':
+              $output = $this->downloadfilesnapshot().$output;
+              $action_done = true;
+              break;
             case 'curldbsnapshot':
               $output = $this->curldbsnapshot().$output;
               $action_done = true;
@@ -205,6 +232,19 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    private function file_backup_downloader($sdir='snapshots_db')
+    {
+      if (isset($this->file_backup_downloader)) {
+        $this->file_backup_downloader->snapshotdir = $sdir;
+        return $this->file_backup_downloader;
+      }
+      $this->file_backup_downloader = new FakerFileBackupDownloader();
+      $this->file_backup_downloader->module_path = $this->local_path;
+      $this->file_backup_downloader->backupfile = Tools::getValue('snapshot');
+      $this->file_backup_downloader->snapshotdir = $sdir;
+
+      return $this->file_backup_downloader;
+    }
     private function file_backup_loader()
     {
         if (isset($this->file_backup_loader)) {
@@ -247,7 +287,7 @@ class PrestaCollege extends Module
 
     private function admin_link()
     {
-        $this->context->link->getAdminLink('AdminModules', false)
+        return $this->context->link->getAdminLink('AdminModules', true)
                   .'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
     }
 
