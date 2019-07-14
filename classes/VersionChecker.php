@@ -9,7 +9,6 @@ class VersionChecker
 {
   public function update_available()
   {
-    
     return false;
   }
 

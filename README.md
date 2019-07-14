@@ -1,3 +1,5 @@
+![TravisCI build badge for PrestaCollege](https://travis-ci.com/fitforecommerce/prestacollege.svg?branch=master)
+
 # PrestaCollege
 A Prestashop module for use in school classrooms. This module is one of the results of the  project [Fit for E-Commerce](https://fitforecommerce.github.io) which is co-funded by the Erasmus+ programme of the European Union.
 
