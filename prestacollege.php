@@ -252,7 +252,7 @@ class PrestaCollege extends Module
         }
 
         if($action!='' && in_array($action, $this->fullscreen_functions())) {
-          $output .= "<a href='".$this->admin_link()."'><< Go back…</a>";                
+          $output .= "<a href='".$this->admin_link()."'><< ".$this->l('Go back')."…</a>";                
         } else {
           $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/panel.tpl');
         }
