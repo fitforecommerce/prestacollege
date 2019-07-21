@@ -93,11 +93,13 @@ class PrestaCollege extends Module
     public function createdbsnapshot()
     {
         $db_backup = new FakerDatabaseBackup();
-        $file_backup = new FakerFileBackup();
         $output = '<div class="panel">';
         $output .= '<h2>'.$this->l('Creating a database snapshot').'</h2>';
-        $output .= '<div>FakerDatabaseBackup status: '.$db_backup->add().'</div>';
-        $output .= '<div>FakerFileBackup status: '.$file_backup->run().'</div>';
+        if($db_backup->add()) {
+          $output .= '<div class="alert-success">'.$this->l('Snapshot successfully created').'</div>';
+        } else {
+          $output .= '<div class="alert-error">'.$this->l('An error occured when creating the snapshot').'</div>';
+        }
         $output .= '</div>';
 
         return $output;
@@ -107,7 +109,11 @@ class PrestaCollege extends Module
     {
         $output = '<div class="panel">';
         $output .= '<h2>'.$this->l('Importing a database snapshot').'</h2>';
-        $output .= '<div>'.$this->dbbackup_loader()->run().'</div>';
+        if($this->dbbackup_loader()->run()) {
+          $output .= '<div class="alert-success">'.$this->l('Snapshot successfully imported').'</div>';
+        } else {
+          $output .= '<div class="alert-error">'.$this->l('An error occured when importing the snapshot').'</div>';
+        }
         $output .= '</div>';
 
         return $output;
@@ -118,7 +124,11 @@ class PrestaCollege extends Module
         $file_backup = new FakerFileBackup();
         $output = '<div class="panel">';
         $output .= '<h2>'.$this->l('Exporting a file snapshot').'</h2>';
-        $output .= '<div>Status: '.$file_backup->run().'</div>';
+        if($file_backup->run()) {
+          $output .= '<div class="alert-success">'.$this->l('Snapshot successfully created').'</div>';
+        } else {
+          $output .= '<div class="alert-error">'.$this->l('An error occured when creating the snapshot').'</div>';
+        }
         $output .= '</div>';
 
         return $output;
