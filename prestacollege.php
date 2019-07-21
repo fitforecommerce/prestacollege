@@ -41,7 +41,7 @@ class PrestaCollege extends Module
         $this->debug = false;
         $this->name = 'prestacollege';
         $this->tab = 'others';
-        $this->version = '0.5.0';
+        $this->version = '0.5.1';
         $this->author = 'Martin Kolb';
         $this->need_instance = 1;
 
