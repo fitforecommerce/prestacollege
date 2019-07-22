@@ -18,6 +18,7 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_9f21768597328d1aef0c9a9319de0
 $_MODULE['<{prestacollege}prestashop>prestacollege_5b11c873c726e78c4a4679eda0a03f9b'] = 'Die Datei konnte nicht gelöscht werden.';
 $_MODULE['<{prestacollege}prestashop>prestacollege_5e1d90a30b4c4fa0de011cf178d7bfbe'] = 'Snapshot erfolgreich hochgeladen';
 $_MODULE['<{prestacollege}prestashop>prestacollege_e2bd1bfc183641d485c2cc622f269c23'] = 'Es gab einen Fehler beim Upload der Datei. Bitte stellen Sie sicher, dass die max_upload_size und post_max_size Parameter in Ihrer php.ini und in Ihren Prestashop-Einstellungen für größere Uploads eingestellt sind!';
+$_MODULE['<{prestacollege}prestashop>prestacollege_22b653bd8d2edcebb9e0036b4ac79262'] = 'Zurück';
 $_MODULE['<{prestacollege}prestashop>prestacollege_dbf373dd3565accf2d2fd19700f6a5ae'] = 'Ungültige Aktion';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_39829b743afb70ed8dd83d4f83e50702'] = 'Datenbank-Snapshots verwalten';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_2fe28f2a54c5b034e1339213e06f2f35'] = 'Diese Aktion importiert einen Datenbank-Snapshot, der mit PrestaCollege erstellt wurde. Dies wird die meisten Daten in der Datenbank ÜBERSCHREIBEN!';
