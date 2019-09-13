@@ -92,7 +92,7 @@ class PrestaCollege extends Module
     }
 
 
-    public function fake_customers()
+    public function fakecustomers()
     {
         $conf = array('fake_customers_number' => Tools::getValue('fake_customers_number', ''));
         $faker = new CustomerFaker($conf);
