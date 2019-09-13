@@ -28,6 +28,9 @@ class CustomerFaker extends AbstractFaker
     {
         $conf = array(
             'fake_customers_number' => 10,
+            'newsletter_rate' => 70,
+            'optin_rate' => 90,
+            'second_address_rate' => 10
         );
 
         return array_merge(parent::default_conf(), $conf);
@@ -41,8 +44,12 @@ class CustomerFaker extends AbstractFaker
         $fc->lastname = $this->faker()->lastname;
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
-        $fc->newsletter = rand(20,100) > 50 ? true : false;
-        $fc->optin = rand(0,80) > 50 ? true : false;
+        $fc->newsletter = rand(0,100) < $this->conf['newsletter_rate'] ? true : false;
+        if($fc->newsletter) {
+          $fc->optin = rand(0,100) < $this->conf['optin_rate'] ? true : false;
+        } else {
+          $fc->optin = false;
+        }
         $fc->setWsPasswd($fc->firstname);
         try {
             $fc->save();
