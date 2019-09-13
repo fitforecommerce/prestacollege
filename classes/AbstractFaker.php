@@ -25,7 +25,6 @@ abstract class AbstractFaker
         if (isset($this->faker)) {
             return $this->faker;
         }
-        error_log($this->faker_localization());
         $this->faker = Faker\Factory::create($this->faker_localization());
 
         return $this->faker;
