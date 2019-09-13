@@ -24,6 +24,7 @@ class AddressFaker extends AbstractFaker
         $addr->address1 = $this->faker()->streetAddress;
         $addr->postcode = $this->faker()->postcode;
         $addr->city = $this->faker()->city;
+        $addr->phone = $this->faker()->phoneNumber;
         // $addr->country = $this->faker()->country;
         $addr->country = 'Deutschland';
         $addr->id_country = $this->id_country();
