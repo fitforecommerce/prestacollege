@@ -9,7 +9,12 @@ class CartFaker extends AbstractFaker
         @set_time_limit(0);
         @ini_set('max_execution_time', '0');
 
-        $this->set_customer_ids();
+        try {
+          $this->set_customer_ids();
+        } catch (Exception $e) {
+          return '<div class="alert alert-warning">No customers in database! Please add customers first before faking carts!</div>';
+        }
+
         $this->set_product_ids();
 
         $output = '<ul>';
@@ -64,6 +69,9 @@ class CartFaker extends AbstractFaker
     {
       $q = Db::getInstance(_PS_USE_SQL_SLAVE_)->query('SELECT `id_customer` FROM `'._DB_PREFIX_.'customer`;');
       $this->all_customer_ids = $q->fetchAll();
+      if(count($this->all_customer_ids)==0) {
+        throw new Exception("No customers in Database!", 1);
+      }
       $this->max_customer_id = count($this->all_customer_ids) - 1;
       return $this->all_customer_ids;
     }
