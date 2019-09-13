@@ -30,7 +30,9 @@ class CustomerFaker extends AbstractFaker
             'fake_customers_number' => 10,
             'newsletter_rate' => 70,
             'optin_rate' => 90,
-            'second_address_rate' => 10
+            'second_address_rate' => 10,
+            'birthday_given_rate' => 60,
+            'max_age' => 90
         );
 
         return array_merge(parent::default_conf(), $conf);
@@ -44,16 +46,19 @@ class CustomerFaker extends AbstractFaker
         $fc->lastname = $this->faker()->lastname;
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
-        $fc->newsletter = rand(0,100) < $this->conf['newsletter_rate'] ? true : false;
-        if($fc->newsletter) {
+        if(rand(0,100) < $this->conf['newsletter_rate']) {
+          $fc->newsletter = true;
           $fc->optin = rand(0,100) < $this->conf['optin_rate'] ? true : false;
-        } else {
-          $fc->optin = false;
+        }
+        if(rand(0,100) < $this->conf['birthday_given_rate']) {
+          $tdiff = round($this->g_rand());
+          $fc->birthday = $this->random_date('-'.$tdiff.' years', '-'.$tdiff.' years', 'Y-m-d');
+          error_log("CustomerFaker::fake_customer $fc->birthday");
         }
         $fc->setWsPasswd($fc->firstname);
         try {
             $fc->save();
-            $fc->date_add = $this->random_add_date();
+            $fc->date_add = $this->random_date();
             $fc->save();
         } catch (PrestaShopException $e) {
             error_log("invalid customer: ".$fc->email);
@@ -98,10 +103,5 @@ class CustomerFaker extends AbstractFaker
             $string = html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|tilde|uml);~i', '$1', $string), ENT_QUOTES, 'UTF-8');
         }
         return $string;
-    }
-    private function random_add_date($past_years = 5)
-    {
-        $fd      = $this->faker()->dateTimeBetween($startDate = "-$past_years years", $endDate = 'now', $timezone = null);
-        return $fd->format("Y-m-d H:i:s");
     }
 }
