@@ -37,8 +37,10 @@ class CartFaker extends AbstractFaker
         'maximum_order_items'  => 5,
         'id_currency' => 1,      # currency id
         'id_lang' => 1,          # language id
+        'add_datespan_min' => '-1 years',
+        'add_datespan_max' => 'now',
         'upd_timediff_min' => 0,
-        'upd_timediff_max' => 1440
+        'upd_timediff_max' => 1440,
       );
     }
     private function fake_cart()
@@ -75,7 +77,11 @@ class CartFaker extends AbstractFaker
     }
     private function fake_date()
     {
-      return $this->faker()->dateTimeBetween($startDate = '-3 years', $endDate = 'now', $timezone = null);
+      return $this->faker()->dateTimeBetween(
+        $this->conf['add_datespan_min'],
+        $this->conf['add_datespan_max'],
+        $timezone = null
+      );
     }
     private function set_customer_ids()
     {
