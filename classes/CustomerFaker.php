@@ -79,7 +79,7 @@ class CustomerFaker extends AbstractFaker
     }
     private function create_email_string($fn, $ln)
     {
-        $rv = $fn.'.'.$ln.'@fitforecommerce.eu';
+        $rv = $fn.'.'.$ln.'@example.com';
         $rv = preg_replace('/\s+/', '', $rv);
         $rv = $this->unaccent($rv);
         $rv = strtolower($rv);
@@ -94,9 +94,7 @@ class CustomerFaker extends AbstractFaker
     }
     private function random_add_date($past_years = 5)
     {
-        $now      = time();
-        $from     = time() - (60*60*24*7*52) * $past_years;
-        $rand_ts  = mt_rand($from, $now);
-        return date("Y-m-d H:i:s", $rand_ts);
+        $fd      = $this->faker()->dateTimeBetween($startDate = "-$past_years years", $endDate = 'now', $timezone = null);
+        return $fd->format("Y-m-d H:i:s");
     }
 }
