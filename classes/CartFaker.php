@@ -37,6 +37,8 @@ class CartFaker extends AbstractFaker
         'maximum_order_items'  => 5,
         'id_currency' => 1,      # currency id
         'id_lang' => 1,          # language id
+        'upd_timediff_min' => 0,
+        'upd_timediff_max' => 1440
       );
     }
     private function fake_cart()
@@ -47,7 +49,14 @@ class CartFaker extends AbstractFaker
         $cart->id_customer = $cid;
         $cart->id_currency = $this->conf['id_currency'];
         $cart->id_lang     = $this->conf['id_lang'];
-        $cart->save();
+
+        $fdate = $this->fake_date();
+        $upd_timediff = random_int($this->conf['upd_timediff_min'],$this->conf['upd_timediff_max']);
+
+        $cart->date_add    = $fdate->format('Y-m-d H:i:s');
+        $cart->date_upd    = $fdate->modify('+'.$upd_timediff.' minutes')->format('Y-m-d H:i:s');
+
+        $cart->add(false, false);
 
         for ($i=0; $i < $this->order_items_quantity(); $i++) { 
           $cart->updateQty(
@@ -62,8 +71,11 @@ class CartFaker extends AbstractFaker
             true                    # skipAvailabilityCheckOutOfStock
           );
         }
-
         return $cart;
+    }
+    private function fake_date()
+    {
+      return $this->faker()->dateTimeBetween($startDate = '-3 years', $endDate = 'now', $timezone = null);
     }
     private function set_customer_ids()
     {
@@ -100,7 +112,6 @@ class CartFaker extends AbstractFaker
     private function product_id()
     {
       $pind = random_int(0, $this->max_product_id);
-      error_log("CartFaker::product_id() - '".print_r($this->all_product_ids, true)."'");
       return $this->all_product_ids[$pind]['id_product'];
     }
     private function id_country($loc = null)
