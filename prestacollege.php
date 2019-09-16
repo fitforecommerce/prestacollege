@@ -94,7 +94,14 @@ class PrestaCollege extends Module
 
     public function fakecustomers()
     {
-        $conf = array('fake_customers_number' => Tools::getValue('fake_customers_number', ''));
+        $conf = array(
+          'fake_customers_number' => Tools::getValue('fake_customers_number', ''),
+          'newsletter_rate' => Tools::getValue('newsletter_rate', ''),
+          'optin_rate' => Tools::getValue('optin_rate', ''),
+          # 'second_address_rate' => Tools::getValue('fake_customers_number', ''),
+          'birthday_given_rate' => Tools::getValue('birthday_given_rate', ''),
+          'max_age' => Tools::getValue('max_age', ''),
+        );
         $faker = new CustomerFaker($conf);
         $output = '<div class="panel">';
         $output .= '<h2>'.$this->l('Fake Customers').'</h2>';
@@ -270,6 +277,17 @@ class PrestaCollege extends Module
         $this->context->smarty->assign('form_action_url', $this->admin_link());
         $this->context->smarty->assign('importdbsnapshots', $this->dbbackup_loader()->snapshot_filenames());
         $this->context->smarty->assign('importfilesnapshots', $this->file_backup_loader()->snapshot_filenames());
+        $customer_faker = new CustomerFaker();
+        $custfaker_labels = array(
+          'fake_customers_number' => $this->l('Number of customers'),
+          'newsletter_rate' => $this->l('Newsletter subscription rate'),
+          'optin_rate' => $this->l('Newsletter optin rate'),
+          'second_address_rate' => $this->l('Second address rate'),
+          'birthday_given_rate' => $this->l('Birthday given rate'),
+          'max_age' => $this->l('Maximum age')
+        );
+        $this->context->smarty->assign('custfaker_def', $customer_faker->conf);
+        $this->context->smarty->assign('custfaker_labels', $custfaker_labels);
 
         if ($this->debug) {
             $output .= '<hr><code>'.print_r($_REQUEST, true).'</code>';
