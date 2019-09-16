@@ -15,7 +15,6 @@ abstract class AbstractFaker
     protected function default_conf()
     {
       return array(
-        'number_of_customers' => 10,
         'localization' => 'de',
       );
     }
