@@ -10,6 +10,11 @@ PrestaCollege lets you:
 * create fake data for your shop
 
 ## Installation
+1. You need a working [Prestashop](https://prestashop.com) installation.
+2. Download the latest [PrestaCollege release](https://github.com/fitforecommerce/prestacollege/releases). Make sure to download the prestacollege.zip file!
+2. In the Prestashop backend go to the module manager and click 'Upload module'. Drag and drop the prestacollege.zip file onto the dialogue. ![Screenshot add module](https://fitforecommerce.eu/img/2018-09-25-prestacollege-installieren/02_install_module_start.png) ![Screenshot upload module](https://fitforecommerce.eu/img/2018-09-25-prestacollege-installieren/03_upload_module.png)
+3. The module should automatically be installed. If the installation fails make sure that your php.ini values for ``upload_max_filesize`` and ``post_max_size`` are set to a larger value than the size of the prestashop.zip file. I would recommend to set the values to ``128M`` - this should also be sufficient for file snapshots.
+
 * 2019-07-21 [Video tutorial [DE]](https://www.youtube.com/watch?v=VhwDSjooOis) on how to import and export snapshots from PrestaCollege
 * 2019-06-27 [Video tutorial [DE]](https://www.youtube.com/watch?v=vp7TccnzkQ0) on how to install, import and export snapshots and Jamando shop data
 
@@ -35,7 +40,7 @@ PrestaCollege lets you:
 - [ ] fake orders by customers
 - [ ] fake orphaned carts by guests and customers
 - [ ] fake a hacker attack
-
+- [ ] fake search terms
 
 (c) 2018-2019 Martin Kolb 
 issued under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
