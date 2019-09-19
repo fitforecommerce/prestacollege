@@ -24,17 +24,17 @@ class CustomerFaker extends AbstractFaker
         return $output;
     }
 
-    protected function default_conf()
+    public function default_conf()
     {
         $conf = array(
             'fake_customers_number' => 10,
+            'company_rate' => 10,
             'newsletter_rate' => 70,
             'optin_rate' => 90,
             'second_address_rate' => 10,
             'birthday_given_rate' => 60,
             'max_age' => 90
         );
-
         return array_merge(parent::default_conf(), $conf);
     }
 
@@ -43,14 +43,18 @@ class CustomerFaker extends AbstractFaker
         $fc = new Customer();
         $fc->id_gender = $this->rnd_gender_int();
         $g_str = $this->gender_string($fc->id_gender);
-        $fc->lastname = $this->faker()->lastname;
         $fc->firstname = $this->faker()->firstname($g_str);
+        $fc->lastname = $this->faker()->lastname;
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
-        if(rand(0,100) < $this->conf['newsletter_rate']) {
+        if(rand(0,100) <= $this->conf['company_rate']) {
+          $fc->company = $this->faker()->company;
+        }
+        if(rand(0,100) <= $this->conf['newsletter_rate']) {
           $fc->newsletter = true;
+          $fc->ip_registration_newsletter = $this->faker()->ipv4;
           $fc->optin = rand(0,100) < $this->conf['optin_rate'] ? true : false;
         }
-        if(rand(0,100) < $this->conf['birthday_given_rate']) {
+        if(rand(0,100) <= $this->conf['birthday_given_rate']) {
           $tdiff = round($this->g_rand());
           $fc->birthday = $this->random_date('-'.$tdiff.' years', '-'.$tdiff.' years', 'Y-m-d');
           error_log("CustomerFaker::fake_customer $fc->birthday");
