@@ -94,15 +94,8 @@ class PrestaCollege extends Module
 
     public function fakecustomers()
     {
-        $conf = array(
-          'fake_customers_number' => Tools::getValue('fake_customers_number', ''),
-          'newsletter_rate' => Tools::getValue('newsletter_rate', ''),
-          'optin_rate' => Tools::getValue('optin_rate', ''),
-          # 'second_address_rate' => Tools::getValue('fake_customers_number', ''),
-          'birthday_given_rate' => Tools::getValue('birthday_given_rate', ''),
-          'max_age' => Tools::getValue('max_age', ''),
-        );
-        $faker = new CustomerFaker($conf);
+        $faker = new CustomerFaker();
+        $faker->get_conf_values();
         $output = '<div class="panel">';
         $output .= '<h2>'.$this->l('Fake Customers').'</h2>';
         $output .= '<div>'.$this->l('Creating the following fake customers').$faker->fake_customers().'</div>';
@@ -280,6 +273,7 @@ class PrestaCollege extends Module
         $customer_faker = new CustomerFaker();
         $custfaker_labels = array(
           'fake_customers_number' => $this->l('Number of customers'),
+          'company_rate' => $this->l('Company customer rate'),
           'newsletter_rate' => $this->l('Newsletter subscription rate'),
           'optin_rate' => $this->l('Newsletter optin rate'),
           'second_address_rate' => $this->l('Second address rate'),
