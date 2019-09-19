@@ -11,7 +11,13 @@ abstract class AbstractFaker
         }
         $this->conf = array_merge($this->default_conf(), $conf);
     }
-
+    public function get_conf_values()
+    {
+      foreach ($this->conf as $k => $v) {
+        $conf[$k] = Tools::getValue($k, $v);
+      }
+      $this->conf = $conf;
+    }
     protected function default_conf()
     {
       return array(
