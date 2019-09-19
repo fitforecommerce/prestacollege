@@ -7,14 +7,17 @@ A Prestashop module for use in school classrooms. This module is one of the resu
 PrestaCollege lets you:
 
 * export and import database and file snapshots of shops which can be easily distributed to student's shops
-* create fake customers profiles for your shop
+* create fake data for your shop
+
+## Installation
+* 2019-07-21 [Video tutorial [DE]](https://www.youtube.com/watch?v=VhwDSjooOis) on how to import and export snapshots from PrestaCollege
+* 2019-06-27 [Video tutorial [DE]](https://www.youtube.com/watch?v=vp7TccnzkQ0) on how to install, import and export snapshots and Jamando shop data
 
 ## Todo
-- [ ] Add documentation
-
 ### Create Snapshots
 - [ ] Implement Snapshot process
   - [ ] Add a version check if the database scheme of an export matches the installed version
+  - [ ] Add an option to include/leave out specific tables
   - [X] Export relevant database tables
   - [X] Export relevant asset folders ('/img', '/modules') as zip
   - [X] Import database tables from .sql file
@@ -28,13 +31,13 @@ PrestaCollege lets you:
 
 ### Fake stuff
 - [X] fake customers
-- [ ] fake customer visits (i.e. connections)
+- [ ] fake guests and customer visits (i.e. connections)
 - [ ] fake orders by customers
-- [ ] fake orphaned carts
+- [ ] fake orphaned carts by guests and customers
 - [ ] fake a hacker attack
 
 
-(c) 2018 Martin Kolb 
+(c) 2018-2019 Martin Kolb 
 issued under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
 
 ![Co-funded by the Erasmus+ Programme of the European Union](https://fitforecommerce.github.io/img/co-funded-erasmus+.jpg)
