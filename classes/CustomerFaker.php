@@ -58,14 +58,14 @@ class CustomerFaker extends AbstractFaker
         $fc = new Customer();
 
         $fc->id_gender = 1;
+        if($this->in_rnd_range($this->conf['female_customer_rate'])) {
+          $fc->id_gender = 2;
+        }
         $g_str = $this->gender_string($fc->id_gender);
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->lastname = $this->faker()->lastname;
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
 
-        if($this->in_rnd_range($this->conf['female_customer_rate'])) {
-          $fc->id_gender = 2;
-        }
 
         if($this->in_rnd_range($this->conf['guest_rate'])) {
           $fc->id_default_group = Configuration::get('PS_GUEST_GROUP');
