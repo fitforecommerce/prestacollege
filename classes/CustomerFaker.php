@@ -2,6 +2,15 @@
 
 require_once dirname(__FILE__).'/faker/autoload.php';
 
+/**
+ * This class fakes Customer accounts.
+ * Remember the three default types of customer accounts, according to Prestashop terminology:
+ * Visitor - All persons without a valid customer account. 
+ * Guest (id_default_group = 2) - Customers who have placed an order with a guest account (if enabled). 
+ * Customer (id_default_group = 3) - All the people who have created an account on this site.
+ *
+ * @author Martin Kolb
+ */
 class CustomerFaker extends AbstractFaker
 {
     public $faker;
@@ -28,6 +37,9 @@ class CustomerFaker extends AbstractFaker
     {
         $conf = array(
             'fake_customers_number' => 10,
+            'female_customer_rate' => 50,
+            # 'visitor_rate' => 50,
+            'guest_rate' => 30,
             'company_rate' => 10,
             'newsletter_rate' => 70,
             'optin_rate' => 90,
@@ -41,7 +53,13 @@ class CustomerFaker extends AbstractFaker
     private function fake_customer()
     {
         $fc = new Customer();
-        $fc->id_gender = rand(1, 2);
+        if($this->in_rnd_range($this->conf['guest_rate'], true)) {
+          $fc->id_default_group = Configuration::get('PS_GUEST_GROUP');
+        }
+        $fc->id_gender = 1;
+        if($this->in_rnd_range($this->conf['female_customer_rate'])) {
+          $fc->id_gender = 2;
+        }
         $g_str = $this->gender_string($fc->id_gender);
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->lastname = $this->faker()->lastname;
@@ -57,7 +75,6 @@ class CustomerFaker extends AbstractFaker
         if($this->in_rnd_range($this->conf['birthday_given_rate'])) {
           $tdiff = round($this->g_rand());
           $fc->birthday = $this->random_date('-'.$tdiff.' years', '-'.$tdiff.' years', 'Y-m-d');
-          error_log("CustomerFaker::fake_customer $fc->birthday");
         }
         $fc->setWsPasswd($fc->firstname);
         try {
