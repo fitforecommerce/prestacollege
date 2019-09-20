@@ -273,6 +273,10 @@ class PrestaCollege extends Module
         $customer_faker = new CustomerFaker();
         $custfaker_labels = array(
           'fake_customers_number' => $this->l('Number of customers'),
+          'female_customer_rate' => $this->l('Female customer rate'),
+          'visitor_rate' => $this->l('Visitor rate'),
+          'guest_rate' => $this->l('Guest rate'),
+          'banned_rate' => $this->l('Banned user rate'),
           'company_rate' => $this->l('Company customer rate'),
           'newsletter_rate' => $this->l('Newsletter subscription rate'),
           'optin_rate' => $this->l('Newsletter optin rate'),
