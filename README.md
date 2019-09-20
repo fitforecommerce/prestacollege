@@ -38,7 +38,7 @@ PrestaCollege lets you:
 - [X] fake customers
 - [ ] fake guests and customer visits (i.e. connections)
 - [ ] fake orders by customers
-- [ ] fake orphaned carts by guests and customers
+- [X] fake orphaned carts
 - [ ] fake a hacker attack
 - [ ] fake search terms
 
