@@ -36,6 +36,7 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_2c55362ef16f8386841f4adb79280
 $_MODULE['<{prestacollege}prestashop>prestacollege_93ced375ff42fc8feaad007fd77a5042'] = 'Frühestes Erstelldatum (z.B. \"-1 year\")';
 $_MODULE['<{prestacollege}prestashop>prestacollege_dbfc69df7fcb59bacdc75c6c0b655465'] = 'Spätestes Erstelldatum (z.B. \"now\")';
 $_MODULE['<{prestacollege}prestashop>prestacollege_e690c09bcea69f8912e7591f7458e9a7'] = 'Anzahl der Warenkörbe';
+$_MODULE['<{prestacollege}prestashop>prestacollege_381ec6bc01f89e729dc6992281ad6370'] = 'Anteil von Warenkörben von eingeloggten Kunden';
 $_MODULE['<{prestacollege}prestashop>prestacollege_cdf464b64f743c8d188d86387c0d9c57'] = 'Minimale Bestellmenge pro Artikel';
 $_MODULE['<{prestacollege}prestashop>prestacollege_0e0a553b016f6ed15e3ea4e5c8941ac3'] = 'Maximale Bestellmenge pro Artikel';
 $_MODULE['<{prestacollege}prestashop>prestacollege_cf8bac1f4d88b558fc207b7db53cb19e'] = 'Minimale Anzahl Artikel pro Bestellung';
