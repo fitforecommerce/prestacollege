@@ -18,9 +18,9 @@ class AddressFaker extends AbstractFaker
     public function fake_address()
     {
         $addr = new Address();
+        $addr->alias = $this->aliases()[0];
         $addr->lastname = $this->faker()->lastname;
         $addr->firstname = $this->faker()->firstname;
-        $addr->alias = $addr->firstname.'_'.$addr->lastname;
         $addr->address1 = $this->faker()->streetAddress;
         $addr->postcode = $this->faker()->postcode;
         $addr->city = $this->faker()->city;
@@ -33,6 +33,13 @@ class AddressFaker extends AbstractFaker
         return $addr;
     }
 
+    private function aliases(){
+      $a = array(
+        'de' => array("Meine Adresse", "Zuhause")
+      );
+      $loc = $this->conf['localization'];
+      return $a[$loc];
+    }
     private function id_country($loc = null)
     {
         if (!is_string($loc)) {
