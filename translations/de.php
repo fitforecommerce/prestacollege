@@ -58,7 +58,7 @@ $_MODULE['<{prestacollege}prestashop>modal_upload_684e0f6e0f76d950a27ce42db9bd2d
 $_MODULE['<{prestacollege}prestashop>modal_upload_9caeffedb143d4857669823404956f7c'] = 'Snapshot-Datei auswählen';
 $_MODULE['<{prestacollege}prestashop>panel_bd1e17b646581c9c6328158e069ff16f'] = 'PrestaCollege';
 $_MODULE['<{prestacollege}prestashop>panel_e0927d12896f7efe130b5e122cc7ef68'] = 'Ein Modul zum Einsatz im Klassenzimmer von Martin Kolb';
-$_MODULE['<{prestacollege}prestashop>panel_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Warenkörbe faken';
+$_MODULE['<{prestacollege}prestashop>panel_de39035944db25c64594e6180b937617'] = 'Musterdaten erzeugen';
 $_MODULE['<{prestacollege}prestashop>snapshottable_d4e2713d1b1725a1592f9268589f990d'] = 'Snapshot';
 $_MODULE['<{prestacollege}prestashop>snapshottable_b18c29b8470190a02813415a04a2191f'] = 'Dateigröße';
 $_MODULE['<{prestacollege}prestashop>snapshottable_21a118e185d1b27fab95f1d58ac0f5ca'] = 'Snapshot-Datei %s importieren?';
