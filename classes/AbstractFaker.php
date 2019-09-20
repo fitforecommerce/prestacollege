@@ -47,6 +47,11 @@ abstract class AbstractFaker
         $fd      = $this->faker()->dateTimeBetween($diff_min, $diff_max, $timezone = null);
         return $fd->format($f);
     }
+    protected function in_rnd_range($v)
+    {
+      return rand(0,100) <= $v ? true : false;
+    }
+    # This function produces a random gaussian distribution
     protected function g_rand()
     {
       $peak         = 40; // Peak at 10-o-clock

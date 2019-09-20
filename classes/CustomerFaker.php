@@ -41,20 +41,20 @@ class CustomerFaker extends AbstractFaker
     private function fake_customer()
     {
         $fc = new Customer();
-        $fc->id_gender = $this->rnd_gender_int();
+        $fc->id_gender = rand(1, 2);
         $g_str = $this->gender_string($fc->id_gender);
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->lastname = $this->faker()->lastname;
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
-        if(rand(0,100) <= $this->conf['company_rate']) {
+        if($this->in_rnd_range($this->conf['company_rate'])) {
           $fc->company = $this->faker()->company;
         }
-        if(rand(0,100) <= $this->conf['newsletter_rate']) {
+        if($this->in_rnd_range($this->conf['newsletter_rate'])) {
           $fc->newsletter = true;
           $fc->ip_registration_newsletter = $this->faker()->ipv4;
           $fc->optin = rand(0,100) < $this->conf['optin_rate'] ? true : false;
         }
-        if(rand(0,100) <= $this->conf['birthday_given_rate']) {
+        if($this->in_rnd_range($this->conf['birthday_given_rate'])) {
           $tdiff = round($this->g_rand());
           $fc->birthday = $this->random_date('-'.$tdiff.' years', '-'.$tdiff.' years', 'Y-m-d');
           error_log("CustomerFaker::fake_customer $fc->birthday");
@@ -80,12 +80,6 @@ class CustomerFaker extends AbstractFaker
 
         return $this->address_faker;
     }
-
-    private function rnd_gender_int()
-    {
-        return rand(1, 2);
-    }
-
     private function gender_string($i)
     {
         if (1 == $i) {
