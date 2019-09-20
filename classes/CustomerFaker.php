@@ -40,6 +40,7 @@ class CustomerFaker extends AbstractFaker
             'female_customer_rate' => 50,
             # 'visitor_rate' => 50,
             'guest_rate' => 30,
+            'banned_rate' => 1,
             'company_rate' => 10,
             'newsletter_rate' => 70,
             'optin_rate' => 90,
@@ -53,25 +54,35 @@ class CustomerFaker extends AbstractFaker
     private function fake_customer()
     {
         $fc = new Customer();
-        if($this->in_rnd_range($this->conf['guest_rate'], true)) {
-          $fc->id_default_group = Configuration::get('PS_GUEST_GROUP');
-        }
+
         $fc->id_gender = 1;
-        if($this->in_rnd_range($this->conf['female_customer_rate'])) {
-          $fc->id_gender = 2;
-        }
         $g_str = $this->gender_string($fc->id_gender);
         $fc->firstname = $this->faker()->firstname($g_str);
         $fc->lastname = $this->faker()->lastname;
         $fc->email = $this->create_email_string($fc->firstname, $fc->lastname);
+
+        if($this->in_rnd_range($this->conf['female_customer_rate'])) {
+          $fc->id_gender = 2;
+        }
+
+        if($this->in_rnd_range($this->conf['guest_rate'])) {
+          $fc->id_default_group = Configuration::get('PS_GUEST_GROUP');
+          $fc->is_guest = true;
+        }
+
+        if($this->in_rnd_range($this->conf['banned_rate'])) {
+          $fc->active = false;
+        }
         if($this->in_rnd_range($this->conf['company_rate'])) {
           $fc->company = $this->faker()->company;
         }
+
         if($this->in_rnd_range($this->conf['newsletter_rate'])) {
           $fc->newsletter = true;
           $fc->ip_registration_newsletter = $this->faker()->ipv4;
           $fc->optin = rand(0,100) < $this->conf['optin_rate'] ? true : false;
         }
+
         if($this->in_rnd_range($this->conf['birthday_given_rate'])) {
           $tdiff = round($this->g_rand());
           $fc->birthday = $this->random_date('-'.$tdiff.' years', '-'.$tdiff.' years', 'Y-m-d');
