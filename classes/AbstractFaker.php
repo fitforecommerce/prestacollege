@@ -47,9 +47,16 @@ abstract class AbstractFaker
         $fd      = $this->faker()->dateTimeBetween($diff_min, $diff_max, $timezone = null);
         return $fd->format($f);
     }
-    protected function in_rnd_range($v)
+    protected function in_rnd_range($v, $debug=false)
     {
-      return rand(0,100) <= $v ? true : false;
+      if(!$debug) {
+        return mt_rand(0,100) <= $v ? true : false;
+      }
+      $rnd = mt_rand(0,100);
+      $rv =  $rnd <= $v ? true : false;
+      $str = $rv ? "true" : "false";
+      error_log("AbstractFaker::in_rnd_range for $rnd <= $v: ".$str);
+      return $rv;
     }
     # This function produces a random gaussian distribution
     protected function g_rand()
