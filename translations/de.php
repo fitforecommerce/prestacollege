@@ -33,6 +33,19 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_14bd8523f96246be0700336deaa5f
 $_MODULE['<{prestacollege}prestashop>prestacollege_dcb3e76b89e1a6e4ce60f6c8d3e52db7'] = 'Anteil Kunden mit zweiter Adresse';
 $_MODULE['<{prestacollege}prestashop>prestacollege_f93a57df778432293ad6ad80462ad09f'] = 'Anteil Kundenprofile mit Geburtstag';
 $_MODULE['<{prestacollege}prestashop>prestacollege_2c55362ef16f8386841f4adb792805a2'] = 'Maximales Kundenalter';
+$_MODULE['<{prestacollege}prestashop>prestacollege_93ced375ff42fc8feaad007fd77a5042'] = 'Frühestes Erstelldatum (z.B. \"-1 year\")';
+$_MODULE['<{prestacollege}prestashop>prestacollege_dbfc69df7fcb59bacdc75c6c0b655465'] = 'Spätestes Erstelldatum (z.B. \"now\")';
+$_MODULE['<{prestacollege}prestashop>prestacollege_e690c09bcea69f8912e7591f7458e9a7'] = 'Anzahl der Warenkörbe';
+$_MODULE['<{prestacollege}prestashop>prestacollege_cdf464b64f743c8d188d86387c0d9c57'] = 'Minimale Bestellmenge pro Artikel';
+$_MODULE['<{prestacollege}prestashop>prestacollege_0e0a553b016f6ed15e3ea4e5c8941ac3'] = 'Maximale Bestellmenge pro Artikel';
+$_MODULE['<{prestacollege}prestashop>prestacollege_cf8bac1f4d88b558fc207b7db53cb19e'] = 'Minimale Anzahl Artikel pro Bestellung';
+$_MODULE['<{prestacollege}prestashop>prestacollege_4007502528c051cf7b31cf84463de31d'] = 'Maximale Anzahl Artikel pro Bestellung';
+$_MODULE['<{prestacollege}prestashop>prestacollege_791edf614bb855429acd06dcbb88ccea'] = 'Währungs-ID';
+$_MODULE['<{prestacollege}prestashop>prestacollege_d31dc2d1ef8eaa6b902e64c69aadb1d3'] = 'Sprache-ID';
+$_MODULE['<{prestacollege}prestashop>prestacollege_e8358a0c0c2d86f587f3fde6485be2a0'] = 'Warenkorb erzeugt nach (z.B. \"-30 days\")';
+$_MODULE['<{prestacollege}prestashop>prestacollege_b6b15b3d96ecb145f76da0f4eff57d30'] = 'Warenkorb erzeugt vor (z.B. \"now\")';
+$_MODULE['<{prestacollege}prestashop>prestacollege_f419d6e595e2c3bdc5828387fb76d0d1'] = 'Minimale Zeitdifferenz bis letztes Warenkorb-Update (in Sek)';
+$_MODULE['<{prestacollege}prestashop>prestacollege_ef69beb6279119aa2596c2c0626a32d3'] = 'Maximale Zeitdifferenz bis letztes Warenkorb-Update (in Sek)';
 $_MODULE['<{prestacollege}prestashop>prestacollege_22b653bd8d2edcebb9e0036b4ac79262'] = 'Zurück';
 $_MODULE['<{prestacollege}prestashop>prestacollege_dbf373dd3565accf2d2fd19700f6a5ae'] = 'Ungültige Aktion';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_39829b743afb70ed8dd83d4f83e50702'] = 'Datenbank-Snapshots verwalten';
@@ -41,7 +54,6 @@ $_MODULE['<{prestacollege}prestashop>db_snapshot_074be9f2d80631cbf5f32796a6d5803
 $_MODULE['<{prestacollege}prestashop>db_snapshot_2ba53133bfab4b771223bc8118199c00'] = 'Datenbank-Snapshot erzeugen';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_5d9027678c085212103d462b5f2c0004'] = 'Datenbank-Snapshot hochladen';
 $_MODULE['<{prestacollege}prestashop>fake_carts_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe generieren';
-$_MODULE['<{prestacollege}prestashop>fake_carts_e690c09bcea69f8912e7591f7458e9a7'] = 'Anzahl der Warenkörbe';
 $_MODULE['<{prestacollege}prestashop>fake_carts_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
 $_MODULE['<{prestacollege}prestashop>fake_customers_79da8ae6de67d1b6efcad3ce7b33970c'] = 'Fake-Kunden generieren';
 $_MODULE['<{prestacollege}prestashop>fake_customers_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
