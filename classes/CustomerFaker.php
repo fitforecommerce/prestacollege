@@ -46,7 +46,9 @@ class CustomerFaker extends AbstractFaker
             'optin_rate' => 90,
             'second_address_rate' => 10,
             'birthday_given_rate' => 60,
-            'max_age' => 90
+            'max_age' => 90,
+            'profile_add_min' => '-2 years',
+            'profile_add_max' => 'now',
         );
         return array_merge(parent::default_conf(), $conf);
     }
@@ -90,7 +92,10 @@ class CustomerFaker extends AbstractFaker
         $fc->setWsPasswd($fc->firstname);
         try {
             $fc->save();
-            $fc->date_add = $this->random_date();
+            $fc->date_add = $this->random_date(
+              $this->conf['profile_add_min'],
+              $this->conf['profile_add_max']
+            );
             $fc->save();
         } catch (PrestaShopException $e) {
             error_log("invalid customer: ".$fc->email);
