@@ -6,13 +6,18 @@
       <input type="hidden" name="submitPrestaCollegeModule" value="1">
       <input type="hidden" name="PRESTACOLLEGE_ACTION" value="fakecarts">
 
-      <div class="form-group">
-          <label class="control-label col-lg-4">{l s='Number of carts' mod='prestacollege'}</label>
-          <div class="col-lg-4">
-            <input type="text" name="fake_carts_number" id="fake_carts_number" value="10">
+      {foreach $cartfaker_def as $k => $v}
+        {if $k == 'localization'}
+          {continue}
+        {/if}
+          <div class="form-group">
+              <label class="control-label col-lg-4">{$cartfaker_labels[$k]}</label>
+              <div class="col-lg-4">
+                <input type="text" name="{$k}" id="{$k}" value="{$v}">
+              </div>
           </div>
-      </div>
-      
+      {/foreach}
+
       <div class="panel-footer">
         <input type="submit" value="{l s='Go' mod='prestacollege'}" class="btn btn-default pull-right">
       </div>
