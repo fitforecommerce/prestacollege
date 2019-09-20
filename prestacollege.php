@@ -270,6 +270,7 @@ class PrestaCollege extends Module
         $this->context->smarty->assign('form_action_url', $this->admin_link());
         $this->context->smarty->assign('importdbsnapshots', $this->dbbackup_loader()->snapshot_filenames());
         $this->context->smarty->assign('importfilesnapshots', $this->file_backup_loader()->snapshot_filenames());
+
         $customer_faker = new CustomerFaker();
         $custfaker_labels = array(
           'fake_customers_number' => $this->l('Number of customers'),
@@ -282,10 +283,29 @@ class PrestaCollege extends Module
           'optin_rate' => $this->l('Newsletter optin rate'),
           'second_address_rate' => $this->l('Second address rate'),
           'birthday_given_rate' => $this->l('Birthday given rate'),
-          'max_age' => $this->l('Maximum age')
+          'max_age' => $this->l('Maximum age'),
+          'profile_add_min' => $this->l('Earliest profile add date (e.g. "-1 year")'),
+          'profile_add_max' => $this->l('Latest profile add date (e.g. "now")'),
         );
         $this->context->smarty->assign('custfaker_def', $customer_faker->conf);
         $this->context->smarty->assign('custfaker_labels', $custfaker_labels);
+
+        $cart_faker = new CartFaker();
+        $cartfaker_labels = array(
+          'fake_carts_number' => $this->l('Number of carts'),
+          'minimum_item_quantity' => $this->l('Minimum quantity per order item'), # minimum order quantity
+          'maximum_item_quantity' => $this->l('Maximum quantity per order item'), # maximum order quantity
+          'minimum_order_items'  => $this->l('Minimum items per order'),
+          'maximum_order_items'  => $this->l('Maximum items per order'),
+          'id_currency' => $this->l('Currency id'),      # currency id
+          'id_lang' => $this->l('Language id'),          # language id
+          'add_datespan_min' => $this->l('Orders placed after (e.g. "-30 days")'),
+          'add_datespan_max' => $this->l('Orders placed before (e.g. "now")'),
+          'upd_timediff_min' => $this->l('Minimum time for last cart update (in sec)'),
+          'upd_timediff_max' => $this->l('Maximum time for last cart update (in sec)'),
+        );
+        $this->context->smarty->assign('cartfaker_def', $cart_faker->conf);
+        $this->context->smarty->assign('cartfaker_labels', $cartfaker_labels);
 
         if ($this->debug) {
             $output .= '<hr><code>'.print_r($_REQUEST, true).'</code>';
