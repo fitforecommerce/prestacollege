@@ -32,6 +32,7 @@ class CartFaker extends AbstractFaker
     {
       return array(
         'fake_carts_number' => 50,
+        'customer_cart_rate'  => 20,
         'minimum_item_quantity' => 1, # minimum order quantity
         'maximum_item_quantity' => 3, # maximum order quantity
         'minimum_order_items'  => 1,
@@ -49,7 +50,9 @@ class CartFaker extends AbstractFaker
         $cid = $this->customer_id();
 
         $cart = new Cart();
-        $cart->id_customer = $cid;
+        if($this->in_rnd_range($this->conf['customer_cart_rate'])) {
+          $cart->id_customer = $cid;
+        }
         $cart->id_currency = $this->conf['id_currency'];
         $cart->id_lang     = $this->conf['id_lang'];
 

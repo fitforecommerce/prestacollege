@@ -294,6 +294,7 @@ class PrestaCollege extends Module
         $cart_faker = new CartFaker();
         $cartfaker_labels = array(
           'fake_carts_number' => $this->l('Number of carts'),
+          'customer_cart_rate'  => $this->l('Share of carts from logged-in customers'),
           'minimum_item_quantity' => $this->l('Minimum quantity per order item'), # minimum order quantity
           'maximum_item_quantity' => $this->l('Maximum quantity per order item'), # maximum order quantity
           'minimum_order_items'  => $this->l('Minimum items per order'),
