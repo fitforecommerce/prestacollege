@@ -83,6 +83,7 @@ class PrestaCollege extends Module
     {
         $conf = array('fake_carts_number' => Tools::getValue('fake_carts_number', ''));
         $faker = new CartFaker($conf);
+        $faker->get_conf_values();
         $output = '<div class="panel">';
         $output .= '<h2>'.$this->l('Fake Carts').'</h2>';
         $output .= '<div>'.$this->l('Creating the following fake carts').$faker->fake_carts().'</div>';
