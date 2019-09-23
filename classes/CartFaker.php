@@ -30,7 +30,7 @@ class CartFaker extends AbstractFaker
 
     protected function default_conf()
     {
-      return array(
+      $conf = array(
         'fake_carts_number' => 50,
         'customer_cart_rate'  => 20,
         'minimum_item_quantity' => 1, # minimum order quantity
@@ -44,6 +44,7 @@ class CartFaker extends AbstractFaker
         'upd_timediff_min' => 0,
         'upd_timediff_max' => 1440,
       );
+      return array_merge(parent::default_conf(), $conf);
     }
     private function fake_cart()
     {
