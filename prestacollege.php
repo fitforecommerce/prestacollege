@@ -21,6 +21,8 @@ require_once dirname(__FILE__).'/classes/AbstractFaker.php';
 require_once dirname(__FILE__).'/classes/CustomerFaker.php';
 require_once dirname(__FILE__).'/classes/CartFaker.php';
 require_once dirname(__FILE__).'/classes/AddressFaker.php';
+require_once dirname(__FILE__).'/classes/GuestFaker.php';
+require_once dirname(__FILE__).'/classes/ConnectionFaker.php';
 require_once dirname(__FILE__).'/classes/SnapshotDir.php';
 require_once dirname(__FILE__).'/classes/FakerDatabaseBackup.php';
 require_once dirname(__FILE__).'/classes/FakerDatabaseBackupLoader.php';
@@ -105,6 +107,17 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    public function fakeconnections()
+    {
+        $faker = new ConnectionFaker();
+        $faker->get_conf_values();
+        $output = '<div class="panel">';
+        $output .= '<h2>'.$this->l('Fake Connections').'</h2>';
+        $output .= '<div>'.$this->l('Creating the following fake connections').$faker->fake_connections().'</div>';
+        $output .= '</div>';
+
+        return $output;
+    }
     public function createdbsnapshot()
     {
         $db_backup = new FakerDatabaseBackup();
@@ -309,10 +322,18 @@ class PrestaCollege extends Module
         $this->context->smarty->assign('cartfaker_def', $cart_faker->conf);
         $this->context->smarty->assign('cartfaker_labels', $cartfaker_labels);
 
+        $conn_faker = new ConnectionFaker();
+        $connfaker_labels = array(
+          'fake_connections_number' => 'Number of fake connections',
+          'add_datespan_min' => $this->l('Connections after (e.g. "-30 days")'),
+          'add_datespan_max' => $this->l('Connections before (e.g. "now")'),
+        );
+        $this->context->smarty->assign('connfaker_def', $conn_faker->conf);
+        $this->context->smarty->assign('connfaker_labels', $connfaker_labels);
+
         if ($this->debug) {
             $output .= '<hr><code>'.print_r($_REQUEST, true).'</code>';
         }
-
         if($action!='' && in_array($action, $this->fullscreen_functions())) {
           $output .= "<a href='".$this->admin_link()."'><< ".$this->l('Go back')."…</a>";                
         } else {

@@ -17,6 +17,7 @@
     <div class="panel col-lg-12 moduleconfig-content">
       {include file="$tpl_dir/fake_customers.tpl"}
       {include file="$tpl_dir/fake_carts.tpl"}
+      {include file="$tpl_dir/fake_connections.tpl"}
     </div>
   </div>
 </div>
