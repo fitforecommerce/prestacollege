@@ -1,5 +1,8 @@
 <?php
 
+# Truncate tables SQL
+# TRUNCATE `ps_connections`; TRUNCATE `ps_guest`;
+
 class ConnectionFaker extends AbstractFaker
 {
     public $faker;
@@ -14,7 +17,6 @@ class ConnectionFaker extends AbstractFaker
         $output = '<div><p>Faked Connections</p>';
         for ($i = 0; $i < $this->conf['fake_connections_number']; ++$i) {
             $fc = $this->fake_connection();
-            # $fa = $this->address_faker()->fake_customer_address($fc);
             $output .= '<span>'.$fc->id_guest.'</span> ';
         }
         $output .= '</div>';
@@ -43,6 +45,7 @@ class ConnectionFaker extends AbstractFaker
       $fc->id_page = 1;
       $fc->id_shop = 1;
       $fc->id_shop_group = 1;
+      $fc->ip_address = ip2long($this->faker()->ipv4);
       $fc->date_add = $this->random_date(
         $this->conf['add_datespan_min'],
         $this->conf['add_datespan_max']
