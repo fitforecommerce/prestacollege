@@ -33,6 +33,7 @@ class GuestFaker extends AbstractFaker
         # if($this->in_rnd_range($this->conf['customer_cart_rate'])) {
         #   $cart->id_customer = $cid;
         # }
+        $guest->accept_language = $this->faker_localization();
         $guest->save();
         return $guest;
     }
@@ -41,7 +42,6 @@ class GuestFaker extends AbstractFaker
       # $i = mt_rand(0, count($this->operating_systems()) - 1);
       $i = mt_rand(0, $this->max_os_probability());
       foreach ($this->os_probability_ranges() as $k => $r) {
-        error_log("fake_os: $i ".print_r($r, true));
         if($r[0] <= $i && $i <= $r[1]) {
           return $k;
         }
