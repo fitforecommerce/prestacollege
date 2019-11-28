@@ -42,6 +42,21 @@ abstract class AbstractFaker
 
         return $loc;
     }
+    protected function set_customer_ids()
+    {
+      $q = Db::getInstance(_PS_USE_SQL_SLAVE_)->query('SELECT `id_customer`, `secure_key` FROM `'._DB_PREFIX_.'customer`;');
+      $this->all_customer_ids = $q->fetchAll();
+      if(count($this->all_customer_ids)==0) {
+        throw new Exception("No customers in Database!", 1);
+      }
+      $this->max_customer_id = count($this->all_customer_ids) - 1;
+      return $this->all_customer_ids;
+    }
+    protected function customer_id()
+    {
+      $cind = random_int(0, $this->max_customer_id);
+      return $this->all_customer_ids[$cind];
+    }
     protected function random_date($diff_min = '-5 years', $diff_max = 'now', $f = "Y-m-d H:i:s")
     {
         $fd      = $this->faker()->dateTimeBetween($diff_min, $diff_max, $timezone = null);
