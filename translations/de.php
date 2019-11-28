@@ -8,6 +8,8 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_a0f39e1a61400b48c80a422bfe7bb
 $_MODULE['<{prestacollege}prestashop>prestacollege_ccc3c50eeea3f46bd08e4a628cfe34c1'] = 'Erstelle die folgenden Fake-Warenkörbe';
 $_MODULE['<{prestacollege}prestashop>prestacollege_79da8ae6de67d1b6efcad3ce7b33970c'] = 'Fake-Kunden generieren';
 $_MODULE['<{prestacollege}prestashop>prestacollege_31c9e0d93b2aa1c32eeda4246889130b'] = 'Die folgenden Fake-Kunden wurden erstellt';
+$_MODULE['<{prestacollege}prestashop>prestacollege_26eee9dcab54827aadbf09f9342e905c'] = 'Fake-Besuche generieren';
+$_MODULE['<{prestacollege}prestashop>prestacollege_5062cf106a5c915849a171b1df6f779a'] = 'Erstelle die folgenden Fake-Besuche';
 $_MODULE['<{prestacollege}prestashop>prestacollege_a39cd6ab3ca64c878545a6915b6919fb'] = 'Lege einen Datenbank-Snapshot an';
 $_MODULE['<{prestacollege}prestashop>prestacollege_1f16d0333d6ebfe26a4fa8ddc6b95b7f'] = 'Snapshot erfolgreich erstellt';
 $_MODULE['<{prestacollege}prestashop>prestacollege_b87810814abe8766428f943bd93ba743'] = 'Ein Fehler ist bei der Erstellung des Snapshots aufgetreten!';
@@ -47,6 +49,8 @@ $_MODULE['<{prestacollege}prestashop>prestacollege_e8358a0c0c2d86f587f3fde6485be
 $_MODULE['<{prestacollege}prestashop>prestacollege_b6b15b3d96ecb145f76da0f4eff57d30'] = 'Warenkorb erzeugt vor (z.B. \"now\")';
 $_MODULE['<{prestacollege}prestashop>prestacollege_f419d6e595e2c3bdc5828387fb76d0d1'] = 'Minimale Zeitdifferenz bis letztes Warenkorb-Update (in Sek)';
 $_MODULE['<{prestacollege}prestashop>prestacollege_ef69beb6279119aa2596c2c0626a32d3'] = 'Maximale Zeitdifferenz bis letztes Warenkorb-Update (in Sek)';
+$_MODULE['<{prestacollege}prestashop>prestacollege_9a8974d804032c3430b0fbad7f57546f'] = 'Besuch nach (z.B. \"-30 days\")';
+$_MODULE['<{prestacollege}prestashop>prestacollege_b7e0bdfd739fc2d7754df808f534560e'] = 'Besuche vor (z.B. \"now\")';
 $_MODULE['<{prestacollege}prestashop>prestacollege_22b653bd8d2edcebb9e0036b4ac79262'] = 'Zurück';
 $_MODULE['<{prestacollege}prestashop>prestacollege_dbf373dd3565accf2d2fd19700f6a5ae'] = 'Ungültige Aktion';
 $_MODULE['<{prestacollege}prestashop>db_snapshot_39829b743afb70ed8dd83d4f83e50702'] = 'Datenbank-Snapshots verwalten';
@@ -56,6 +60,8 @@ $_MODULE['<{prestacollege}prestashop>db_snapshot_2ba53133bfab4b771223bc8118199c0
 $_MODULE['<{prestacollege}prestashop>db_snapshot_5d9027678c085212103d462b5f2c0004'] = 'Datenbank-Snapshot hochladen';
 $_MODULE['<{prestacollege}prestashop>fake_carts_a0f39e1a61400b48c80a422bfe7bb58f'] = 'Fake-Warenkörbe generieren';
 $_MODULE['<{prestacollege}prestashop>fake_carts_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
+$_MODULE['<{prestacollege}prestashop>fake_connections_26eee9dcab54827aadbf09f9342e905c'] = 'Fake-Besuche generieren';
+$_MODULE['<{prestacollege}prestashop>fake_connections_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
 $_MODULE['<{prestacollege}prestashop>fake_customers_79da8ae6de67d1b6efcad3ce7b33970c'] = 'Fake-Kunden generieren';
 $_MODULE['<{prestacollege}prestashop>fake_customers_5f075ae3e1f9d0382bb8c4632991f96f'] = 'Los';
 $_MODULE['<{prestacollege}prestashop>file_snapshot_5ffa5bed1782138fade664a4f4cf47df'] = 'Datei-Snapshots verwalten';
