@@ -32,6 +32,7 @@ require_once dirname(__FILE__).'/classes/FakerFileCurler.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackup.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupDownloader.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupLoader.php';
+require_once dirname(__FILE__).'/classes/OrderFaker.php';
 require_once dirname(__FILE__).'/classes/SnapshotUploader.php';
 require_once dirname(__FILE__).'/classes/SnapshotRemover.php';
 
@@ -91,6 +92,17 @@ class PrestaCollege extends Module
         $output .= '<div>'.$this->l('Creating the following fake carts').$faker->fake_carts().'</div>';
         $output .= '</div>';
 
+        return $output;
+    }
+    public function fakeorders()
+    {
+        $conf = array('fake_orders_number' => Tools::getValue('fake_orders_number', ''));
+        $faker = new OrderFaker($conf);
+        $faker->get_conf_values();
+        $output = '<div class="panel">';
+        $output .= '<h2>'.$this->l('Fake Orders').'</h2>';
+        $output .= '<div>'.$this->l('Creating the following fake orders') . $faker->fake_orders() . '</div>';
+        $output .= '</div>';
         return $output;
     }
 
@@ -285,6 +297,15 @@ class PrestaCollege extends Module
         $this->context->smarty->assign('importdbsnapshots', $this->dbbackup_loader()->snapshot_filenames());
         $this->context->smarty->assign('importfilesnapshots', $this->file_backup_loader()->snapshot_filenames());
 
+        $conn_faker = new ConnectionFaker();
+        $connfaker_labels = array(
+          'fake_connections_number' => 'Number of fake connections',
+          'add_datespan_min' => $this->l('Connections after (e.g. "-30 days")'),
+          'add_datespan_max' => $this->l('Connections before (e.g. "now")'),
+        );
+        $this->context->smarty->assign('connfaker_def', $conn_faker->conf);
+        $this->context->smarty->assign('connfaker_labels', $connfaker_labels);
+
         $customer_faker = new CustomerFaker();
         $custfaker_labels = array(
           'fake_customers_number' => $this->l('Number of customers'),
@@ -322,14 +343,15 @@ class PrestaCollege extends Module
         $this->context->smarty->assign('cartfaker_def', $cart_faker->conf);
         $this->context->smarty->assign('cartfaker_labels', $cartfaker_labels);
 
-        $conn_faker = new ConnectionFaker();
-        $connfaker_labels = array(
-          'fake_connections_number' => 'Number of fake connections',
-          'add_datespan_min' => $this->l('Connections after (e.g. "-30 days")'),
-          'add_datespan_max' => $this->l('Connections before (e.g. "now")'),
+        $order_faker = new OrderFaker();
+        $orderfaker_labels = array(
+          'fake_orders_number' => $this->l('Number of fake orders'),
+          'add_datespan_min' => $this->l('Orders after (e.g. "-30 days")'),
+          'add_datespan_max' => $this->l('Orders before (e.g. "now")'),
         );
-        $this->context->smarty->assign('connfaker_def', $conn_faker->conf);
-        $this->context->smarty->assign('connfaker_labels', $connfaker_labels);
+        $this->context->smarty->assign('orderfaker_def', $order_faker->conf);
+        $this->context->smarty->assign('orderfaker_labels', $orderfaker_labels);
+
 
         if ($this->debug) {
             $output .= '<hr><code>'.print_r($_REQUEST, true).'</code>';

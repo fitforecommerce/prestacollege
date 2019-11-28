@@ -4,18 +4,22 @@ class CartFaker extends AbstractFaker
 {
     public $faker;
 
+    function __construct($conf = null) 
+    {
+      parent::__construct();
+
+      try {
+        $this->set_customer_ids();
+      } catch (Exception $e) {
+        return '<div class="alert alert-warning">No customers in database! Please add customers first before faking carts!</div>';
+      }
+
+      $this->set_product_ids();
+    }
     public function fake_carts()
     {
         @set_time_limit(0);
         @ini_set('max_execution_time', '0');
-
-        try {
-          $this->set_customer_ids();
-        } catch (Exception $e) {
-          return '<div class="alert alert-warning">No customers in database! Please add customers first before faking carts!</div>';
-        }
-
-        $this->set_product_ids();
 
         $output = '<ul>';
         for ($i = 0; $i < $this->conf['fake_carts_number']; ++$i) {
@@ -58,7 +62,7 @@ class CartFaker extends AbstractFaker
       $cart->secure_key =  $cid['secure_key'];
       return $cart;
     }
-    private function fake_cart()
+    public function fake_cart()
     {
         $cart = new Cart();
         $cart->id_currency = $this->conf['id_currency'];
@@ -82,7 +86,7 @@ class CartFaker extends AbstractFaker
             0,                      # $id_address_delivery
             null,                   # shop
             true,                   # auto_add_cart_rule
-            true                    # skipAvailabilityCheckOutOfStock
+            false                    # skipAvailabilityCheckOutOfStock
           );
         }
         return $cart;
@@ -110,6 +114,7 @@ class CartFaker extends AbstractFaker
       $q = Db::getInstance(_PS_USE_SQL_SLAVE_)->query('SELECT `id_product` FROM `'._DB_PREFIX_.'product`;');
       $this->all_product_ids = $q->fetchAll();
       $this->max_product_id = count($this->all_product_ids) - 1;
+      error_log("CartFaker:.set_product_ids" . print_r($this->all_product_ids, true));
       return $this->all_product_ids;
     }
     private function product_id()
