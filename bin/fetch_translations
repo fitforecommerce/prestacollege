@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+src = File.realdirpath(Dir.home + '/Sites/htdocs/presta_test/modules/prestacollege/translations')
+trg = File.expand_path("../translations", File.dirname(__FILE__))
+
+cmd = "cp #{src}/*.* #{trg}"
+
+puts cmd
+system cmd

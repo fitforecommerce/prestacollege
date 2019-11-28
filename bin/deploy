@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+src = File.expand_path("..", File.dirname(__FILE__))
+# trg = File.realdirpath(Dir.home + '/Dropbox/Development/htdocs/presta_test/modules')
+trg = File.realdirpath(Dir.home + '/Sites/htdocs/presta_test/modules')
+
+# cmd = "cp -R \"#{src}\" \"#{trg}/\""
+cmd = "rsync -av --progress \"#{src}\" \"#{trg}\" --exclude .git"
+
+puts cmd
+system cmd
