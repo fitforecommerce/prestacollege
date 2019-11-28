@@ -19,7 +19,12 @@ class CartFaker extends AbstractFaker
 
         $output = '<ul>';
         for ($i = 0; $i < $this->conf['fake_carts_number']; ++$i) {
-            $fc = $this->fake_cart();
+            if($this->in_rnd_range($this->conf['customer_cart_rate'])) {
+              $cid = $this->customer_id();
+              $fc = $this->fake_customer_cart($cid);
+            } else {
+              $fc = $this->fake_cart();
+            }
             # $fa = $this->address_faker()->fake_customer_address($fc);
             $output .= '<li>Customer: '.$fc->id_customer.' Cart Total: '.$fc->getOrderTotal();
             $output .= '</li>';
@@ -46,14 +51,16 @@ class CartFaker extends AbstractFaker
       );
       return array_merge(parent::default_conf(), $conf);
     }
+    public function fake_customer_cart($cid)
+    {
+      $cart = $this->fake_cart();
+      $cart->id_customer = $cid['id_customer'];
+      $cart->secure_key =  $cid['secure_key'];
+      return $cart;
+    }
     private function fake_cart()
     {
-        $cid = $this->customer_id();
-
         $cart = new Cart();
-        if($this->in_rnd_range($this->conf['customer_cart_rate'])) {
-          $cart->id_customer = $cid;
-        }
         $cart->id_currency = $this->conf['id_currency'];
         $cart->id_lang     = $this->conf['id_lang'];
 
@@ -87,21 +94,6 @@ class CartFaker extends AbstractFaker
         $this->conf['add_datespan_max'],
         $timezone = null
       );
-    }
-    private function set_customer_ids()
-    {
-      $q = Db::getInstance(_PS_USE_SQL_SLAVE_)->query('SELECT `id_customer` FROM `'._DB_PREFIX_.'customer`;');
-      $this->all_customer_ids = $q->fetchAll();
-      if(count($this->all_customer_ids)==0) {
-        throw new Exception("No customers in Database!", 1);
-      }
-      $this->max_customer_id = count($this->all_customer_ids) - 1;
-      return $this->all_customer_ids;
-    }
-    private function customer_id()
-    {
-      $cind = random_int(0, $this->max_customer_id);
-      return $this->all_customer_ids[$cind]['id_customer'];
     }
     private function order_items_quantity()
     {
