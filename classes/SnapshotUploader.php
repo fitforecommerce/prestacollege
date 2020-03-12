@@ -25,9 +25,10 @@ class SnapshotUploader
     $uploader = new Uploader('snapshotfile');
     $uploader->setSavePath($this->snapshotdir());
     $files = $uploader->process();
-    error_log("SnapshotUploader::upload_snapshot ".print_r($files, true));
-    error_log("\tfile type: ".Tools::strtolower(pathinfo($files[0]['name'], PATHINFO_EXTENSION)));
-    error_log("\tallowed types: ".implode(', ', $this->accept_types()));
+    # error_log("SnapshotUploader::upload_snapshot ".print_r($files, true));
+    # error_log("\tfile type: ".Tools::strtolower(pathinfo($files[0]['name'], PATHINFO_EXTENSION)));
+    # error_log("\tallowed types: ".implode(', ', $this->accept_types()));
+
     if(in_array(Tools::strtolower(pathinfo($files[0]['name'], PATHINFO_EXTENSION)), $this->accept_types())) {
       $trg = $this->snapshotdir().$newName;
       rename($files[0]['save_path'], $this->snapshotdir().$newName);

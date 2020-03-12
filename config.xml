@@ -2,7 +2,7 @@
 <module>
 	<name>PrestaCollege</name>
 	<displayName><![CDATA[PrestaCollege]]></displayName>
-	<version><![CDATA[0.6.0]]></version>
+	<version><![CDATA[0.7.0]]></version>
 	<description><![CDATA[A module for classroom use of Prestashop]]></description>
 	<author><![CDATA[Martin Kolb]]></author>
 	<tab><![CDATA[others]]></tab>

@@ -34,6 +34,7 @@ require_once dirname(__FILE__).'/classes/FakerFileBackupDownloader.php';
 require_once dirname(__FILE__).'/classes/FakerFileBackupLoader.php';
 require_once dirname(__FILE__).'/classes/SnapshotUploader.php';
 require_once dirname(__FILE__).'/classes/SnapshotRemover.php';
+require_once dirname(__FILE__).'/classes/JamandoJSONSource.php';
 
 class PrestaCollege extends Module
 {
@@ -44,7 +45,7 @@ class PrestaCollege extends Module
         $this->debug = false;
         $this->name = 'prestacollege';
         $this->tab = 'others';
-        $this->version = '0.6.0';
+        $this->version = '0.7.0';
         $this->author = 'Martin Kolb';
         $this->need_instance = 1;
 
@@ -266,8 +267,12 @@ class PrestaCollege extends Module
     }
     private function upload_select($action='db')
     {
+      $json_ds = new JamandoJSONSource();
+
       $this->context->smarty->assign('curlaction', $action);
       $this->context->smarty->assign('max_upload_size', ini_get('post_max_size'));
+      $this->context->smarty->assign('json', $json_ds->json());
+
       $output = '<div class="panel">';
       $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/modal_upload.tpl');
       $output .= '</div>';
