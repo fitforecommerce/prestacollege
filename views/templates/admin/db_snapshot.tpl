@@ -1,6 +1,6 @@
 <div class="panel col-lg-12 moduleconfig-content">
   <div class="row">
-    <h3><i class="material-icons">backup</i> {l s='Administrate Database Snapshots' mod='prestacollege'}</h3>
+    <h3><i class="material-icons">backup</i> {l s='Administer Database Snapshots' mod='prestacollege'}</h3>
     <p>{l s='This action imports a snapshot created by PrestaCollege. This will OVERWRITE most of the data in the database!' mod='prestacollege'}<br><strong>{l s='PLEASE USE WITH CAUTION!' mod='prestacollege'}</strong></p>
   </div>
   <div class="row">

@@ -3,15 +3,6 @@
     <p><i class="ps-icon ps-icon-upload-to-cloud"></i>{l s='This will upload a snapshot file from a custom URL to your server' mod='prestacollege'}</p>
   </div>
   <div class="row">
-    <ul>
-      {foreach $json as $jd}
-        {foreach $jd as $df}
-          <li>{$df}</li>
-        {/foreach}
-      {/foreach}
-    </ul>
-  </div>
-  <div class="row">
     <form id="curlsnapshotform" class="defaultForm form-horizontal"  action="{$form_action_url}" method="post" enctype="multipart/form-data" novalidate="">
       <input type="hidden" name="submitPrestaCollegeModule" value="1">
       <input type="hidden" name="PRESTACOLLEGE_ACTION" value="curl{$curlaction}snapshot">

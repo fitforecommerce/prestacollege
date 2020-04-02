@@ -1,6 +1,6 @@
 <div class="panel col-lg-12 moduleconfig-content">
   <div class="row">
-    <h3><i class="material-icons">attach_file</i> {l s='Administrate File-Snapshots' mod='prestacollege'}</h2>
+    <h3><i class="material-icons">attach_file</i> {l s='Administer File-Snapshots' mod='prestacollege'}</h2>
     <p>{l s='This action imports a file snapshot created with PrestaCollege. Use with CAUTION as this will OVERWRITE YOUR DATA in some folders.' mod='prestacollege'}</p>
   </div>
   <div class="row">
