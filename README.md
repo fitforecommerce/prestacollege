@@ -36,7 +36,7 @@ PrestaCollege lets you:
 
 ### Fake stuff
 - [X] fake customers
-- [ ] fake guests and customer visits (i.e. connections)
+- [X] fake guests and customer visits (i.e. connections)
 - [ ] fake orders by customers
 - [X] fake orphaned carts
 - [ ] fake a hacker attack

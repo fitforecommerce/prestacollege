@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.7.0 Add Jamando downloads
+released on 02 Apr 2020
+
+* Add ability to directly download Jamando data from jamando.fitforecommerce.eu
+* Restructure UI and menus
+
 ## v0.4.0 Fix remote downloads timeout
 released on 26 Feb 2019
 
