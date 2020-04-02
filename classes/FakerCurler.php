@@ -10,26 +10,30 @@ class FakerCurler
         @ini_set('max_execution_time', '0');
     }
 
-    public function run()
+    public function run($url = NULL)
     {
-        try {
-            $this->curl_file();
-        } catch (Exception $e) {
-            return "<div class='alert alert-warning'>Error in FakerCurler when downloading file <p><code>$e</code></p></div>";
-        }
+      if(!isset($url)) {
+        $url = $this->snapshot_user_url();
+      }
+      $url = trim($url);
+      try {
+          $this->curl_file($url);
+      } catch (Exception $e) {
+          return "<div class='alert alert-warning'>Error in FakerCurler when downloading file <p><code>$e</code></p></div>";
+      }
 
-        return "<div class='alert alert-success'>Snapshot successfully downloaded. You can now install it.</div>";
+      return "<div class='alert alert-success'>Snapshot successfully downloaded. You can now install it.</div>";
     }
 
-    protected function curl_file()
+    protected function curl_file($url)
     {
-        $destination = $this->snapshotdir()->dir_path.'/'.$this->filename();
+        $destination = $this->snapshotdir()->dir_path.'/'.$this->filename($url);
         $destination = trim($destination);
 
         $file = fopen($destination, 'w+');
-        error_log('FakerCurler::curl_file from url: "'.trim($this->snapshot_user_url()).'"');
+        error_log('FakerCurler::curl_file from url: "'.$url.'"');
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, trim($this->snapshot_user_url()));
+        curl_setopt($ch, CURLOPT_URL, $url);
         # curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         # curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         # curl_setopt($ch, CURLOPT_SSLVERSION, 3);
@@ -57,9 +61,9 @@ class FakerCurler
         return $url;
     }
 
-    private function filename()
+    private function filename($url)
     {
-        $parts = parse_url($this->snapshot_user_url());
+        $parts = parse_url($url);
         $str = basename($parts['path']);
         return $str;
     }
