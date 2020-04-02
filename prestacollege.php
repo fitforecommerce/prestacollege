@@ -82,6 +82,29 @@ class PrestaCollege extends Module
         return parent::uninstall();
     }
 
+    public function fake_carts_form()
+    {
+      $cart_faker = new CartFaker();
+      $cartfaker_labels = array(
+        'fake_carts_number' => $this->l('Number of carts'),
+        'customer_cart_rate'  => $this->l('Share of carts from logged-in customers'),
+        'minimum_item_quantity' => $this->l('Minimum quantity per order item'), # minimum order quantity
+        'maximum_item_quantity' => $this->l('Maximum quantity per order item'), # maximum order quantity
+        'minimum_order_items'  => $this->l('Minimum items per order'),
+        'maximum_order_items'  => $this->l('Maximum items per order'),
+        'id_currency' => $this->l('Currency id'),      # currency id
+        'id_lang' => $this->l('Language id'),          # language id
+        'add_datespan_min' => $this->l('Orders placed after (e.g. "-30 days")'),
+        'add_datespan_max' => $this->l('Orders placed before (e.g. "now")'),
+        'upd_timediff_min' => $this->l('Minimum time for last cart update (in sec)'),
+        'upd_timediff_max' => $this->l('Maximum time for last cart update (in sec)'),
+      );
+      $this->context->smarty->assign('cartfaker_def', $cart_faker->conf);
+      $this->context->smarty->assign('cartfaker_labels', $cartfaker_labels);
+
+      $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/fake_carts_form.tpl');
+      return $output;
+    }
     public function fakecarts()
     {
         $conf = array('fake_carts_number' => Tools::getValue('fake_carts_number', ''));
@@ -95,7 +118,31 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    public function fake_customers_form()
+    {
+      $customer_faker = new CustomerFaker();
+      $custfaker_labels = array(
+        'fake_customers_number' => $this->l('Number of customers'),
+        'female_customer_rate' => $this->l('Female customer rate'),
+        'visitor_rate' => $this->l('Visitor rate'),
+        'guest_rate' => $this->l('Guest rate'),
+        'banned_rate' => $this->l('Banned user rate'),
+        'company_rate' => $this->l('Company customer rate'),
+        'newsletter_rate' => $this->l('Newsletter subscription rate'),
+        'optin_rate' => $this->l('Newsletter optin rate'),
+        'second_address_rate' => $this->l('Second address rate'),
+        'birthday_given_rate' => $this->l('Birthday given rate'),
+        'max_age' => $this->l('Maximum age'),
+        'profile_add_min' => $this->l('Earliest profile add date (e.g. "-1 year")'),
+        'profile_add_max' => $this->l('Latest profile add date (e.g. "now")'),
+      );
+      $this->context->smarty->assign('custfaker_def', $customer_faker->conf);
+      $this->context->smarty->assign('custfaker_labels', $custfaker_labels);
 
+      $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/fake_customers_form.tpl');
+
+      return $output;
+    }
     public function fakecustomers()
     {
         $faker = new CustomerFaker();
@@ -108,6 +155,20 @@ class PrestaCollege extends Module
         return $output;
     }
 
+    public function fake_connections_form()
+    {
+      $conn_faker = new ConnectionFaker();
+      $connfaker_labels = array(
+        'fake_connections_number' => 'Number of fake connections',
+        'add_datespan_min' => $this->l('Connections after (e.g. "-30 days")'),
+        'add_datespan_max' => $this->l('Connections before (e.g. "now")'),
+      );
+      $this->context->smarty->assign('connfaker_def', $conn_faker->conf);
+      $this->context->smarty->assign('connfaker_labels', $connfaker_labels);
+
+      $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/fake_connections_form.tpl');
+      return $output;
+    }
     public function fakeconnections()
     {
         $faker = new ConnectionFaker();
@@ -191,6 +252,17 @@ class PrestaCollege extends Module
 
       return $output;
     }
+    public function administer_filesnapshots()
+    {
+      $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/file_snapshot.tpl');
+      return $output;
+    }
+
+    public function administer_dbsnapshots()
+    {
+      $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/db_snapshot.tpl');
+      return $output;
+    }
     public function curldbsnapshot()
     {
         $output = '<div class="panel">';
@@ -210,7 +282,27 @@ class PrestaCollege extends Module
 
         return $output;
     }
+    public function curljamandosnapshot()
+    {
+      $json_ds = new JamandoJSONSource();
+      $curl_urls = $json_ds->curl_urls();
+      $curldb = Tools::getValue('curldb', 0);
+      $curlfile = Tools::getValue('curlfile', 0);
 
+      $output = '<div class="panel">';
+      $output .= '<h2>'.$this->l('Downloading database snapshot').'</h2>';
+
+      if($curldb && isset($curl_urls['db']) && $curl_urls['db']!='') {
+        $output .= '<div>Status: '.$this->db_curler()->run($curl_urls['db']).'</div>';
+      }
+      if($curlfile && isset($curl_urls['files']) && $curl_urls['files']!='') {
+        $output .= '<div>Status: '.$this->file_curler()->run($curl_urls['files']).'</div>';
+      }
+      # $output .= '<div>Status: '.$this->jamando_curler()->run().'</div>';
+      $output .= '</div>';
+
+      return $output;
+    }
     public function removedbsnapshot()
     {
       $sr = new SnapshotRemover(array('action' => 'db'));
@@ -265,13 +357,23 @@ class PrestaCollege extends Module
     {
       return $this->upload_select('file');
     }
-    private function upload_select($action='db')
+    public function loaddbjamandosnapshot()
     {
       $json_ds = new JamandoJSONSource();
+      $this->context->smarty->assign('json', $json_ds->json());
 
+      # $output = '<div class="panel"><code>json: "'.print_r($json_ds->json(), true).'"</code></div>';
+
+      $output  = '<div class="panel">';
+      $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/modal_jamando_upload.tpl');
+      $output .= '</div>';
+      return $output;
+    }
+    
+    private function upload_select($action='db')
+    {
       $this->context->smarty->assign('curlaction', $action);
       $this->context->smarty->assign('max_upload_size', ini_get('post_max_size'));
-      $this->context->smarty->assign('json', $json_ds->json());
 
       $output = '<div class="panel">';
       $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/modal_upload.tpl');
@@ -289,52 +391,6 @@ class PrestaCollege extends Module
         $this->context->smarty->assign('form_action_url', $this->admin_link());
         $this->context->smarty->assign('importdbsnapshots', $this->dbbackup_loader()->snapshot_filenames());
         $this->context->smarty->assign('importfilesnapshots', $this->file_backup_loader()->snapshot_filenames());
-
-        $customer_faker = new CustomerFaker();
-        $custfaker_labels = array(
-          'fake_customers_number' => $this->l('Number of customers'),
-          'female_customer_rate' => $this->l('Female customer rate'),
-          'visitor_rate' => $this->l('Visitor rate'),
-          'guest_rate' => $this->l('Guest rate'),
-          'banned_rate' => $this->l('Banned user rate'),
-          'company_rate' => $this->l('Company customer rate'),
-          'newsletter_rate' => $this->l('Newsletter subscription rate'),
-          'optin_rate' => $this->l('Newsletter optin rate'),
-          'second_address_rate' => $this->l('Second address rate'),
-          'birthday_given_rate' => $this->l('Birthday given rate'),
-          'max_age' => $this->l('Maximum age'),
-          'profile_add_min' => $this->l('Earliest profile add date (e.g. "-1 year")'),
-          'profile_add_max' => $this->l('Latest profile add date (e.g. "now")'),
-        );
-        $this->context->smarty->assign('custfaker_def', $customer_faker->conf);
-        $this->context->smarty->assign('custfaker_labels', $custfaker_labels);
-
-        $cart_faker = new CartFaker();
-        $cartfaker_labels = array(
-          'fake_carts_number' => $this->l('Number of carts'),
-          'customer_cart_rate'  => $this->l('Share of carts from logged-in customers'),
-          'minimum_item_quantity' => $this->l('Minimum quantity per order item'), # minimum order quantity
-          'maximum_item_quantity' => $this->l('Maximum quantity per order item'), # maximum order quantity
-          'minimum_order_items'  => $this->l('Minimum items per order'),
-          'maximum_order_items'  => $this->l('Maximum items per order'),
-          'id_currency' => $this->l('Currency id'),      # currency id
-          'id_lang' => $this->l('Language id'),          # language id
-          'add_datespan_min' => $this->l('Orders placed after (e.g. "-30 days")'),
-          'add_datespan_max' => $this->l('Orders placed before (e.g. "now")'),
-          'upd_timediff_min' => $this->l('Minimum time for last cart update (in sec)'),
-          'upd_timediff_max' => $this->l('Maximum time for last cart update (in sec)'),
-        );
-        $this->context->smarty->assign('cartfaker_def', $cart_faker->conf);
-        $this->context->smarty->assign('cartfaker_labels', $cartfaker_labels);
-
-        $conn_faker = new ConnectionFaker();
-        $connfaker_labels = array(
-          'fake_connections_number' => 'Number of fake connections',
-          'add_datespan_min' => $this->l('Connections after (e.g. "-30 days")'),
-          'add_datespan_max' => $this->l('Connections before (e.g. "now")'),
-        );
-        $this->context->smarty->assign('connfaker_def', $conn_faker->conf);
-        $this->context->smarty->assign('connfaker_labels', $connfaker_labels);
 
         if ($this->debug) {
             $output .= '<hr><code>'.print_r($_REQUEST, true).'</code>';
@@ -363,7 +419,9 @@ class PrestaCollege extends Module
     {
       return array('uploadfilesnapshotselect', 'uploaddbsnapshotselect', 'curlfilesnapshot', 'curldbsnapshot',
         'createfilesnapshot', 'createdbsnapshot', 'removedbsnapshot', 'removefilesnapshot', 'uploafilebsnapshot', 'uploaddbsnapshot',
-        'fakecarts'
+        'fakecarts', 'loaddbjamandosnapshot', 'curljamandosnapshot',
+        'fake_customers_form', 'fake_carts_form', 'fake_connections_form',
+        'administer_dbsnapshots', 'administer_filesnapshots'
       );
     }
 
